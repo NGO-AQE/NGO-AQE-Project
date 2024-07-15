@@ -1,0 +1,73 @@
+@font-face {
+  src: url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+  font-family: PoppinsRegular;
+}
+
+@font-face {
+  src: url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+  font-family: PoppinsSemiBold;
+}
+
+@font-face {
+  src: url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+  font-family: PoppinsBold;
+}
+
+@mixin h2-font {
+  font-family: PoppinsBold, sans-serif;
+  font-size: 60px;
+  font-style: normal;
+  line-height: 120%; /* 72px */
+  letter-spacing: -1.2px;
+}
+
+@mixin h3-font {
+  font-family: PoppinsBold, sans-serif;
+  font-size: 48px;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.48px;
+  text-transform: uppercase;
+}
+
+@mixin h4-font {
+  font-family: PoppinsSemobold, sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  line-height: normal;
+}
+
+@mixin h5-font {
+  font-family: PoppinsSemobold, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  line-height: normal;
+}
+
+@mixin big-text {
+  font-family: PoppinsRegular, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  line-height: 150%; /* 36px */
+}
+
+@mixin accented-text {
+  font-family: PoppinsSemobold, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  line-height: normal;
+}
+
+@mixin accented-text {
+  font-family: PoppinsSemobold, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  line-height: normal;
+}
+
+@mixin description-text {
+  font-family: PoppinsRegular, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 150%; /* 24px */
+}
