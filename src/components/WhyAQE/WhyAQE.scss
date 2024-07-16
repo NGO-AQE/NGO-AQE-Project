@@ -1,0 +1,33 @@
+@import '../../styles/fonts.scss';
+@import '../../styles/colors.scss';
+
+.why {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 16px;
+  &__title {
+    @include big-text;
+    margin-bottom: 8px;
+  }
+  &__section {
+    border-radius: 16px;
+    border: 1px solid $gray-light;
+    background: $white;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 24px;
+  }
+  &__text {
+    @include description-text;
+    color: $gray-dark;
+  }
+  &__subtitle {
+    @include accented-text;
+  }
+  &__img {
+    width: 40px;
+  }
+}
