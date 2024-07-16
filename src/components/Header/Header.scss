@@ -1,0 +1,76 @@
+@import '../../styles/colors.scss';
+@import '../../styles/fonts.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px;
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+  &__button {
+    height: 40px;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--primary-color, #2c74d3);
+    color: var(--white, #fcfcfc);
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    transition: right 0.5s;
+  }
+  &__links {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+    @include description-text;
+    font-size: 18px;
+  }
+  &__link {
+    color: var(--black, #191919);
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    &:hover {
+      border-bottom: 2px solid $black;
+    }
+  }
+}
+
+.header__menu.active {
+  right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+
+.overlay.active {
+  background-color: white;
+  opacity: 1;
+  visibility: visible;
+}
