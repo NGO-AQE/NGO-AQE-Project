@@ -1,9 +1,3 @@
-@mixin phone {
-  @media screen {
-    @content;
-  }
-}
-
 @mixin tablet {
   @media screen and (min-width: 744px) {
     @content;
