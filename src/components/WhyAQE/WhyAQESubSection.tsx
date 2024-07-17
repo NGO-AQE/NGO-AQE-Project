@@ -1,12 +1,12 @@
-import styles from './WhyAQESubSection.module.scss';
+import styles from './WhyAQE.module.scss';
 
 type WhyAQESSProps = {
-  icon: string;
-  subtitle: string;
-  text: string;
+  data: string[];
 };
 
-const WhyAQESS = ({ icon, subtitle, text }: WhyAQESSProps): JSX.Element => {
+const WhyAQESS = ({ data }: WhyAQESSProps): JSX.Element => {
+  const [icon, subtitle, text] = data;
+
   return (
     <div className={styles.why__section}>
       <img src={icon} alt="section-icon" className={styles.why__img} />

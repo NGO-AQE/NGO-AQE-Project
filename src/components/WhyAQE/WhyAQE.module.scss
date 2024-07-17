@@ -9,5 +9,28 @@
   &__title {
     @include big-text;
     margin-bottom: 8px;
+    text-align: left;
+  }
+  &__section {
+    border-radius: 16px;
+    border: 1px solid $gray-light;
+    background: $white;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 24px;
+  }
+  &__text {
+    @include description-text;
+    color: $gray-dark;
+    text-align: left;
+  }
+  &__subtitle {
+    @include accented-text;
+    text-align: left;
+  }
+  &__img {
+    width: 40px;
   }
 }
