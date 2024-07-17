@@ -1,0 +1,13 @@
+@import '../../styles/fonts.scss';
+@import '../../styles/colors.scss';
+
+.why {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 16px;
+  &__title {
+    @include big-text;
+    margin-bottom: 8px;
+  }
+}

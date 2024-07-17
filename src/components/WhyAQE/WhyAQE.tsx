@@ -1,4 +1,4 @@
-import './WhyAQE.scss';
+import styles from './WhyAQE.module.scss';
 import briefcaseIcon from '../../assets/icons/material-symbols_work-outline.svg';
 import batteryIcon from '../../assets/icons/mingcute_battery-4-line.svg';
 import chartIcon from '../../assets/icons/mingcute_chart-bar-2-line.svg';
@@ -7,8 +7,8 @@ import WhyAQESS from '../WhyAQESubSection/WhyAQESubSection';
 
 const WhyAQE = () => {
   return (
-    <div className="why">
-      <p className="why__title">Why AQE?</p>
+    <div className={styles.why}>
+      <p className={styles.why__title}>Why AQE?</p>
       <WhyAQESS
         icon={lightbulbIcon}
         subtitle={'Inspiring Environment'}
