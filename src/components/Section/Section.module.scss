@@ -1,0 +1,14 @@
+@use '/src/styles/mediaQueries.module' as mQ;
+
+.sectionContainer {
+  padding: 36px 16px;
+  
+  @include mQ.tablet {
+    padding: 62px 24px;
+  }
+
+  @include mQ.desktop {
+    padding: 72px 160px;
+  }
+}
+
