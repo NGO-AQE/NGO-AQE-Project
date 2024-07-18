@@ -3,14 +3,12 @@ import s from './Button.module.scss';
 
 interface ButtonProps {
   children?: React.ReactNode;
-  title?: string | number;
   disabled?: boolean;
   onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
   children,
-  title,
   disabled = false,
   onClick = () => {},
 }) => {
@@ -20,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       onClick={onClick}
     >
-      {children || title}
+      {children}
     </button>
   );
 };
