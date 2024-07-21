@@ -7,6 +7,6 @@
 
 @include tablet {
   .title {
-      @include h2-font;
+    @include h2-font;
   }
 }
