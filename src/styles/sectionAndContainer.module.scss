@@ -49,7 +49,7 @@
         max-width: 696px;
     }
 
-    include mQ.desktop {
+    @include mQ.desktop {
         max-width: 1120px;
     } 
 }
