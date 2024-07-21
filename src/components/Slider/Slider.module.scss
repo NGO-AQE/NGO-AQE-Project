@@ -1,0 +1,12 @@
+@use '../../styles/fonts.scss' as *;
+@use '../../styles/mediaQueries.module' as *;
+
+.title {
+  @include accented-text;
+}
+
+@include tablet {
+  .title {
+      @include h2-font;
+  }
+}

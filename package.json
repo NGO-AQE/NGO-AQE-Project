@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.19",
+    "embla-carousel-react": "^8.1.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sass": "^1.77.8",
