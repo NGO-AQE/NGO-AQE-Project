@@ -17,29 +17,26 @@
     }
 
     &__title {
-        @include f.big-text {
-            color: c.$black;
+        @include f.big-text;
+        color: c.$black;
     
-            @include mQ.tablet {
-                @include f.h2-font;
-            }
-        }   
+        @include mQ.tablet {
+            @include f.h2-font;
+        } 
     }
 
     &__subtitle {
-        @include f.accented-text {
-            color: c.$black;
+        @include f.accented-text;
+        color: c.$black;
 
-            @include mQ.tablet {
-                @include f.h5-font;
-            }
+        @include mQ.tablet {
+            @include f.h5-font;
         }
     }
 
     &__description {
-        @include f.description-text {
-            color: c.$gray-dark;
-        }
+        @include f.description-text;
+        color: c.$gray-dark;
     }
 }
 
