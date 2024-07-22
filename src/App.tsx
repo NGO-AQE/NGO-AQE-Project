@@ -3,8 +3,7 @@ import './App.scss';
 import { useSanity } from './hooks/useSanity';
 
 function App() {
-  const a = useSanity();
-  console.log(a);
+  console.log(useSanity());
 
   return <></>;
 }
