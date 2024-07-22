@@ -3,53 +3,54 @@
 @use './colors.scss' as c;
 
 .section {
-  padding-top: 36px;
-  padding-bottom: 36px;
-
-  @include mQ.tablet {
-    padding-top: 62px;
-    padding-bottom: 62px;
-  }
-
-  @include mQ.desktop {
-    padding-top: 72px;
-    padding-bottom: 72px;
-  }
-
-  &__title {
-    @include f.big-text;
-    color: c.$black;
-
+    padding-top: 36px;
+    padding-bottom: 36px;
+  
     @include mQ.tablet {
-      @include f.h2-font;
+        padding-top: 62px;
+        padding-bottom: 62px;
     }
-  }
 
-  &__subtitle {
-    @include f.accented-text;
-    color: c.$black;
-
-    @include mQ.tablet {
-      @include f.h5-font;
+    @include mQ.desktop {
+        padding-top: 72px;
+        padding-bottom: 72px;
     }
-  }
 
-  &__description {
-    @include f.description-text;
-    color: c.$gray-dark;
-  }
+    &__title {
+        @include f.big-text;
+        color: c.$black;
+    
+        @include mQ.tablet {
+            @include f.h2-font;
+        } 
+    }
+
+    &__subtitle {
+        @include f.accented-text;
+        color: c.$black;
+
+        @include mQ.tablet {
+            @include f.h5-font;
+        }
+    }
+
+    &__description {
+        @include f.description-text;
+        color: c.$gray-dark;
+    }
 }
 
 .container {
-  width: 100%;
-  margin: 0 auto;
-  max-width: 343px;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 343px;
 
-  @include mQ.tablet {
-    max-width: 696px;
-  }
+    @include mQ.tablet {
+        max-width: 696px;
+    }
 
-  @include mQ.desktop {
-    max-width: 1120px;
-  }
+    @include mQ.desktop {
+        max-width: 1120px;
+    } 
 }
+
