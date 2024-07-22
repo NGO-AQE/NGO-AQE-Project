@@ -1,17 +1,20 @@
 import styles from './WhyAQE.module.scss';
-
 type WhyAQESSProps = {
-  data: string[];
+  data: {
+    icon: string;
+    subtitle: string;
+    text: string;
+  };
 };
 
 const WhyAQESS = ({ data }: WhyAQESSProps): JSX.Element => {
-  const [icon, subtitle, text] = data;
+  const { icon, subtitle, text } = data;
 
   return (
-    <div className={styles.why__section}>
-      <img src={icon} alt="section-icon" className={styles.why__img} />
-      <p className={styles.why__subtitle}>{subtitle}</p>
-      <p className={styles.why__text}>{text}</p>
+    <div className={styles.whySection__subsection}>
+      <img src={icon} alt="section-icon" className={styles.whySection__img} />
+      <p className={styles.whySection__subtitle}>{subtitle}</p>
+      <p className={styles.whySection__text}>{text}</p>
     </div>
   );
 };

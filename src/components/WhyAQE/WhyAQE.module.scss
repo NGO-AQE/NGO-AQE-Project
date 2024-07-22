@@ -1,7 +1,7 @@
 @import '../../styles/fonts.scss';
 @import '../../styles/colors.scss';
 
-.why {
+.whySection {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -11,7 +11,7 @@
     margin-bottom: 8px;
     text-align: left;
   }
-  &__section {
+  &__subsection {
     border-radius: 16px;
     border: 1px solid $gray-light;
     background: $white;
