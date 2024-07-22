@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Slide, Slider } from './Slider';
+import { Slider } from './Slider';
 import classNames from 'classnames';
 
 interface BasicCardProps {
@@ -21,25 +21,37 @@ const BasicCard: FC<BasicCardProps> = ({ isStaticWidth = false, index }) => (
 );
 
 const array = new Array(10).fill(null).map((_, i) => i);
+const text =
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet illo suscipit est praesentium enim, nihil deserunt magnam aperiam at, temporibus dolores harum in magni laboriosam quasi, atque voluptatum quia delectus.';
 
 // automatic number of slides in view depending on passed elements
 export const SliderExample: FC = () => (
-  <Slider title="Slider">
+  <Slider buttonsPlacment="slider" title="Slider" text={text}>
     {array.map(key => (
-      <Slide key={key}>
+      <Slider.Slide key={key}>
         <BasicCard index={key} isStaticWidth />
-      </Slide>
+      </Slider.Slide>
+    ))}
+  </Slider>
+);
+
+export const SliderExampleSlidesOutside: FC = () => (
+  <Slider buttonsPlacment="title" title="Slider" slidesOtside>
+    {array.map(key => (
+      <Slider.Slide key={key}>
+        <BasicCard index={key} isStaticWidth />
+      </Slider.Slide>
     ))}
   </Slider>
 );
 
 // setting number of visible slides
 export const SliderExampleWithSlidesToShow: FC = () => (
-  <Slider title="Slider" slidesToShow={2}>
+  <Slider buttonsPlacment="title" title="Slider" slidesToShow={2}>
     {array.map(key => (
-      <Slide key={key}>
+      <Slider.Slide key={key}>
         <BasicCard index={key} />
-      </Slide>
+      </Slider.Slide>
     ))}
   </Slider>
 );
