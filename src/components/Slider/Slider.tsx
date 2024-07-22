@@ -53,7 +53,7 @@ export const Slider: FC<Props> & SubComponents = ({
 
   return (
     <SliderContext.Provider value={contextValue}>
-      <div className={`flex flex-col gap-8 ${styles.section}`}>
+      <div className={`flex flex-col ${styles.section}`}>
         <div className={styles.container}>
           <div className="flex items-center md:justify-between">
             <h2 className={styles.section__title}>{title}</h2>
