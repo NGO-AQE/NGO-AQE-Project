@@ -27,7 +27,7 @@ export const SanityContext = createContext<SanityContextType | undefined>(
 const sanityConfig = {
   projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
   dataset: 'production',
-  useCdn: false,
+  useCdn: false, //less efficient, but better for development
 };
 
 if (!sanityConfig.projectId) {
@@ -39,7 +39,7 @@ const sanity = createClient(sanityConfig);
 const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const [selectedLanguage, setSelectedLanguage] = useState('en'); //this is just the language code code
   const [documents, setDocuments] = useState<SanityData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
@@ -49,13 +49,13 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
       try {
         const newData: SanityData = {};
         const res = await sanity.fetch('*');
+
         res.forEach((doc: { _type: string }) => {
           if (!newData[doc._type]) {
             newData[doc._type] = [];
           }
           newData[doc._type].push(doc);
         });
-
         setDocuments(newData);
         setError(null);
       } catch (err) {
@@ -65,7 +65,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         setLoading(false);
       }
     })();
-  }, [selectedLanguage]);
+  }, []); //add language if we should refetch data after it changes
 
   return (
     <SanityContext.Provider
