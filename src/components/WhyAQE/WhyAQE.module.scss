@@ -1,5 +1,6 @@
 @import '../../styles/fonts.scss';
 @import '../../styles/colors.scss';
+@import '../../styles//mediaQueries.module.scss';
 
 .whySection {
   display: flex;
@@ -15,11 +16,22 @@
     border-radius: 16px;
     border: 1px solid $gray-light;
     background: $white;
-
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding: 16px 24px;
+    @include tablet {
+      width: calc(50% - 62px);
+    }
+  }
+  &__container {
+    display: flex;
+    width: 100%;
+    gap: 16px;
+    flex-wrap: wrap;
+    @include tablet {
+      gap: 24px;
+    }
   }
   &__text {
     @include description-text;

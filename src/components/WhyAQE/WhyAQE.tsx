@@ -32,9 +32,11 @@ const WhyAQE = () => {
   return (
     <div className={styles.whySection}>
       <p className={styles.whySection__title}>Why AQE?</p>
-      {subsections.map(data => (
-        <WhyAQESS key={data.subtitle} data={data} />
-      ))}
+      <div className={styles.whySection__container}>
+        {subsections.map(data => (
+          <WhyAQESS key={data.subtitle} data={data} />
+        ))}
+      </div>
     </div>
   );
 };
