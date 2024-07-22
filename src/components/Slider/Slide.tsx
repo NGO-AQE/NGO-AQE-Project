@@ -6,6 +6,7 @@ const StyledSlide = styled.div<{ $flexBasis?: string }>`
   ${({ $flexBasis }) => $flexBasis && `flex-basis: ${$flexBasis};`}
 `;
 
+// wrapper for each slide provides neccesary styles for correct display of slide
 export const Slide: FC<PropsWithChildren> = ({ children }) => {
   const { flexBasis } = useContext(SliderContext);
 

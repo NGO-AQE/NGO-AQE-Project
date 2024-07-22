@@ -4,6 +4,7 @@ import rightArrow from '../../assets/icons/right-arrow.svg';
 import classNames from 'classnames';
 import { SliderContext } from './SliderContext';
 
+// reusable buttons to avoid code repetition insie slider
 export const ButtonGroup: FC = () => {
   const { scrollNext, scrollPrev, buttonsPlacment } = useContext(SliderContext);
 

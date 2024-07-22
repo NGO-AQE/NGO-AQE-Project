@@ -2,6 +2,8 @@ import { FC, PropsWithChildren, useContext } from 'react';
 import { SliderContext } from './SliderContext';
 import { ButtonGroup } from './ButtonsGroup';
 
+// place for slides it should be only one at given moment isnside slider
+// extracted here to avoid code repetition
 export const Slides: FC<PropsWithChildren> = ({ children }) => {
   const { buttonsPlacment, emblaRef } = useContext(SliderContext);
   return (

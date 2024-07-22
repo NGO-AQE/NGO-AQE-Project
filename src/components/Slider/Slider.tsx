@@ -9,10 +9,10 @@ import { Slides } from './Slides';
 
 interface Props extends PropsWithChildren {
   title: string;
-  text?: string;
-  slidesToShow?: number;
-  slidesOtside?: true;
-  buttonsPlacment: ButtonsPlacment;
+  description?: string;
+  slidesToShow?: number; //number of full slides in view
+  slidesOtside?: true; //determines if slides should be outside container taking full width of section
+  buttonsPlacment: ButtonsPlacment; //buttons placment in title section or on the slider
 }
 
 interface SubComponents {
@@ -25,7 +25,7 @@ export const Slider: FC<Props> & SubComponents = ({
   slidesOtside,
   buttonsPlacment,
   children,
-  text,
+  description,
 }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -41,6 +41,8 @@ export const Slider: FC<Props> & SubComponents = ({
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
+  // flex basis used in slide for representing percent of slider view each slide takes
+  //i added 1 to slides to show to make space for parts of prev and next slide
   const flexBasis = slidesToShow ? `${100 / (slidesToShow + 1)}%` : undefined;
 
   const contextValue = {
@@ -59,11 +61,11 @@ export const Slider: FC<Props> & SubComponents = ({
             <h2 className={styles.section__title}>{title}</h2>
             {buttonsPlacment === 'title' && <ButtonGroup />}
           </div>
-          {text && (
+          {description && (
             <p
               className={`${styles.section__description} text-left mt-4 md:mt-8`}
             >
-              {text}
+              {description}
             </p>
           )}
           {!slidesOtside && <Slides>{children}</Slides>}

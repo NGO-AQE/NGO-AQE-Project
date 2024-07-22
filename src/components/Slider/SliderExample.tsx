@@ -26,7 +26,7 @@ const text =
 
 // automatic number of slides in view depending on passed elements
 export const SliderExample: FC = () => (
-  <Slider buttonsPlacment="slider" title="Slider" text={text}>
+  <Slider buttonsPlacment="slider" title="Slider" description={text}>
     {array.map(key => (
       <Slider.Slide key={key}>
         <BasicCard index={key} isStaticWidth />
@@ -35,6 +35,7 @@ export const SliderExample: FC = () => (
   </Slider>
 );
 
+// example with slides outside container
 export const SliderExampleSlidesOutside: FC = () => (
   <Slider buttonsPlacment="title" title="Slider" slidesOtside>
     {array.map(key => (

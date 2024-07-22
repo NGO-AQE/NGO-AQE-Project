@@ -1,3 +1,9 @@
+/*
+  function for alinging current slide
+  for uneven number of slide place it in center
+  for even number of slides place it to the left of center
+  there is also space for visible parts of slides 
+*/
 export const align = (vievSize: number, snapSize: number) => {
   const spaceForSlides = vievSize - snapSize / 2;
 
