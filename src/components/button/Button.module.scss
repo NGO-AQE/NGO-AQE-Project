@@ -1,0 +1,35 @@
+@use '../../styles/colors.scss' as color;
+@use '../../styles/fonts.scss' as font;
+
+.button {
+  display: flex;
+  padding: 10px 35px;
+  border: none;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+
+  @include font.body-text;
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.default {
+  background-color: color.$primary-color;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: color.$getInfo;
+  }
+
+  &:focus:not(:disabled) {
+    background-color: color.$focused;
+    outline: none;
+  }
+}

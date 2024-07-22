@@ -7,6 +7,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "eslint-config-prettier",
   ],
+   "sourceType": "module",
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
   plugins: ["react-refresh"],
