@@ -1,7 +1,9 @@
 @import '../../styles/fonts.scss';
 @import '../../styles/colors.scss';
 @import '../../styles//mediaQueries.module.scss';
-
+* {
+  box-sizing: border-box;
+}
 .whySection {
   display: flex;
   flex-direction: column;
@@ -20,8 +22,9 @@
     flex-direction: column;
     gap: 12px;
     padding: 16px 24px;
+    width: 100%;
     @include tablet {
-      width: calc(50% - 62px);
+      width: calc(50% - 12px);
     }
   }
   &__container {
