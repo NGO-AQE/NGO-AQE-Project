@@ -25,7 +25,7 @@ export const HomePage = () => {
           Ireland
         </a>
       </div>
-      <Button className={s.button}>Get info package</Button>
+      <Button classname={s.button}>Get info package</Button>
     </div>
   );
 };
