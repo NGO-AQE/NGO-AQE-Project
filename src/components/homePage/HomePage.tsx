@@ -1,6 +1,6 @@
 import s from './HomePage.module.scss';
 import WorldMap from '../../../public/img/World Map.svg';
-import Button from '../../components/Button/Button';
+import Button from '../Button/Button';
 
 export const HomePage = () => {
   return (
