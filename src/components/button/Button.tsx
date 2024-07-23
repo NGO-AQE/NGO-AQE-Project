@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={`${s.button} ${s.default}  ${className}`}
+      className={`${s.button} ${s.default} ${className || ''}`}
       disabled={disabled}
       onClick={onClick}
     >
