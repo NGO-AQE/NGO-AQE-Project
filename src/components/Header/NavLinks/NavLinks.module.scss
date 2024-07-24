@@ -31,9 +31,38 @@
   }
 
   .navlink__customSelect {
-    select {
+    .react-select__control {
       font-size: 16px;
       padding: 5px;
+      border-color: #ddd;
+
+      &:hover {
+        border-color: var(--black, #191919);
+      }
+
+      &--is-focused {
+        border-color: var(--primary-color, #007bff);
+        box-shadow: 0 0 0 1px var(--primary-color, #007bff);
+      }
+    }
+
+    .react-select__menu {
+      z-index: 9999;
+    }
+
+    .react-select__option {
+      background-color: #fff;
+      color: #333;
+      border-radius: 0px 0px 15px 15px;
+
+      &:hover {
+        background-color: #e0e0e0;
+      }
+
+      &--is-selected {
+        background-color: var(--primary-color, #007bff);
+        color: #fff;
+      }
     }
   }
 }
