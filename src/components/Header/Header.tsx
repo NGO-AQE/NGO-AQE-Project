@@ -1,4 +1,4 @@
-import { FunctionComponent, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Logo from '../../assets/icons/Logo.png';
 import Burger from '../../assets/icons/burger-icon.svg';
 import BurgerClosed from '../../assets/icons/burger-icon-closed.svg';
@@ -6,9 +6,7 @@ import NavLinks from './NavLinks/NavLinks';
 
 import styles from './Header.module.scss';
 
-interface HeaderProps { }
-
-const Header: FunctionComponent<HeaderProps> = () => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
