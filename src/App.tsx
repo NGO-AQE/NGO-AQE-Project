@@ -8,9 +8,12 @@ import {
 function App() {
   return (
     <>
-      <SliderExample />
-      <SliderExampleSlidesOutside />
-      <SliderExampleWithSlidesToShow />
+      <SliderExample slideWidth={160} />
+      <SliderExample slideWidth={200} />
+      <SliderExampleSlidesOutside slideWidth={160} />
+      <SliderExampleSlidesOutside slideWidth={200} />
+      <SliderExampleWithSlidesToShow slidesToShow={2} />
+      <SliderExampleWithSlidesToShow slidesToShow={3} />
     </>
   );
 }

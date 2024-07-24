@@ -1,15 +1,17 @@
 import { FC } from 'react';
 import { Slider } from './Slider';
-import classNames from 'classnames';
 
 interface BasicCardProps {
-  isStaticWidth?: boolean;
+  width?: number;
   index: number;
 }
 
-const BasicCard: FC<BasicCardProps> = ({ isStaticWidth = false, index }) => (
-  <div className={classNames('flex', 'flex-col', { 'w-40': isStaticWidth })}>
-    <img src="https://placehold.co/160x160.png" />
+const BasicCard: FC<BasicCardProps> = ({ width, index }) => (
+  <div className="flex flex-col" style={{ width }}>
+    <img
+      src={`https://placehold.co/${width || 160}x${width || 160}.png`}
+      className="flex-none"
+    />
     <div>
       <h1 className="text-xl">{`Slide: ${index}`}</h1>
       <p className="text-base">
@@ -25,30 +27,46 @@ const text =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet illo suscipit est praesentium enim, nihil deserunt magnam aperiam at, temporibus dolores harum in magni laboriosam quasi, atque voluptatum quia delectus.';
 
 // automatic number of slides in view depending on passed elements
-export const SliderExample: FC = () => (
-  <Slider buttonsPlacment="slider" title="Slider" description={text}>
+export const SliderExample: FC<{ slideWidth: number }> = ({ slideWidth }) => (
+  <Slider
+    buttonsPlacment="slider"
+    title={`slides inside slide width ${slideWidth}`}
+    description={text}
+  >
     {array.map(key => (
       <Slider.Slide key={key}>
-        <BasicCard index={key} isStaticWidth />
+        <BasicCard index={key} width={slideWidth} />
       </Slider.Slide>
     ))}
   </Slider>
 );
 
 // example with slides outside container
-export const SliderExampleSlidesOutside: FC = () => (
-  <Slider buttonsPlacment="title" title="Slider" slidesOtside>
+export const SliderExampleSlidesOutside: FC<{ slideWidth: number }> = ({
+  slideWidth,
+}) => (
+  <Slider
+    buttonsPlacment="title"
+    title={`slides outside slide width ${slideWidth}`}
+    slidesOtside
+  >
     {array.map(key => (
       <Slider.Slide key={key}>
-        <BasicCard index={key} isStaticWidth />
+        <BasicCard index={key} width={slideWidth} />
       </Slider.Slide>
     ))}
   </Slider>
 );
 
 // setting number of visible slides
-export const SliderExampleWithSlidesToShow: FC = () => (
-  <Slider buttonsPlacment="title" title="Slider" slidesToShow={2}>
+export const SliderExampleWithSlidesToShow: FC<{ slidesToShow: number }> = ({
+  slidesToShow,
+}) => (
+  <Slider
+    buttonsPlacment="title"
+    title={`${slidesToShow} slides in view`}
+    slidesToShow={slidesToShow}
+  >
     {array.map(key => (
       <Slider.Slide key={key}>
         <BasicCard index={key} />

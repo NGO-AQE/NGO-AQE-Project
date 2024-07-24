@@ -1,8 +1,8 @@
 import { FC, useContext } from 'react';
-import leftArrow from '../../assets/icons/left-arrow.svg';
-import rightArrow from '../../assets/icons/right-arrow.svg';
+import leftArrow from '../../../assets/icons/left-arrow.svg';
+import rightArrow from '../../../assets/icons/right-arrow.svg';
 import classNames from 'classnames';
-import { SliderContext } from './SliderContext';
+import { SliderContext } from '../SliderContext';
 
 // reusable buttons to avoid code repetition insie slider
 export const ButtonGroup: FC = () => {
@@ -16,7 +16,11 @@ export const ButtonGroup: FC = () => {
           buttonsPlacment === 'slider',
       })}
     >
-      <button className="p-0 w-12 h-12">
+      <button
+        className={classNames('p-0 w-12 h-12', {
+          'bg-white opacity-80 rounded-xl': buttonsPlacment === 'slider',
+        })}
+      >
         <img
           className="w-12 h-12"
           src={leftArrow}
@@ -24,7 +28,11 @@ export const ButtonGroup: FC = () => {
           onClick={scrollPrev}
         />
       </button>
-      <button className="p-0 h-12 w-12">
+      <button
+        className={classNames('p-0 w-12 h-12', {
+          'bg-white opacity-80 rounded-xl': buttonsPlacment === 'slider',
+        })}
+      >
         <img
           className="h-12 w-12"
           src={rightArrow}

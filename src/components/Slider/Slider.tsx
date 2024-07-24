@@ -3,9 +3,9 @@ import styles from '../../styles/sectionAndContainer.module.scss';
 import useEmblaCarousel from 'embla-carousel-react';
 import { align } from './utils';
 import { ButtonsPlacment, SliderContext } from './SliderContext';
-import { Slide } from './Slide';
-import { ButtonGroup } from './ButtonsGroup';
-import { Slides } from './Slides';
+import { Slide } from './components/Slide';
+import { ButtonGroup } from './components/ButtonsGroup';
+import { Slides } from './components/Slides';
 
 interface Props extends PropsWithChildren {
   title: string;
