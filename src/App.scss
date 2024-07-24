@@ -1,7 +1,7 @@
 @use './styles/colors.scss' as color;
-@import './reset.scss';
 @use './styles/mediaQueries.module.scss' as mQ;
 @use './styles/fonts.scss' as f;
+@import './reset.scss';
 
 .section {
   padding-top: 36px;
