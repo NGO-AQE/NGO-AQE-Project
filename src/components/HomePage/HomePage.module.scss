@@ -66,12 +66,8 @@
           background: rgba(36, 101, 187, 0.3);
           transform: translateX(-50%);
           z-index: -1;
-          
-          @include mQ.tablet {
-            height: 42px;
-          }
 
-          @include mQ.desktop {
+          @include mQ.tablet {
             height: 42px;
           }
         }
@@ -85,11 +81,11 @@
   }
 
   .containerLinks {
-    margin: 46px 16px 40px 16px;
+    margin: 46px 16px 20px 16px;
     display: flex;
     justify-content: space-between;
-    max-width: 320px;
-    order: 3;
+    width: 311px;
+    order: 2;
 
     @include mQ.tablet {
       margin-top: 24px;
