@@ -7,8 +7,10 @@ export const HomePage = () => {
     <div className={s.container}>
       <div className={s.titleContainer}>
         <h5 className={s.title}>
-          Empower with <br /> AQE Educate.
+          Empower with <br />
+          <h5 className={s.subtitle}>AQE Educate.</h5>
         </h5>
+
         <p className={s.paragraph}>
           Your trusted partner in professional development <br /> for educators.
         </p>

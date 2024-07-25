@@ -10,10 +10,12 @@
 
   @include mQ.tablet {
     padding: 0px 24px;
+    margin-top: 32px;
   }
 
   @include mQ.desktop {
     padding: 0 160px;
+    margin-top: 105px;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
@@ -48,6 +50,31 @@
 
       @include mQ.desktop {
         width: 453px;
+      }
+
+      .subtitle {
+        position: relative;
+        display: inline-block;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 49%;
+          bottom: 0;
+          width: 98%;
+          height: 22px;
+          background: rgba(36, 101, 187, 0.3);
+          transform: translateX(-50%);
+          z-index: -1;
+          
+          @include mQ.tablet {
+            height: 42px;
+          }
+
+          @include mQ.desktop {
+            height: 42px;
+          }
+        }
       }
     }
 
