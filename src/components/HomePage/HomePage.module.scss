@@ -7,6 +7,7 @@
   flex-direction: column;
   padding-inline: 16px;
   background-color: color.$background-color;
+  overflow: hidden;
 
   @include mQ.tablet {
     padding-inline: 24px;
@@ -78,6 +79,11 @@
     .paragraph {
       @include font.description-text;
       color: color.$gray-dark;
+      width: 343px;
+
+      @include mQ.tablet {
+        width: 350px;
+      }
     }
   }
 
@@ -119,16 +125,17 @@
   .img {
     max-width: 921px;
     max-height: 602px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    position: relative;
     left: 0;
     order: 2;
+    overflow: hidden;
 
     @include mQ.tablet {
-      position: relative;
+      width: 200%;
       left: 0;
-      width: calc(100% + 182px);
+      transform: translateX(0);
+      overflow: hidden;
     }
 
     @include mQ.desktop {
@@ -136,7 +143,8 @@
       order: 3;
       position: absolute;
       left: 560px;
-      width: calc(150% - 102px);
+      width: calc(100% - 102px);
+      overflow: hidden;
     }
   }
 

@@ -12,7 +12,7 @@ export const HomePage = () => {
         </h5>
 
         <p className={s.paragraph}>
-          Your trusted partner in professional development <br /> for educators.
+          Your trusted partner in professional development for educators.
         </p>
       </div>
       <img className={s.img} src={WorldMap} alt="worldMap" />
