@@ -4,9 +4,10 @@ import { Slider } from './Slider';
 interface BasicCardProps {
   width?: number;
   index: number;
+  withText?: true;
 }
 
-const BasicCard: FC<BasicCardProps> = ({ width, index }) => (
+export const BasicCard: FC<BasicCardProps> = ({ width, index, withText }) => (
   <div className="flex flex-col" style={{ width }}>
     <img
       src={`https://placehold.co/${width || 160}x${width || 160}.png`}
@@ -14,10 +15,12 @@ const BasicCard: FC<BasicCardProps> = ({ width, index }) => (
     />
     <div>
       <h1 className="text-xl">{`Slide: ${index}`}</h1>
-      <p className="text-base">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim sequi
-        quos, aperiam atque recusandae excepturi
-      </p>
+      {withText && (
+        <p className="text-base">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim sequi
+          quos, aperiam atque recusandae excepturi
+        </p>
+      )}
     </div>
   </div>
 );

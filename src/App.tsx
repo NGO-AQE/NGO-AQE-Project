@@ -1,19 +1,24 @@
 import './App.scss';
-import {
-  SliderExample,
-  SliderExampleSlidesOutside,
-  SliderExampleWithSlidesToShow,
-} from './components/Slider/SliderExample';
+import { Slider } from './components/Slider';
+import { BasicCard } from './components/Slider/SliderExample';
 
 function App() {
   return (
     <>
-      <SliderExample slideWidth={160} />
-      <SliderExample slideWidth={200} />
-      <SliderExampleSlidesOutside slideWidth={160} />
-      <SliderExampleSlidesOutside slideWidth={200} />
-      <SliderExampleWithSlidesToShow slidesToShow={2} />
-      <SliderExampleWithSlidesToShow slidesToShow={3} />
+      <Slider title="Succes stories" buttonsPlacment="title" slidesOtside>
+        {[...Array(10)].map((_, i) => (
+          <Slider.Slide key={i}>
+            <BasicCard width={262} index={i} withText />
+          </Slider.Slide>
+        ))}
+      </Slider>
+      <Slider title="Our partners" buttonsPlacment="title" slidesOtside>
+        {[...Array(10)].map((_, i) => (
+          <Slider.Slide key={i}>
+            <BasicCard width={262} index={i} />
+          </Slider.Slide>
+        ))}
+      </Slider>
     </>
   );
 }
