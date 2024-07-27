@@ -14,13 +14,13 @@ const languageOptions: OptionType[] = [
 ];
 
 const customStyles: StylesConfig<OptionType, false> = {
-  control: (provided, _state) => ({
+  control: provided => ({
     ...provided,
     border: 'none',
     fontFamily: 'Poppins, sans-serif',
     fontSize: '16px',
   }),
-  menu: (provided) => ({
+  menu: provided => ({
     ...provided,
     zIndex: 9999,
     padding: '4px',
@@ -38,10 +38,10 @@ const customStyles: StylesConfig<OptionType, false> = {
       backgroundColor: '#e0e0e0',
     },
   }),
-  indicatorSeparator: (_provided) => ({
+  indicatorSeparator: () => ({
     display: 'none',
   }),
-  dropdownIndicator: (provided) => ({
+  dropdownIndicator: provided => ({
     ...provided,
     color: '#000',
     '&:hover': {
@@ -49,7 +49,6 @@ const customStyles: StylesConfig<OptionType, false> = {
     },
   }),
 };
-
 
 interface NavLinksProps {
   isMobile?: boolean;
@@ -65,7 +64,9 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({ isMobile }) => {
   };
 
   return (
-    <ul className={`${styles.navlinks} ${isMobile ? styles['navlinks--mobile'] : ''}`}>
+    <ul
+      className={`${styles.navlinks} ${isMobile ? styles['navlinks--mobile'] : ''}`}
+    >
       <li>
         <a className={styles.navlink} href="">
           Home
