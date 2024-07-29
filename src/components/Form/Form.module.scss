@@ -1,0 +1,50 @@
+@use '../../styles/colors' as color;
+
+.section {
+  background-color: color.$black;
+
+  &__title {
+    text-align: center;
+    color: #f7f7f7;
+    padding: 8px;
+  }
+
+  &__subtitle {
+    text-align: left;
+    color: color.$white;
+    padding: 8px;
+  }
+
+  &__description {
+    text-align: center;
+    color: color.$gray-light;
+    padding: 8px;
+  }
+
+  &__input {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 4px 8px;
+    background: color.$white;
+    border: 2px solid color.$gray-light;
+    border-radius: 12px;
+    align-self: center;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.labelAndInputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.errorMessage {
+  color: red;
+}
