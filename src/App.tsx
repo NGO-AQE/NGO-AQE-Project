@@ -14,16 +14,16 @@ function App() {
 
   //only the above will be merged
 
-  const bts = ['en', 'pl', 'de'].map(l => (
+  const bts = sanity.documents?.language.map(l => (
     <>
       <br />
       <button
         type="button"
         onClick={() => {
-          sanity.changeLanguage(l);
+          sanity.changeLanguage(l.code);
         }}
       >
-        Button for {l}
+        Button for {l.code}
       </button>
     </>
   ));
