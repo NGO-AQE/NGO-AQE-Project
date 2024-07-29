@@ -7,6 +7,8 @@
   flex-direction: column;
   padding-inline: 16px;
   background-color: color.$background-color;
+  overflow-x: auto;
+  max-width: 100%;
   overflow: hidden;
 
   @include mQ.tablet {
@@ -19,6 +21,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    justify-content: center;
   }
 
   .titleContainer {
@@ -95,8 +98,8 @@
     order: 2;
 
     @include mQ.tablet {
-      width: 262px;
-      left: 160px;
+      width: auto;
+      left: 0;
       align-self: flex-start;
       gap: 50px;
       padding-bottom: 44px;
@@ -106,7 +109,7 @@
     @include mQ.desktop {
       padding-top: 240px;
       padding-bottom: 64px;
-      left: 160px;
+      left: 0;
       align-self: flex-start;
     }
 
@@ -125,17 +128,14 @@
   .img {
     max-width: 921px;
     max-height: 602px;
-    display: block;
     position: relative;
     left: 0;
     order: 2;
-    overflow: hidden;
 
     @include mQ.tablet {
-      width: 200%;
+      width: 100%;
       left: 0;
       transform: translateX(0);
-      overflow: hidden;
     }
 
     @include mQ.desktop {
@@ -144,7 +144,6 @@
       position: absolute;
       left: 560px;
       width: calc(100% - 102px);
-      overflow: hidden;
     }
   }
 

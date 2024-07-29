@@ -8,7 +8,7 @@ export const HomePage = () => {
       <div className={s.titleContainer}>
         <h5 className={s.title}>
           Empower with <br />
-          <h5 className={s.subtitle}>AQE Educate.</h5>
+          <span className={s.subtitle}>AQE Educate.</span>
         </h5>
 
         <p className={s.paragraph}>
