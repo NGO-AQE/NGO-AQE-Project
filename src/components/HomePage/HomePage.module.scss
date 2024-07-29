@@ -2,17 +2,33 @@
 @use '../../styles/fonts.scss' as font;
 @use '../../styles/mediaQueries.module.scss' as mQ;
 
+body {
+  background-color: color.$background-color;
+  z-index: 0;
+  position: relative;
+
+  @include mQ.tablet {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;
   padding-inline: 16px;
-  background-color: color.$background-color;
-  overflow-x: auto;
+  overflow-x: hidden;
   max-width: 100%;
   overflow: hidden;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 auto;
 
   @include mQ.tablet {
     padding-inline: 24px;
+    width: 744px;
   }
 
   @include mQ.desktop {
@@ -22,6 +38,8 @@
     justify-content: space-between;
     align-items: flex-start;
     justify-content: center;
+    width: 1444px;
+    overflow: hidden;
   }
 
   .titleContainer {
@@ -118,6 +136,7 @@
       text-decoration: none;
       color: color.$black;
       border-bottom: 1px solid black;
+
       &:hover {
         transition: width 0.3s ease;
         border-bottom: 1px solid color.$gray-dark;
@@ -133,17 +152,16 @@
     order: 2;
 
     @include mQ.tablet {
-      width: 100%;
       left: 0;
-      transform: translateX(0);
+      width: calc(100% + 196px);
     }
 
     @include mQ.desktop {
       margin-left: 24px;
       order: 3;
       position: absolute;
-      left: 560px;
-      width: calc(100% - 102px);
+      left: 590px;
+      overflow: hidden;
     }
   }
 
