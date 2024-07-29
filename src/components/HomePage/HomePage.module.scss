@@ -18,9 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   padding-inline: 16px;
-  overflow-x: hidden;
   max-width: 100%;
-  overflow: hidden;
   justify-content: center;
   box-sizing: border-box;
   position: relative;
@@ -39,7 +37,6 @@ body {
     align-items: flex-start;
     justify-content: center;
     width: 1444px;
-    overflow: hidden;
   }
 
   .titleContainer {
