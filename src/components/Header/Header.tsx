@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Logo from '../../assets/icons/Logo.png';
 import Burger from '../../assets/icons/burger-icon.svg';
 import BurgerClosed from '../../assets/icons/burger-icon-closed.svg';
@@ -8,72 +8,34 @@ import styles from './Header.module.scss';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleOverlayClick = () => {
-      setIsMenuOpen(false);
-    };
-
-    const overlay = document.getElementById('overlay');
-    if (overlay) {
-      overlay.addEventListener('click', handleOverlayClick);
-    }
-
-    return () => {
-      if (overlay) {
-        overlay.removeEventListener('click', handleOverlayClick);
-      }
-    };
-  }, []);
-
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(prev => !prev);
   };
 
   return (
-    <>
-      <div className={styles.header}>
+    <header className={styles.header}>
+      <div className={styles.header__container}>
         <img src={Logo} alt="logo" className={styles.header__img} />
         <NavLinks />
         <div className={styles.header__buttons}>
           <button className={`${styles.header__button} button`}>
             Get info
           </button>
-          {isMenuOpen ? (
+          <button onClick={toggleMenu}>
             <img
-              src={BurgerClosed}
-              alt="burger-icon-closed"
+              src={isMenuOpen ? BurgerClosed : Burger}
+              alt={isMenuOpen ? 'close menu' : 'open menu'}
               className={styles.header__burger}
-              onClick={toggleMenu}
             />
-          ) : (
-            <img
-              src={Burger}
-              alt="burger-icon"
-              className={styles.header__burger}
-              onClick={toggleMenu}
-            />
-          )}
+          </button>
         </div>
       </div>
-      <div
-        id="overlay"
-        className={`${styles.overlay} ${isMenuOpen ? styles.active : ''}`}
-      ></div>
       <div
         className={`${styles.header__menu} ${isMenuOpen ? styles.active : ''}`}
       >
-        <div className={styles.header}>
-          <img src={Logo} alt="logo" className={styles.header__img} />
-          <div className={styles.header__buttons}>
-            <button className={`${styles.header__button} button`}>
-              Get info
-            </button>
-          </div>
-        </div>
         <NavLinks isMobile />
       </div>
-    </>
+    </header>
   );
 };
 

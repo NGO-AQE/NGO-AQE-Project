@@ -68,6 +68,8 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
     })();
   }, []); //add language if we should refetch data after it changes
 
+  console.log(documents);
+
   return (
     <SanityContext.Provider
       value={{
