@@ -13,8 +13,8 @@ const Header = () => {
   };
 
   return (
-    <header className={styles.header}>
-      <div className={styles.header__container}>
+    <header className={`${styles.header} ${isMenuOpen ? styles.active : ''}`}>
+      <div className={`${styles.header__container} container`}>
         <img src={Logo} alt="logo" className={styles.header__img} />
         <NavLinks />
         <div className={styles.header__buttons}>

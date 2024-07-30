@@ -64,54 +64,56 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({ isMobile }) => {
   };
 
   return (
-    <ul
-      className={`${styles.navlinks} ${isMobile ? styles['navlinks--mobile'] : ''}`}
-    >
-      <li>
-        <a className={styles.navlink} href="">
-          Home
-        </a>
-      </li>
-      <li>
-        <a className={styles.navlink} href="">
-          About us
-        </a>
-      </li>
-      <li>
-        <a className={styles.navlink} href="">
-          Trainings
-        </a>
-      </li>
-      <li>
-        <a className={styles.navlink} href="">
-          Gallery
-        </a>
-      </li>
-      <li>
-        <a className={styles.navlink} href="">
-          Stories
-        </a>
-      </li>
-      <li>
-        <a className={styles.navlink} href="">
-          Partners
-        </a>
-      </li>
-      <li>
-        <a className={styles.navlink} href="">
-          FAQ
-        </a>
-      </li>
-      <li className={styles.navlink__customSelect}>
-        <Select
-          options={languageOptions}
-          styles={customStyles}
-          placeholder="Select language"
-          onChange={handleLanguageChange}
-          defaultValue={languageOptions[0]} // Set default value to English
-        />
-      </li>
-    </ul>
+    <nav className={styles.container}>
+      <ul
+        className={`${styles.navlinks} ${isMobile ? styles['navlinks--mobile'] : ''}`}
+      >
+        <li>
+          <a className={styles.navlink} href="#">
+            Home
+          </a>
+        </li>
+        <li>
+          <a className={styles.navlink} href="#">
+            About us
+          </a>
+        </li>
+        <li>
+          <a className={styles.navlink} href="#">
+            Trainings
+          </a>
+        </li>
+        <li>
+          <a className={styles.navlink} href="#">
+            Gallery
+          </a>
+        </li>
+        <li>
+          <a className={styles.navlink} href="#">
+            Stories
+          </a>
+        </li>
+        <li>
+          <a className={styles.navlink} href="#">
+            Partners
+          </a>
+        </li>
+        <li>
+          <a className={styles.navlink} href="#">
+            FAQ
+          </a>
+        </li>
+        <li className={styles.navlink__customSelect}>
+          <Select
+            options={languageOptions}
+            styles={customStyles}
+            placeholder="Select language"
+            onChange={handleLanguageChange}
+            defaultValue={languageOptions[0]} // Set default value to English
+          />
+        </li>
+      </ul>
+    </nav>
   );
 };
 
