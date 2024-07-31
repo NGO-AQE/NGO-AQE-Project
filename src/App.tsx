@@ -12,32 +12,8 @@ function App() {
     sanity.changeLanguage(window.location.pathname.split('/').slice(-1)[0]);
   }, [sanity]);
 
-  //only the above will be merged
-
-  const bts = sanity.documents?.language.map(l => (
-    <>
-      <br />
-      <button
-        type="button"
-        onClick={() => {
-          sanity.changeLanguage(l.code);
-        }}
-      >
-        Button for {l.code}
-      </button>
-    </>
-  ));
-
   return (
     <>
-      {bts}
-      <br />
-      selected lang:{' '}
-      {
-        sanity.documents?.language?.find(
-          l => l?.code === sanity.selectedLanguage,
-        )?.title
-      }
       <Slider title="Succes stories" buttonsPlacment="title" slidesOtside>
         {[...Array(10)].map((_, i) => (
           <Slider.Slide key={i}>
