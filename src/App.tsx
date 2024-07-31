@@ -1,5 +1,5 @@
 import './App.scss';
-
+import Header from './components/Header/Header';
 import { BasicCard } from './components/Slider/SliderExample';
 import { Slider } from './components/Slider';
 import { useEffect } from 'react';
@@ -14,6 +14,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <Slider title="Succes stories" buttonsPlacment="title" slidesOtside>
         {[...Array(10)].map((_, i) => (
           <Slider.Slide key={i}>
