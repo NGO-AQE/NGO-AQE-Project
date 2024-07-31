@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 
 import { SanityData } from './SanityDataTypes';
-import { createClient } from '@sanity/client';
+import { client } from './SanityClient';
 
 export interface SanityContextType {
   documents: SanityData | null;
@@ -15,36 +15,27 @@ export const SanityContext = createContext<SanityContextType | undefined>(
   undefined,
 );
 
-const sanityConfig = {
-  projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
-  dataset: 'production',
-  useCdn: false, //less efficient, but better for development
-  apiVersion: '2022-03-07',
-};
-
-if (!sanityConfig.projectId) {
-  throw new Error('No project ID in environment variables');
-}
-
-const sanity = createClient(sanityConfig);
+const defaultLanguageId = '5c699810-5457-434d-a6d7-64c20e74ebb3';
 
 const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [selectedLanguage, setSelectedLanguage] = useState('en'); //this is just the language code
+  const [selectedLanguage, setSelectedLanguage] = useState(defaultLanguageId); //this is just the language id
   const [documents, setDocuments] = useState<SanityData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
-  const changeLanguage = (newLang: string) => {
+  const changeLanguage = (newLangCode: string) => {
     if (!loading) {
-      const options = documents?.language.map(l => l.code);
-      if (options?.includes(newLang)) {
-        window.history.replaceState({}, '', newLang);
-        setSelectedLanguage(newLang);
+      const langs = documents?.language;
+      const langCodes = langs?.map(l => l.code);
+
+      if (langCodes?.includes(newLangCode) && langs) {
+        window.history.replaceState({}, '', newLangCode);
+        setSelectedLanguage(langs[langCodes?.indexOf(newLangCode)]._id);
       } else {
         window.history.replaceState({}, '', 'en');
-        setSelectedLanguage('en');
+        setSelectedLanguage(defaultLanguageId);
       }
     }
   };
@@ -53,7 +44,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
     (async () => {
       try {
         const newData = {} as SanityData;
-        const res = await sanity.fetch('*');
+        const res = await client.fetch('*');
 
         res.forEach((doc: { _type: string }) => {
           if (!newData[doc._type]) {
