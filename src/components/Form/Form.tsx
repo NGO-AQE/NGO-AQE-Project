@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Button from '../Button/Button.tsx';
 import styles from './Form.module.scss';
+import Modal from 'react-modal';
 
 type FormData = {
   fullName: string;
@@ -14,9 +15,18 @@ const Form: React.FC = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormData>();
   const onSubmit = (data: FormData) => console.log(data);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  function openModal() {
+    if (isValid) {
+      setModalIsOpen(true);
+    } else {
+      alert('Please fill out the form correctly before proceeding.');
+    }
+  }
 
   return (
     <section className={`section ${styles.section}`}>
@@ -28,7 +38,7 @@ const Form: React.FC = () => {
           Fill the form and we`ll send you a file with actual information
         </p>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className="section" onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.labelAndInputContainer}>
             <label className={styles.section__subtitle} htmlFor="fullName*">
               Full Name*
@@ -100,8 +110,20 @@ const Form: React.FC = () => {
           </div>
         </form>
 
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={() => setModalIsOpen(false)}
+          contentLabel="Success"
+        >
+          <h2>
+            Email with the training info has been sent to emai@email.com
+            successfully.
+          </h2>
+          <button onClick={() => setModalIsOpen(false)}>Close</button>
+        </Modal>
+
         <div className={styles.section__button}>
-          <Button>Get info package</Button>
+          <Button onClick={openModal}>Get info package</Button>
         </div>
       </div>
     </section>
