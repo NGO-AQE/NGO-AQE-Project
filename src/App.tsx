@@ -1,9 +1,17 @@
 import './App.scss';
 import Header from './components/Header/Header';
-import { Slider } from './components/Slider';
 import { BasicCard } from './components/Slider/SliderExample';
+import { Slider } from './components/Slider';
+import { useEffect } from 'react';
+import { useSanity } from './hooks/useSanity';
 
 function App() {
+  const sanity = useSanity();
+
+  useEffect(() => {
+    sanity.changeLanguage(window.location.pathname.split('/').slice(-1)[0]);
+  }, [sanity]);
+
   return (
     <>
       <Header />
