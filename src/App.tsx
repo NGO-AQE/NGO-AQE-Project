@@ -3,8 +3,16 @@ import { Slider } from './components/Slider';
 import { BasicCard } from './components/Slider/SliderExample';
 import WhyAQE from './components/WhyAQE/WhyAQE.tsx';
 import Form from './components/Form/Form.tsx';
+import { useEffect } from 'react';
+import { useSanity } from './hooks/useSanity';
 
 function App() {
+  const sanity = useSanity();
+
+  useEffect(() => {
+    sanity.changeLanguage(window.location.pathname.split('/').slice(-1)[0]);
+  }, [sanity]);
+
   return (
     <>
       <WhyAQE />

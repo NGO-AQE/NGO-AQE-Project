@@ -1,23 +1,14 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  createContext,
-  useEffect,
-  useState,
-} from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
+import { SanityData } from './SanityDataTypes';
 import { createClient } from '@sanity/client';
-
-interface SanityData {
-  [key: string]: object[];
-}
 
 export interface SanityContextType {
   documents: SanityData | null;
   loading: boolean;
   error: Error | null;
   selectedLanguage: string | null;
-  setSelectedLanguage: Dispatch<SetStateAction<string>>;
+  changeLanguage: (newLang: string) => void;
 }
 
 export const SanityContext = createContext<SanityContextType | undefined>(
@@ -40,15 +31,28 @@ const sanity = createClient(sanityConfig);
 const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [selectedLanguage, setSelectedLanguage] = useState('en'); //this is just the language code code
+  const [selectedLanguage, setSelectedLanguage] = useState('en'); //this is just the language code
   const [documents, setDocuments] = useState<SanityData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
+  const changeLanguage = (newLang: string) => {
+    if (!loading) {
+      const options = documents?.language.map(l => l.code);
+      if (options?.includes(newLang)) {
+        window.history.replaceState({}, '', newLang);
+        setSelectedLanguage(newLang);
+      } else {
+        window.history.replaceState({}, '', 'en');
+        setSelectedLanguage('en');
+      }
+    }
+  };
+
   useEffect(() => {
     (async () => {
       try {
-        const newData: SanityData = {};
+        const newData = {} as SanityData;
         const res = await sanity.fetch('*');
 
         res.forEach((doc: { _type: string }) => {
@@ -72,7 +76,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
     <SanityContext.Provider
       value={{
         selectedLanguage,
-        setSelectedLanguage,
+        changeLanguage,
         documents,
         loading,
         error,
