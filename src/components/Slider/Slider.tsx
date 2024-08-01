@@ -7,6 +7,8 @@ import { Slide } from './components/Slide';
 import { ButtonGroup } from './components/ButtonsGroup';
 import { Slides } from './components/Slides';
 
+import s from './Slider.module.scss';
+
 interface Props extends PropsWithChildren {
   title: string;
   description?: string;
@@ -55,18 +57,14 @@ export const Slider: FC<Props> & SubComponents = ({
 
   return (
     <SliderContext.Provider value={contextValue}>
-      <div className={`flex flex-col ${styles.section}`}>
+      <div className={`${s.slider} ${styles.section}`}>
         <div className={styles.container}>
-          <div className="flex items-center md:justify-between">
+          <div className={s.slider__header}>
             <h2 className={styles.section__title}>{title}</h2>
             {buttonsPlacment === 'title' && <ButtonGroup />}
           </div>
           {description && (
-            <p
-              className={`${styles.section__description} text-left mt-4 md:mt-8`}
-            >
-              {description}
-            </p>
+            <p className={styles.section__description}>{description}</p>
           )}
           {!slidesOtside && <Slides>{children}</Slides>}
         </div>
