@@ -1,4 +1,5 @@
 import './App.scss';
+import Footer from './components/Footer/Footer';
 import { Slider } from './components/Slider';
 import { BasicCard } from './components/Slider/SliderExample';
 
@@ -19,6 +20,7 @@ function App() {
           </Slider.Slide>
         ))}
       </Slider>
+      <Footer />
     </>
   );
 }
