@@ -1,23 +1,35 @@
-import { FC } from 'react';
+import { ReactNode, FC } from 'react';
 import ReactDOM from 'react-dom';
-import './Modal.module.scss';
+import styles from './Modal.module.scss';
 
-interface ModalProps {
-  modalIsOpen: boolean;
-  closeModal: () => void;
-  content: string;
+interface IModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  children?: ReactNode;
 }
 
-const Modal: FC<ModalProps> = ({ modalIsOpen, closeModal, content }) => {
+const Modal: FC<IModalProps> = ({ isOpen, onClose, children }) => {
+  if (!isOpen) return null;
+
+  const modalRoot = document.getElementById('modal-root');
+
+  if (!modalRoot) {
+    console.error(
+      "The element with id 'modal-root' was not found in the document.",
+    );
+    return null;
+  }
+
   return ReactDOM.createPortal(
-    modalIsOpen ? (
-      <div className="modal-overlay" onClick={closeModal}>
-        <div className="modal-content" onClick={e => e.stopPropagation()}>
-          {content}
-        </div>
+    <div className={styles.modalOverlay}>
+      <div className={styles.modal}>
+        <button className={styles.closeButton} onClick={onClose}>
+          Close
+        </button>
+        {children}
       </div>
-    ) : null,
-    document.body,
+    </div>,
+    modalRoot,
   );
 };
 

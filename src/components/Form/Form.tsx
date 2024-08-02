@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Modal from '../Modal/Modal';
 import Button from '../Button/Button';
@@ -15,24 +15,23 @@ const Form: React.FC = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm<FormData>({ criteriaMode: 'all' });
-
-  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const onSubmit = (data: FormData) => {
     console.log(data);
   };
 
-  const closeModal = () => {
-    setModalIsOpen(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
   };
 
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      setModalIsOpen(true);
-    }
-  }, [isSubmitSuccessful]);
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <section className={`section ${styles.section}`}>
       <h6 className={`section__title ${styles.section__title}`}>
@@ -105,18 +104,15 @@ const Form: React.FC = () => {
         </div>
 
         <div className={styles.section__button}>
-          <Button type="submit">Get info package</Button>
+          <Button type="submit" onClick={openModal}>
+            Get info package
+          </Button>
         </div>
       </form>
 
-      <Modal
-        modalIsOpen={modalIsOpen}
-        closeModal={() => {
-          console.log('Modal closing...');
-          closeModal();
-        }}
-        content="Email with the training info has been successfully sent."
-      />
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        Email with the training info has been successfully sent.
+      </Modal>
     </section>
   );
 };
