@@ -1,11 +1,22 @@
 import './App.scss';
-import { Slider } from './components/Slider';
+import Header from './components/Header/Header';
 import { BasicCard } from './components/Slider/SliderExample';
+import PartnersSection from './components/PartnersSection/PartnersSection';
+import { Slider } from './components/Slider';
+import { useEffect } from 'react';
+import { useSanity } from './hooks/useSanity';
 import { HomePage } from './components/HomePage/HomePage';
 
 function App() {
+  const sanity = useSanity();
+
+  useEffect(() => {
+    sanity.changeLanguage(window.location.pathname.split('/').slice(-1)[0]);
+  }, [sanity]);
+
   return (
     <>
+      <Header />
       <HomePage />
       <Slider title="Succes stories" buttonsPlacment="title" slidesOtside>
         {[...Array(10)].map((_, i) => (
@@ -14,13 +25,7 @@ function App() {
           </Slider.Slide>
         ))}
       </Slider>
-      <Slider title="Our partners" buttonsPlacment="title" slidesOtside>
-        {[...Array(10)].map((_, i) => (
-          <Slider.Slide key={i}>
-            <BasicCard width={262} index={i} />
-          </Slider.Slide>
-        ))}
-      </Slider>
+      <PartnersSection />
     </>
   );
   return (
