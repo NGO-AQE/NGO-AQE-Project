@@ -1,0 +1,8 @@
+@use '../../styles/colors.scss' as color;
+@use '../../styles/fonts.scss' as font;
+
+.description {
+  padding-top: 10px;
+  @include font.body-text;
+  text-align: center;
+}
