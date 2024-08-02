@@ -1,6 +1,8 @@
 import './App.scss';
-import { Slider } from './components/Slider';
+import Header from './components/Header/Header';
 import { BasicCard } from './components/Slider/SliderExample';
+import PartnersSection from './components/PartnersSection/PartnersSection';
+import { Slider } from './components/Slider';
 import WhyAQE from './components/WhyAQE/WhyAQE.tsx';
 import Form from './components/Form/Form.tsx';
 import { useEffect } from 'react';
@@ -15,6 +17,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <WhyAQE />
       <Form />
       <Slider title="Succes stories" buttonsPlacment="title" slidesOtside>
@@ -24,13 +27,7 @@ function App() {
           </Slider.Slide>
         ))}
       </Slider>
-      <Slider title="Our partners" buttonsPlacment="title" slidesOtside>
-        {[...Array(10)].map((_, i) => (
-          <Slider.Slide key={i}>
-            <BasicCard width={262} index={i} />
-          </Slider.Slide>
-        ))}
-      </Slider>
+      <PartnersSection />
     </>
   );
 }
