@@ -110,18 +110,6 @@ const Form: React.FC = () => {
           </div>
         </form>
 
-        {/*<Modal*/}
-        {/*  isOpen={modalIsOpen}*/}
-        {/*  onRequestClose={() => setModalIsOpen(false)}*/}
-        {/*  contentLabel="Success"*/}
-        {/*>*/}
-        {/*  <h2>*/}
-        {/*    Email with the training info has been sent to emai@email.com*/}
-        {/*    successfully.*/}
-        {/*  </h2>*/}
-        {/*  <button onClick={() => setModalIsOpen(false)}>Close</button>*/}
-        {/*</Modal>*/}
-
         <div className={styles.section__button}>
           <Button onClick={openModal}>Get info package</Button>
         </div>
