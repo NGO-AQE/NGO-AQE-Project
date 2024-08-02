@@ -66,7 +66,7 @@ const Form: React.FC = () => {
           <input
             className={styles.section__input}
             {...register('email', {
-              required: 'This is required',
+              required: 'This field is required',
               pattern: {
                 value: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
                 message: 'Entered value does not match email format',
@@ -88,9 +88,6 @@ const Form: React.FC = () => {
             {...register('country')}
             placeholder="Poland"
           />
-          {errors.country && (
-            <span className={styles.errorMessage}>This field is required</span>
-          )}
         </div>
 
         <div>
@@ -98,9 +95,6 @@ const Form: React.FC = () => {
             <input {...register('agree')} type="checkbox" />I agree to receive
             information about further courses from AQE.
           </label>
-          {errors.agree && (
-            <span className={styles.errorMessage}>This field is required</span>
-          )}
         </div>
 
         <div className={styles.section__button}>
