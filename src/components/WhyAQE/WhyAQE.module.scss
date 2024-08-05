@@ -2,21 +2,26 @@
 @use '../../styles/colors.scss' as color;
 @use '../../styles//mediaQueries.module.scss' as mQ;
 
+.container {
+  background-color: color.$background-color;
+}
+
 .whySection {
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin: 0 auto;
   max-width: 343px;
+  padding: 48px 0 16px 0;
 
   @include mQ.tablet {
     max-width: 696px;
-    margin-bottom: 52px;
+    padding: 52px 0 24px 0;
   }
 
   @include mQ.desktop {
     max-width: 1120px;
-    margin-bottom: 82px;
+    padding: 82px 0 24px 0;
   }
 
   &__title {
