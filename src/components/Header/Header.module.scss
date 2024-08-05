@@ -3,12 +3,12 @@
 @import '../../styles/fonts.scss';
 
 .header {
-  position: sticky;
+  position: relative;
   width: 100%;
-  top: 0;
-  background-color: $white;
+  top: 0;;
   z-index: 1;
-  padding-top: 16px;
+  margin-top: 16px;
+  background: $white;
 
   &__container {
     display: flex;
@@ -23,7 +23,7 @@
   }
 
   &__links {
-    // flex: 1;
+    flex: 1;
   }
   &__burger {
     cursor: pointer;
@@ -47,19 +47,19 @@
     line-height: normal;
   }
   &__menu {
-    position: fixed;
-    background-color: $white;
+    padding: 10% 0 20%;
+    position: absolute;
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
-    right: -100%;
-    height: 100vh;
+    transform: translateX(100%);
+    height: fit-content;
     background: $white;
-    overflow: hidden;
-    transition: right 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
 
     &.active {
-      right: 0;
+      transform: translate(0);
     }
 
     @include desktop {
@@ -82,15 +82,16 @@
 
 @include tablet {
   .header {
-    padding-top: 32px;
+    margin-top: 32px;
   };
 }
 
 @include desktop {
   .header {
-    justify-content: center;
-    gap: 49.22px;
-    padding-top: 0;
+    margin: 0;
+
+    &__container {
+      height: 111px;
+    }
   }
 }
-
