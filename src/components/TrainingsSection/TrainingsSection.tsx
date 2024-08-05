@@ -36,12 +36,12 @@ export const TrainingsSection = () => {
       mainLocation: 'Malta',
       terms: [
         {
-          title: '| term',
+          title: 'I term:',
           start: '2024-07-28',
           end: '2024-08-03',
         },
         {
-          title: '|| term',
+          title: 'II term:',
           start: '2024-08-04',
           end: '2024-08-10',
         },
@@ -74,12 +74,12 @@ export const TrainingsSection = () => {
       mainLocation: 'Ireland',
       terms: [
         {
-          title: '| term',
+          title: 'I term:',
           start: '2024-07-28',
           end: '2024-10-08',
         },
         {
-          title: '|| term',
+          title: 'II term:',
           start: '2024-08-04',
           end: '2024-08-10',
         },
@@ -91,16 +91,18 @@ export const TrainingsSection = () => {
   ];
 
   return (
-    <section className={s.section}>
-      <h1 className={s.section__title}>Trainings</h1>
-      <p className={s.section__description}>
-        Our programs at AQE are designed to cater to the diverse needs of
-        educators at every stage of their career.
-      </p>
-      <div className={s.section__container}>
-        {trainingsContent.map((training, i) => (
-          <TrainingCard key={i} {...training} />
-        ))}
+    <section className="container">
+      <div className={s.section}>
+        <h1 className={s.section__title}>Trainings</h1>
+        <p className={s.section__description}>
+          Our programs at AQE are designed to cater to the diverse needs of
+          educators at every stage of their career.
+        </p>
+        <div className={s.section__container}>
+          {trainingsContent.map((training, i) => (
+            <TrainingCard key={i} {...training} />
+          ))}
+        </div>
       </div>
     </section>
   );
