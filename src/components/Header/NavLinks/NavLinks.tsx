@@ -1,12 +1,17 @@
 import { FunctionComponent } from 'react';
 import Select, { SingleValue, StylesConfig } from 'react-select';
 import styles from './NavLinks.module.scss';
-import { useSanity } from '../../../hooks/useSanity';
 
 interface OptionType {
   value: string;
   label: string;
 }
+
+const languageOptions: OptionType[] = [
+  { value: 'en', label: 'English' },
+  { value: 'pl', label: 'Polish' },
+  { value: 'fr', label: 'French' },
+];
 
 const links = [
   { text: 'Home', to: '#' },
@@ -64,15 +69,11 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({
   isMobile,
   className,
 }) => {
-  const { documents, changeLanguage } = useSanity();
-  const languageOptions = (documents?.language || []).map(lang => ({
-    value: lang.code,
-    label: lang.title,
-  }));
   // Handle language change
   const handleLanguageChange = (selectedOption: SingleValue<OptionType>) => {
     if (selectedOption) {
-      changeLanguage(selectedOption.value);
+      console.log('Selected language:', selectedOption.value);
+      // Implement the language change logic here
     }
   };
 
