@@ -4,17 +4,15 @@
 
 
 .footer {
-  width: 100vw;
   background-color: $black;
   color: $white;
-  padding: 20px;
-  text-align: center;
-      
+  padding: 24px 0 40px;
+  text-align: center;   
 }
 
 .container {
   display: grid;
-  gap: 20px;
+  row-gap: 16px;
   justify-items: start;
   grid-template-columns: 1fr auto;
 }
@@ -33,6 +31,7 @@
 .bottomRow {
   color: $gray-dark;
   text-align: left;
+  margin-top: 8px;
 }
 
 
@@ -49,6 +48,10 @@
 }
 
 @include tablet {
+  .footer {
+    padding-bottom: 54px;
+  }
+
   .container {
     grid-template-columns: 1fr 1fr auto;
     gap: 20px;
@@ -57,12 +60,12 @@
 
 
   @include desktop {
+    .footer {
+      padding-bottom: 24px;
+    }
+
     .container {
       grid-template-columns: repeat(3, 1fr) auto;
       align-items: start;
-  }
-
-  .link {
-    margin: 0 10px;
   }
 }
