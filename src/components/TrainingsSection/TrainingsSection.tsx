@@ -20,6 +20,7 @@ type Training = {
   mainLocation: string;
   terms: {
     location?: string;
+    title?: string;
     start: string;
     end: string;
   }[];
@@ -35,10 +36,12 @@ export const TrainingsSection = () => {
       mainLocation: 'Malta',
       terms: [
         {
+          title: '| term',
           start: '2024-07-28',
           end: '2024-08-03',
         },
         {
+          title: '|| term',
           start: '2024-08-04',
           end: '2024-08-10',
         },
@@ -71,10 +74,12 @@ export const TrainingsSection = () => {
       mainLocation: 'Ireland',
       terms: [
         {
+          title: '| term',
           start: '2024-07-28',
           end: '2024-10-08',
         },
         {
+          title: '|| term',
           start: '2024-08-04',
           end: '2024-08-10',
         },

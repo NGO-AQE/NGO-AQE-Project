@@ -6,6 +6,7 @@ type Training = {
   mainLocation: string;
   terms: {
     location?: string;
+    title?: string;
     start: string;
     end: string;
   }[];
@@ -27,8 +28,9 @@ export const TrainingCard = ({
       <img src={img} alt="img" className={s.card__img} />
       <h1 className={s.card__location}>{mainLocation}</h1>
       <div className={s.card__terms}>
-        {terms.map((term, index) => (
-          <p key={index} className={s.card__term}>
+        {terms.map((term, i) => (
+          <p key={i} className={s.card__term}>
+            {term.location ? `${term.location}: ` : `${term.title}: `}
             {term.start} - {term.end}
           </p>
         ))}
@@ -45,8 +47,8 @@ export const TrainingCard = ({
         Required English level
         <span className={s.card__status}>{requiredLevel}</span>
       </p>
-      <h2>Want more info?</h2>
-      <Button>Get info package</Button>
+      <h2 className={s.card__moreInfo}>Want more info?</h2>
+      <Button className={s.card__button}>Get info package</Button>
     </div>
   );
 };
