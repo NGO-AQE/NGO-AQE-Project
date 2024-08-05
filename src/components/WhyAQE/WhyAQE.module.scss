@@ -11,10 +11,12 @@
 
   @include mQ.tablet {
     max-width: 696px;
+    margin-bottom: 52px;
   }
 
   @include mQ.desktop {
     max-width: 1120px;
+    margin-bottom: 82px;
   }
 
   &__title {
