@@ -11,7 +11,7 @@ const WhyAQE = () => {
     {
       icon: lightbulbIcon,
       subtitle: 'Inspiring Environment',
-      text: 'We create stimulating and inspiring atmosphere that encourages  creativity, innovation, and a lifelong love for learning among educators.',
+      text: 'We create stimulating and inspiring atmosphere that encourages creativity, innovation, and a lifelong love for learning among educators.',
     },
     {
       icon: batteryIcon,

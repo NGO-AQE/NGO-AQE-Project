@@ -9,29 +9,33 @@
 .whySection {
   display: flex;
   flex-direction: column;
-  gap: 16px;
   margin: 0 auto;
   max-width: 343px;
-  padding: 48px 0 16px 0;
+  padding: 48px 0 24px 0;
 
   @include mQ.tablet {
     max-width: 696px;
-    padding: 52px 0 24px 0;
+    padding: 52px 0 48px 0;
   }
 
   @include mQ.desktop {
     max-width: 1120px;
-    padding: 82px 0 24px 0;
+    padding: 82px 0 67px 0;
   }
 
   &__title {
     @include font.accented-text;
-    margin-bottom: 8px;
+    margin-bottom: 24px;
     text-align: left;
 
     @include mQ.tablet {
       @include font.h2-font;
       font-weight: bold;
+      margin-bottom: 48px;
+    }
+
+    @include mQ.desktop {
+      margin-bottom: 67px;
     }
   }
 
@@ -47,6 +51,12 @@
 
     @include mQ.tablet {
       width: calc(50% - 12px);
+      padding: 24px 32px;
+      gap: 16px;
+    }
+
+    @include mQ.desktop {
+      width: calc(50% - 16px);
     }
   }
 
@@ -59,18 +69,20 @@
     @include mQ.tablet {
       gap: 24px;
     }
+
+    @include mQ.desktop {
+      gap: 32px;
+    }
   }
 
   &__text {
-
     @include font.description-text;
     color: color.$gray-dark;
     text-align: left;
   }
 
   &__subtitle {
-
-    @include font.accented-text;
+    @include font.h5-font;
     text-align: left;
   }
 
