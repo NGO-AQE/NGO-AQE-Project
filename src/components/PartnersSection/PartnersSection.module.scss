@@ -1,8 +1,14 @@
 @use '../../styles/colors.scss' as color;
 @use '../../styles/fonts.scss' as font;
 
+.container {
+  border-radius: 12px;
+  border: 1px solid #CFCFCF;
+  overflow: hidden;
+}
+
 .description {
-  padding-top: 10px;
+  padding: 10px 0 10px;
   @include font.body-text;
   text-align: center;
 }

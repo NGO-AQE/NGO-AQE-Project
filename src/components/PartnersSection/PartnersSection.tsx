@@ -26,7 +26,7 @@ const PartnersSection = () => {
         (partner, i) => {
           return (
             <Slider.Slide key={i}>
-              <div>
+              <div className={styles.container}>
                 <img
                   src={getImageUrl(partner.image) as unknown as string}
                   alt={'partnerImg'}
