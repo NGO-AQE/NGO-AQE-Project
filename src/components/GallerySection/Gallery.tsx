@@ -21,7 +21,7 @@ const Gallery = () => {
   ];
 
   return (
-    <section className={s.container}>
+    <section className={styles.container}>
       <div className={styles.gallerySection}>
         <h2 className={styles.gallerySection__title}>Gallery</h2>
         <p className={styles.gallerySection__description}>
