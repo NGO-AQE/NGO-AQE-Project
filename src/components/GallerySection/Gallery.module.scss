@@ -46,6 +46,7 @@
 
   &__description {
     @include description-text;
+    color: $gray-dark;
     margin: 16px 0 32px;
     display: block;
     max-width: 343px;
