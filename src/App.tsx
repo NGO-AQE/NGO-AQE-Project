@@ -6,6 +6,7 @@ import { Slider } from './components/Slider';
 import { useEffect } from 'react';
 import { useSanity } from './hooks/useSanity';
 import { HomePage } from './components/HomePage/HomePage';
+import WhyAQE from './components/WhyAQE/WhyAQE';
 import Gallery from './components/GallerySection/Gallery';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     <>
       <Header />
       <HomePage />
+      <WhyAQE />
       <Gallery />
       <Slider title="Succes stories" buttonsPlacment="title" slidesOtside>
         {[...Array(10)].map((_, i) => (
