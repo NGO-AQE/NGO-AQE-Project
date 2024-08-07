@@ -30,11 +30,6 @@ function App() {
       <PartnersSection />
     </>
   );
-  return (
-    <>
-      <HomePage />
-    </>
-  );
 }
 
 export default App;
