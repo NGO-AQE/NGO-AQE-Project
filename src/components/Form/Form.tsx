@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import Modal from '../Modal/Modal';
 import Button from '../Button/Button';
 import styles from './Form.module.scss';
 
@@ -20,16 +19,6 @@ const Form: React.FC = () => {
 
   const onSubmit = (data: FormData) => {
     console.log(data);
-  };
-
-  const [isModalOpen, setModalOpen] = useState(false);
-
-  const openModal = () => {
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
   };
 
   return (
@@ -55,7 +44,7 @@ const Form: React.FC = () => {
             placeholder="John Doe"
           />
           {errors.fullName && (
-            <span className={styles.errorMessage}>Error name</span>
+            <span className={styles.section__errorMessage}>Error name</span>
           )}
         </div>
 
@@ -75,7 +64,9 @@ const Form: React.FC = () => {
             placeholder="aqe@email.com"
           />
           {errors.email && (
-            <span className={styles.errorMessage}>{errors.email.message}</span>
+            <span className={styles.section__errorMessage}>
+              {errors.email.message}
+            </span>
           )}
         </div>
 
@@ -92,29 +83,17 @@ const Form: React.FC = () => {
 
         <div className={styles.section__agreement}>
           <label className={styles.section__subtitle} htmlFor="agree">
-            <input
-              className={styles.section__checkbox}
-              {...register('agree')}
-              type="checkbox"
-            />
+            <input {...register('agree')} type="checkbox" />
             <span className={styles.section__agree}>
               I agree to receive information about further courses from AQE.
             </span>
           </label>
         </div>
 
-        <Button
-          className={styles.section__button}
-          type="submit"
-          onClick={openModal}
-        >
+        <Button className={styles.section__button} type="submit">
           Get info package
         </Button>
       </form>
-
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        Email with the training info has been successfully sent.
-      </Modal>
     </section>
   );
 };
