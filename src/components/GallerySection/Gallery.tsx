@@ -1,6 +1,5 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import styles from './Gallery.module.scss';
-import s from '../../styles/sectionAndContainer.module.scss';
 
 const Gallery = () => {
   const [emblaRef] = useEmblaCarousel({ loop: true });
