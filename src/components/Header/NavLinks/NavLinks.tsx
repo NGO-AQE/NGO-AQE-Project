@@ -13,6 +13,16 @@ const languageOptions: OptionType[] = [
   { value: 'fr', label: 'French' },
 ];
 
+const links = [
+  { text: 'Home', to: '#' },
+  { text: 'About us', to: '#' },
+  { text: 'Trainings', to: '#' },
+  { text: 'Gallery', to: '#' },
+  { text: 'Stories', to: '#' },
+  { text: 'Partners', to: '#' },
+  { text: 'FAQ', to: '#' },
+];
+
 const customStyles: StylesConfig<OptionType, false> = {
   control: provided => ({
     ...provided,
@@ -52,9 +62,13 @@ const customStyles: StylesConfig<OptionType, false> = {
 
 interface NavLinksProps {
   isMobile?: boolean;
+  className?: string;
 }
 
-const NavLinks: FunctionComponent<NavLinksProps> = ({ isMobile }) => {
+const NavLinks: FunctionComponent<NavLinksProps> = ({
+  isMobile,
+  className,
+}) => {
   // Handle language change
   const handleLanguageChange = (selectedOption: SingleValue<OptionType>) => {
     if (selectedOption) {
@@ -66,43 +80,15 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({ isMobile }) => {
   return (
     <nav className={styles.container}>
       <ul
-        className={`${styles.navlinks} ${isMobile ? styles['navlinks--mobile'] : ''}`}
+        className={`${styles.navlinks} ${isMobile ? styles['navlinks--mobile'] : ''} ${className}`}
       >
-        <li>
-          <a className={styles.navlink} href="#">
-            Home
-          </a>
-        </li>
-        <li>
-          <a className={styles.navlink} href="#">
-            About us
-          </a>
-        </li>
-        <li>
-          <a className={styles.navlink} href="#">
-            Trainings
-          </a>
-        </li>
-        <li>
-          <a className={styles.navlink} href="#">
-            Gallery
-          </a>
-        </li>
-        <li>
-          <a className={styles.navlink} href="#">
-            Stories
-          </a>
-        </li>
-        <li>
-          <a className={styles.navlink} href="#">
-            Partners
-          </a>
-        </li>
-        <li>
-          <a className={styles.navlink} href="#">
-            FAQ
-          </a>
-        </li>
+        {links.map(link => (
+          <li>
+            <a className={styles.navlink} href={link.to}>
+              {link.text}
+            </a>
+          </li>
+        ))}
         <li className={styles.navlink__customSelect}>
           <Select
             options={languageOptions}

@@ -1,50 +1,91 @@
-@import '../../styles/fonts.scss';
-@import '../../styles/colors.scss';
-@import '../../styles//mediaQueries.module.scss';
-* {
-  box-sizing: border-box;
+@use '../../styles/fonts.scss' as font;
+@use '../../styles/colors.scss' as color;
+@use '../../styles//mediaQueries.module.scss' as mQ;
+
+.container {
+  background-color: color.$background-color;
 }
+
 .whySection {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin: 0 16px;
-  &__title {
-    @include big-text;
-    margin-bottom: 8px;
-    text-align: left;
+  margin: 0 auto;
+  max-width: 343px;
+  padding: 48px 0 24px 0;
+
+  @include mQ.tablet {
+    max-width: 696px;
+    padding: 52px 0 48px 0;
   }
+
+  @include mQ.desktop {
+    max-width: 1120px;
+    padding: 82px 0 67px 0;
+  }
+
+  &__title {
+    @include font.accented-text;
+    margin-bottom: 24px;
+    text-align: left;
+
+    @include mQ.tablet {
+      @include font.h2-font;
+      font-weight: bold;
+      margin-bottom: 48px;
+    }
+
+    @include mQ.desktop {
+      margin-bottom: 67px;
+    }
+  }
+
   &__subsection {
     border-radius: 16px;
-    border: 1px solid $gray-light;
-    background: $white;
+    border: 1px solid color.$border-color;
+    background: color.$white;
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding: 16px 24px;
     width: 100%;
-    @include tablet {
+
+    @include mQ.tablet {
       width: calc(50% - 12px);
+      padding: 24px 32px;
+      gap: 16px;
+    }
+
+    @include mQ.desktop {
+      width: calc(50% - 16px);
     }
   }
+
   &__container {
     display: flex;
     width: 100%;
     gap: 16px;
     flex-wrap: wrap;
-    @include tablet {
+
+    @include mQ.tablet {
       gap: 24px;
     }
+
+    @include mQ.desktop {
+      gap: 32px;
+    }
   }
+
   &__text {
-    @include description-text;
-    color: $gray-dark;
+    @include font.description-text;
+    color: color.$gray-dark;
     text-align: left;
   }
+
   &__subtitle {
-    @include accented-text;
+    @include font.h5-font;
     text-align: left;
   }
+
   &__img {
     width: 40px;
   }
