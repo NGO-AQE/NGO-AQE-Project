@@ -59,13 +59,13 @@
     word-wrap: break-word;
   }
 
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     appearance: none;
     -webkit-appearance: none;
     outline: none;
   }
 
-  input[type="checkbox"]:before {
+  input[type='checkbox']:before {
     content: '';
     width: 24px;
     height: 24px;
@@ -74,7 +74,7 @@
     border-radius: 6px;
   }
 
-  input[type="checkbox"]:checked:before {
+  input[type='checkbox']:checked:before {
     background-color: color.$primary-color;
   }
 
