@@ -38,7 +38,7 @@ export const TrainingsSection = () => {
         {
           title: 'I term:',
           start: '2024-07-28',
-          end: '2024-08-03',
+          end: '2024-08-04',
         },
         {
           title: 'II term:',
@@ -76,7 +76,7 @@ export const TrainingsSection = () => {
         {
           title: 'I term:',
           start: '2024-07-28',
-          end: '2024-10-08',
+          end: '2024-08-03',
         },
         {
           title: 'II term:',
