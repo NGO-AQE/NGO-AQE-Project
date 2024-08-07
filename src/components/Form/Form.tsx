@@ -85,7 +85,7 @@ const Form: React.FC = () => {
           <label className={styles.section__subtitle} htmlFor="agree">
             <input {...register('agree')} type="checkbox" />
             <span className={styles.section__agree}>
-              I agree to receive information about further courses from AQE.
+              I agree to receive information about the further courses from AQE.
             </span>
           </label>
         </div>

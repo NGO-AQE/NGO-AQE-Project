@@ -51,11 +51,12 @@
 
   &__agreement {
     padding: 8px 0 64px;
-    align-items: center;
+    width: 343px;
   }
 
   &__agree {
-  margin-left: 12px;
+    margin-left: 12px;
+    word-wrap: break-word;
   }
 
   input[type="checkbox"] {
@@ -86,8 +87,6 @@
     color: #e44e4e;
   }
 }
-
-
 
 .container {
   display: flex;
