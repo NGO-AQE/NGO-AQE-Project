@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
 
-  @include font.body-text;
+  @include font.button-text;
 
   &:not(:disabled) {
     cursor: pointer;
