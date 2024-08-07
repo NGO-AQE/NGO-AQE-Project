@@ -3,5 +3,19 @@
 
 .section {
   display: grid;
-  gap: 16px;
+  justify-items: center;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 343px;
+
+  &__title {
+    @include font.accented-text;
+    margin-bottom: 6px;
+  }
+
+  &__description {
+    @include font.description-text;
+    margin-bottom: 24px;
+    color: color.$gray-dark;
+  }
 }

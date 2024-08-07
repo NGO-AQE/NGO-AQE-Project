@@ -20,7 +20,6 @@ type Training = {
 
 const convertDate = (dateStr: string): string => {
   const date = new Date(dateStr);
-  console.log(date);
   return formatDate(date);
 };
 
@@ -38,7 +37,7 @@ const calculateDuration = (start: string, end: string): string => {
   const timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
   const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-  return ` from ${daysDiff} days`;
+  return `from ${daysDiff} days`;
 };
 
 export const TrainingCard = ({
@@ -55,35 +54,40 @@ export const TrainingCard = ({
     }
     return '-';
   };
+
   return (
     <div className={s.card}>
       <img src={img} alt="img" className={s.card__img} />
-      <div className={s.card_infoWrapper}>
-        <h1 className={s.card__location}>{mainLocation}</h1>
+      <h1 className={s.card__location}>{mainLocation}</h1>
+      <div className={s.card__infoWrapper}>
         <div className={s.card__terms}>
           {terms.map((term, i) => (
-            <p key={i} className={s.card__term}>
-              {term.location ? `${term.location}: ` : `${term.title} `}
-              {convertDate(term.start)} - {convertDate(term.end)}
-            </p>
+            <div key={i} className={s.card__termRow}>
+              <p className={s.card__termText}>
+                {term.location ? `${term.location}: ` : `${term.title} `}
+              </p>
+              <p className={s.card__termDates}>
+                {convertDate(term.start)} - {convertDate(term.end)}
+              </p>
+            </div>
           ))}
         </div>
-        <p className={s.card__duration}>
-          Duration:
-          <span>
+        <div className={s.card__detailGroup}>
+          <p className={s.duration}>Duration:</p>
+          <p className={s.card__value}>
             {terms.length > 0
               ? calculateDuration(terms[0].start, terms[0].end)
-              : 'N/A'}
-          </span>
-        </p>
-        <p className={s.card__module}>
-          {learningModule}
-          <span className={s.card__status}>{statusIconDone()}</span>
-        </p>
-        <p className={s.card__level}>
-          Required English level
-          <span className={s.card__status}>{requiredLevel}</span>
-        </p>
+              : '-'}
+          </p>
+        </div>
+        <div className={s.card__detailGroup}>
+          <p className={s.card__label}>{learningModule}</p>
+          <p className={s.card__value}>{statusIconDone()}</p>
+        </div>
+        <div className={s.card__detailGroup}>
+          <p className={s.card__label}>Required English level</p>
+          <p className={s.card__value}>{requiredLevel}</p>
+        </div>
       </div>
       <h2 className={s.card__moreInfo}>Want more info?</h2>
       <Button className={s.card__button}>Get info package</Button>

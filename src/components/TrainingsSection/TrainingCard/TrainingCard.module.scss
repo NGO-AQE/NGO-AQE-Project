@@ -1,8 +1,79 @@
-.card {
-  display: grid;
-  gap: 16px;
+@use '../../../styles/colors.scss' as color;
+@use '../../../styles/fonts.scss' as font;
 
-  &__button {
-    margin-bottom: 24px;
-  }
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card__img {
+  width: 100%;
+  height: auto;
+}
+
+.card__location {
+  margin: 16px 0;
+  display: flex;
+  justify-content: start;
+  @include font.h4-font;
+}
+
+.card__infoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+// .card__terms {
+// }
+
+.card__termRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.card__termText {
+  @include font.description-text;
+}
+
+.card__termDates {
+  @include font.body-text;
+}
+
+.card__detailGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.card__duration {
+  @include font.description-text;
+}
+
+.card__label {
+  @include font.description-text;
+  text-transform: uppercase;
+}
+
+.card__value {
+  @include font.body-text;
+}
+
+.card__statusIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.card__moreInfo {
+  margin-top: 16px;
+  display: flex;
+  justify-content: start;
+
+  @include font.accented-text;
+}
+
+.card__button {
+  margin-top: 16px;
+  margin-bottom: 72px;
 }
