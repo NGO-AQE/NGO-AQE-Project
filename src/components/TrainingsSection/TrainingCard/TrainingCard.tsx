@@ -1,5 +1,6 @@
 import Button from '../../Button/Button';
 import s from './TrainingCard.module.scss';
+import DoneIcon from '../../../assets/icons/done.svg';
 
 type Term = {
   location?: string;
@@ -48,6 +49,12 @@ export const TrainingCard = ({
   statusIcon,
   requiredLevel,
 }: Training): JSX.Element => {
+  const statusIconDone = () => {
+    if (statusIcon === 'Need') {
+      return <img src={DoneIcon} alt="Done" className={s.card__statusIcon} />;
+    }
+    return '-';
+  };
   return (
     <div className={s.card}>
       <img src={img} alt="img" className={s.card__img} />
@@ -71,7 +78,7 @@ export const TrainingCard = ({
         </p>
         <p className={s.card__module}>
           {learningModule}
-          <span className={s.card__status}>{statusIcon}</span>
+          <span className={s.card__status}>{statusIconDone()}</span>
         </p>
         <p className={s.card__level}>
           Required English level
