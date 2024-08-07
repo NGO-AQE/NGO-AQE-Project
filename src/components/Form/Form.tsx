@@ -45,7 +45,7 @@ const Form: React.FC = () => {
         className={`container ${styles.container}`}
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div>
+        <div className={styles.section__field}>
           <label className={styles.section__subtitle} htmlFor="fullName*">
             Full Name*
           </label>
@@ -55,11 +55,11 @@ const Form: React.FC = () => {
             placeholder="John Doe"
           />
           {errors.fullName && (
-            <span className={styles.errorMessage}>This field is required</span>
+            <span className={styles.errorMessage}>Error name</span>
           )}
         </div>
 
-        <div>
+        <div className={styles.section__field}>
           <label className={styles.section__subtitle} htmlFor="email*">
             Email*
           </label>
@@ -79,7 +79,7 @@ const Form: React.FC = () => {
           )}
         </div>
 
-        <div>
+        <div className={styles.section__field}>
           <label className={styles.section__subtitle} htmlFor="country">
             Country
           </label>
@@ -90,18 +90,26 @@ const Form: React.FC = () => {
           />
         </div>
 
-        <div>
+        <div className={styles.section__agreement}>
           <label className={styles.section__subtitle} htmlFor="agree">
-            <input {...register('agree')} type="checkbox" />I agree to receive
-            information about further courses from AQE.
+            <input
+              className={styles.section__checkbox}
+              {...register('agree')}
+              type="checkbox"
+            />
+            <span className={styles.section__agree}>
+              I agree to receive information about further courses from AQE.
+            </span>
           </label>
         </div>
 
-        <div className={styles.section__button}>
-          <Button type="submit" onClick={openModal}>
-            Get info package
-          </Button>
-        </div>
+        <Button
+          className={styles.section__button}
+          type="submit"
+          onClick={openModal}
+        >
+          Get info package
+        </Button>
       </form>
 
       <Modal isOpen={isModalOpen} onClose={closeModal}>

@@ -2,50 +2,72 @@
 
 .section {
   background-color: color.$black;
+  padding: 48px 0;
 
   &__title {
     text-align: center;
-    color: #f7f7f7;
-    padding: 8px;
+    color: color.$background-color;
+    padding: 0 48px;
   }
 
   &__subtitle {
     text-align: left;
     color: color.$white;
-    padding: 8px;
+    padding: 8px 0;
   }
 
   &__description {
     text-align: center;
-    color: color.$gray-light;
-    padding: 8px;
+    color: color.$border-color;
+    padding: 16px 24px;
   }
 
   &__input {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 4px 8px;
+    width: 100%;
+    padding: 8px 16px;
+    margin-top: 8px;
     background: color.$white;
     border: 2px solid color.$gray-light;
     border-radius: 12px;
-    align-self: center;
+  }
+
+  &__input:hover {
+    border-color: #818181;
+  }
+
+  &__input:focus {
+    border-color: color.$primary-color;
+  }
+
+  input:not(:placeholder-shown) {
+    border: 1px solid #818181;
+  }
+  &__field {
+    padding: 8px 0 24px;
+  }
+
+  &__agreement {
+    padding: 8px 0 64px;
+    vertical-align: center;
+  }
+
+  &__agree {
+    width: 307px;
+  }
+
+  &__checkbox {
+    height: 24px;
+    width: 24px;
+    border: 1px solid color.$gray-light;
+    border-radius: 6px;
   }
 
   &__button {
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    height: 56px;
   }
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 4px;
-}
-
 .errorMessage {
-  color: red;
+  color: #e44e4e;
 }
