@@ -27,6 +27,7 @@
 
       @include mQ.tablet {
         @include font.h2-font;
+        font-weight: bold;
       }
     }
 
@@ -37,6 +38,11 @@
 
       @include mQ.tablet {
         max-width: 70%;
+        margin-bottom: 64px;
+      }
+
+      @include mQ.tablet {
+        max-width: 50%;
         margin-bottom: 64px;
       }
     }

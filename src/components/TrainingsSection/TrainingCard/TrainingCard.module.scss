@@ -8,7 +8,7 @@
 
   @include mQ.tablet {
     display: grid;
-    gap: 24px;
+    column-gap: 24px;
     margin-bottom: 88px;
     &:nth-child(1) {
       grid-template-columns: 1fr 1fr;
@@ -36,6 +36,10 @@
         'moreInfo img'
         'button img';
     }
+
+    @include mQ.desktop {
+      column-gap: 119px;
+    }
   }
 
   &__img {
@@ -56,13 +60,24 @@
     justify-content: start;
     align-items: start;
     @include font.h4-font;
+
+    @include mQ.desktop {
+      @include font.h3-font;
+      font-weight: bold;
+    }
   }
 
   &__infoWrapper {
     grid-area: infoWrapper;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
+    margin-bottom: 27px;
+
+    @include mQ.desktop {
+      gap: 24px;
+      margin-bottom: 68px;
+    }
   }
 
   &__termRow {
@@ -74,29 +89,49 @@
 
   &__termText {
     @include font.description-text;
+
+    @include mQ.desktop {
+      @include font.big-body-text;
+    }
   }
 
   &__termDates {
     @include font.body-text;
+
+    @include mQ.desktop {
+      @include font.accented-text;
+    }
   }
 
   &__detailGroup {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
+    // margin-bottom: 15px;
   }
 
   &__duration {
     @include font.description-text;
+
+    @include mQ.desktop {
+      @include font.big-body-text;
+    }
   }
 
   &__label {
     @include font.description-text;
     text-transform: uppercase;
+
+    @include mQ.desktop {
+      @include font.big-body-text;
+    }
   }
 
   &__value {
     @include font.body-text;
+
+    @include mQ.desktop {
+      @include font.accented-text;
+    }
   }
 
   &__statusIcon {
@@ -106,7 +141,6 @@
 
   &__moreInfo {
     grid-area: moreInfo;
-    margin-top: 16px;
     display: flex;
     justify-content: start;
 
@@ -114,6 +148,10 @@
 
     @include mQ.tablet {
       margin-top: 0;
+    }
+
+    @include mQ.desktop {
+      @include font.h4-font;
     }
   }
 
@@ -123,9 +161,12 @@
     margin-bottom: 72px;
 
     @include mQ.tablet {
-      margin-top: 0;
       align-self: start;
       margin-bottom: 0;
+    }
+
+    @include mQ.desktop {
+      max-width: 60%;
     }
   }
 }
