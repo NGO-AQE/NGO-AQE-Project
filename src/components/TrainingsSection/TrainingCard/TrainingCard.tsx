@@ -58,7 +58,10 @@ export const TrainingCard = ({
   return (
     <div className={s.card}>
       <img src={img} alt="img" className={s.card__img} />
-      <h1 className={s.card__location}>{mainLocation}</h1>
+      <h1 className={s.card__location}>
+        <span className={s['card__location-element']}></span>
+        {mainLocation}
+      </h1>
       <div className={s.card__infoWrapper}>
         <div>
           {terms.map((term, i) => (

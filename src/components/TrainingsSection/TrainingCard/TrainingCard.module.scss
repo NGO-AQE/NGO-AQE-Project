@@ -56,10 +56,26 @@
     text-transform: uppercase;
     grid-area: location;
     margin: 16px 0;
-    display: flex;
     justify-content: start;
     align-items: start;
+    position: relative;
+    z-index: 1;
+    align-items: center;
+    display: inline-block;
+    width: max-content;
+
     @include font.h4-font;
+
+    &-element {
+      content: '';
+      background: rgba(57, 119, 200, 0.372);
+      height: 60%;
+      position: absolute;
+      top: 40%;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+    }
 
     @include mQ.desktop {
       @include font.h3-font;
@@ -106,7 +122,6 @@
   &__detailGroup {
     display: flex;
     justify-content: space-between;
-    // margin-bottom: 15px;
   }
 
   &__duration {
