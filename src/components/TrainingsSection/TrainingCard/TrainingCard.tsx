@@ -16,7 +16,6 @@ type Training = {
   learningModule: string;
   statusIcon: string;
   requiredLevel: string;
-  className?: string;
 };
 
 const convertDate = (dateStr: string): string => {
