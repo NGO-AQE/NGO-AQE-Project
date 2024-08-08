@@ -1,79 +1,131 @@
 @use '../../../styles/colors.scss' as color;
 @use '../../../styles/fonts.scss' as font;
+@use '../../../styles/mediaQueries.module.scss' as mQ;
 
 .card {
   display: flex;
   flex-direction: column;
-}
 
-.card__img {
-  width: 100%;
-  height: auto;
-}
+  @include mQ.tablet {
+    display: grid;
+    gap: 24px;
+    margin-bottom: 88px;
+    &:nth-child(1) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        'location img'
+        'infoWrapper img'
+        'moreInfo img'
+        'button img';
+    }
 
-.card__location {
-  margin: 16px 0;
-  display: flex;
-  justify-content: start;
-  @include font.h4-font;
-}
+    &:nth-child(2) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        'img location '
+        'img infoWrapper '
+        'img moreInfo '
+        'img button ';
+    }
 
-.card__infoWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+    &:nth-child(3) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        'location img'
+        'infoWrapper img'
+        'moreInfo img'
+        'button img';
+    }
+  }
 
-// .card__terms {
-// }
+  &__img {
+    grid-area: img;
 
-.card__termRow {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
+    @include mQ.tablet {
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+  }
 
-.card__termText {
-  @include font.description-text;
-}
+  &__location {
+    text-transform: uppercase;
+    grid-area: location;
+    margin: 16px 0;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    @include font.h4-font;
+  }
 
-.card__termDates {
-  @include font.body-text;
-}
+  &__infoWrapper {
+    grid-area: infoWrapper;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 
-.card__detailGroup {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-}
+  &__termRow {
+    grid-area: termRow;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
 
-.card__duration {
-  @include font.description-text;
-}
+  &__termText {
+    @include font.description-text;
+  }
 
-.card__label {
-  @include font.description-text;
-  text-transform: uppercase;
-}
+  &__termDates {
+    @include font.body-text;
+  }
 
-.card__value {
-  @include font.body-text;
-}
+  &__detailGroup {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
 
-.card__statusIcon {
-  width: 32px;
-  height: 32px;
-}
+  &__duration {
+    @include font.description-text;
+  }
 
-.card__moreInfo {
-  margin-top: 16px;
-  display: flex;
-  justify-content: start;
+  &__label {
+    @include font.description-text;
+    text-transform: uppercase;
+  }
 
-  @include font.accented-text;
-}
+  &__value {
+    @include font.body-text;
+  }
 
-.card__button {
-  margin-top: 16px;
-  margin-bottom: 72px;
+  &__statusIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__moreInfo {
+    grid-area: moreInfo;
+    margin-top: 16px;
+    display: flex;
+    justify-content: start;
+
+    @include font.accented-text;
+
+    @include mQ.tablet {
+      margin-top: 0;
+    }
+  }
+
+  &__button {
+    grid-area: button;
+    margin-top: 16px;
+    margin-bottom: 72px;
+
+    @include mQ.tablet {
+      margin-top: 0;
+      align-self: start;
+      margin-bottom: 0;
+    }
+  }
 }

@@ -6,7 +6,7 @@ import Ireland from '../../../public/img/tranings/ireland.png';
 
 enum EnglishLevel {
   Basic = 'Basic',
-  Intermediate = 'Intermediate',
+  Intermediate = 'Interm.',
   Advanced = 'Advanced',
 }
 
@@ -52,7 +52,7 @@ export const TrainingsSection = () => {
     },
     {
       img: Canary,
-      mainLocation: 'Canary',
+      mainLocation: 'Canary Island',
       terms: [
         {
           location: 'Fuerteventura',
@@ -91,7 +91,7 @@ export const TrainingsSection = () => {
   ];
 
   return (
-    <section className="container">
+    <section className={s.container}>
       <div className={s.section}>
         <h1 className={s.section__title}>Trainings</h1>
         <p className={s.section__description}>

@@ -16,6 +16,7 @@ type Training = {
   learningModule: string;
   statusIcon: string;
   requiredLevel: string;
+  className?: string;
 };
 
 const convertDate = (dateStr: string): string => {
@@ -60,7 +61,7 @@ export const TrainingCard = ({
       <img src={img} alt="img" className={s.card__img} />
       <h1 className={s.card__location}>{mainLocation}</h1>
       <div className={s.card__infoWrapper}>
-        <div className={s.card__terms}>
+        <div>
           {terms.map((term, i) => (
             <div key={i} className={s.card__termRow}>
               <p className={s.card__termText}>
@@ -73,7 +74,7 @@ export const TrainingCard = ({
           ))}
         </div>
         <div className={s.card__detailGroup}>
-          <p className={s.duration}>Duration:</p>
+          <p className={s.card__duration}>Duration:</p>
           <p className={s.card__value}>
             {terms.length > 0
               ? calculateDuration(terms[0].start, terms[0].end)

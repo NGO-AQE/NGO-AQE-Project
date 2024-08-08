@@ -1,21 +1,44 @@
 @use '../../styles/colors.scss' as color;
 @use '../../styles/fonts.scss' as font;
+@use '../../styles/mediaQueries.module.scss' as mQ;
+.container {
+  background-color: color.$background-color;
 
-.section {
-  display: grid;
-  justify-items: center;
-  text-align: center;
-  margin: 0 auto;
-  max-width: 343px;
+  .section {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 343px;
+    padding-top: 24px;
 
-  &__title {
-    @include font.accented-text;
-    margin-bottom: 6px;
-  }
+    @include mQ.tablet {
+      max-width: 696px;
+      padding-top: 72px;
+    }
 
-  &__description {
-    @include font.description-text;
-    margin-bottom: 24px;
-    color: color.$gray-dark;
+    @include mQ.desktop {
+      max-width: 1120px;
+    }
+
+    &__title {
+      @include font.accented-text;
+      margin-bottom: 6px;
+
+      @include mQ.tablet {
+        @include font.h2-font;
+      }
+    }
+
+    &__description {
+      @include font.description-text;
+      margin-bottom: 24px;
+      color: color.$gray-dark;
+
+      @include mQ.tablet {
+        max-width: 70%;
+        margin-bottom: 64px;
+      }
+    }
   }
 }
