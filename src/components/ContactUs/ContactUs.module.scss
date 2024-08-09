@@ -13,6 +13,7 @@
 
     @include mQ.tablet {
       max-width: 696px;
+      padding-top: 69px;
     }
 
     &__title {
@@ -22,7 +23,7 @@
       @include mQ.tablet {
         @include font.h2-font;
         font-weight: bold;
-        padding-bottom: 56px;
+        padding-bottom: 40px;
       }
     }
 
