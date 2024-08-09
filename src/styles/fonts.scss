@@ -65,6 +65,14 @@
   line-height: normal;
 }
 
+@mixin big-body-text {
+  font-family: PoppinsRegular, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 36px */
+}
+
 @mixin description-text {
   font-family: PoppinsRegular, sans-serif;
   font-size: 16px;
