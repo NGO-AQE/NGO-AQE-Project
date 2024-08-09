@@ -8,6 +8,7 @@ import PartnersSection from './components/PartnersSection/PartnersSection';
 import { Slider } from './components/Slider';
 import WhyAQE from './components/WhyAQE/WhyAQE';
 import Form from './components/Form/Form.tsx';
+import TrainingsSection from './components/TrainingsSection/TrainingsSection';
 
 import { useEffect } from 'react';
 import { useSanity } from './hooks/useSanity';
