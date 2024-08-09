@@ -1,4 +1,5 @@
 @use '../../styles/colors' as color;
+@use '../../styles/mediaQueries.module' as mQ;
 
 .section {
   background-color: color.$black;
@@ -29,6 +30,10 @@
     background: color.$white;
     border: 2px solid color.$gray-light;
     border-radius: 12px;
+
+    @include mQ.desktop {
+      width: 548px;
+    }
   }
 
   &__input:hover {
@@ -50,13 +55,20 @@
   }
 
   &__agreement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 8px 0 64px;
     width: 343px;
+
+    @include mQ.desktop {
+      width: 548px;
+    }
   }
 
   &__agree {
     margin-left: 12px;
-    word-wrap: break-word;
+    align-self: center;
   }
 
   input[type='checkbox'] {
@@ -76,7 +88,7 @@
   }
 
   input[type='checkbox']:checked:before {
-    background-color: color.$primary-color;
+    background-color: #21C932;;
   }
 
   &__button {
@@ -94,3 +106,4 @@
   flex-direction: column;
   align-items: center;
 }
+
