@@ -60,9 +60,10 @@
   }
 
   input[type='checkbox'] {
-    //appearance: none;
-    -webkit-appearance: none;
-    outline: none;
+    appearance: none;
+    border: none;
+    opacity: 1;
+    cursor: pointer;
   }
 
   input[type='checkbox']:before {
