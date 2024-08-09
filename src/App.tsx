@@ -1,14 +1,17 @@
 import './App.scss';
-import Header from './components/Header/Header';
+
 import { BasicCard } from './components/Slider/SliderExample';
+import { FaqSection } from './components/FaqSection/FaqSection';
+import Header from './components/Header/Header';
+import { HomePage } from './components/HomePage/HomePage';
 import PartnersSection from './components/PartnersSection/PartnersSection';
 import { Slider } from './components/Slider';
+import WhyAQE from './components/WhyAQE/WhyAQE';
 import Form from './components/Form/Form.tsx';
+import TrainingsSection from './components/TrainingsSection/TrainingsSection';
+
 import { useEffect } from 'react';
 import { useSanity } from './hooks/useSanity';
-import { HomePage } from './components/HomePage/HomePage';
-import WhyAQE from './components/WhyAQE/WhyAQE';
-import TrainingsSection from './components/TrainingsSection/TrainingsSection';
 import { ContactUs } from './components/ContactUs/ContactUs';
 
 function App() {
@@ -33,6 +36,7 @@ function App() {
         ))}
       </Slider>
       <PartnersSection />
+      <FaqSection />
       <ContactUs />
     </>
   );
