@@ -22,27 +22,21 @@
       @include mQ.tablet {
         @include font.h2-font;
         font-weight: bold;
+        padding-bottom: 56px;
       }
     }
 
     &__address {
       display: flex;
-      // align-items: center;
       flex-direction: column;
-      // justify-content: start;
       gap: 16px;
 
-      // @include mQ.tablet {
-      //   flex-direction: row;
-      //   flex-wrap: wrap;
-      // }
+      @include mQ.tablet {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+      }
     }
-
-    // &__contactAddressWrapper {
-    //   display: flex;
-    //   justify-content: start;
-    //   align-items: start;
-    // }
 
     &__label {
       margin-top: 16px;
