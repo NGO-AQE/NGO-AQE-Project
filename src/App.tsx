@@ -3,6 +3,7 @@ import Header from './components/Header/Header';
 import { BasicCard } from './components/Slider/SliderExample';
 import PartnersSection from './components/PartnersSection/PartnersSection';
 import { Slider } from './components/Slider';
+import Form from './components/Form/Form.tsx';
 import { useEffect } from 'react';
 import { useSanity } from './hooks/useSanity';
 import { HomePage } from './components/HomePage/HomePage';
@@ -20,6 +21,7 @@ function App() {
       <Header />
       <HomePage />
       <WhyAQE />
+      <Form />
       <Slider title="Succes stories" buttonsPlacment="title" slidesOtside>
         {[...Array(10)].map((_, i) => (
           <Slider.Slide key={i}>
