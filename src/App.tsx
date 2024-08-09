@@ -7,6 +7,8 @@ import { HomePage } from './components/HomePage/HomePage';
 import PartnersSection from './components/PartnersSection/PartnersSection';
 import { Slider } from './components/Slider';
 import WhyAQE from './components/WhyAQE/WhyAQE';
+import Form from './components/Form/Form.tsx';
+
 import { useEffect } from 'react';
 import { useSanity } from './hooks/useSanity';
 
@@ -22,6 +24,7 @@ function App() {
       <Header />
       <HomePage />
       <WhyAQE />
+      <Form />
       <Slider title="Succes stories" buttonsPlacment="title" slidesOtside>
         {[...Array(10)].map((_, i) => (
           <Slider.Slide key={i}>
