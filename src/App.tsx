@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { useSanity } from './hooks/useSanity';
 import { HomePage } from './components/HomePage/HomePage';
 import WhyAQE from './components/WhyAQE/WhyAQE';
+import { ContactUs } from './components/ContactUs/ContactUs.tsx';
 
 function App() {
   const sanity = useSanity();
@@ -22,6 +23,7 @@ function App() {
       <HomePage />
       <WhyAQE />
       <Form />
+      <ContactUs />
       <Slider title="Succes stories" buttonsPlacment="title" slidesOtside>
         {[...Array(10)].map((_, i) => (
           <Slider.Slide key={i}>
