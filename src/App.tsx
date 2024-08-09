@@ -1,7 +1,6 @@
 import './App.scss';
 
 import { BasicCard } from './components/Slider/SliderExample';
-import { FaqSection } from './components/FaqSection/FaqSection';
 import Header from './components/Header/Header';
 import { HomePage } from './components/HomePage/HomePage';
 import PartnersSection from './components/PartnersSection/PartnersSection';
@@ -36,7 +35,6 @@ function App() {
         ))}
       </Slider>
       <PartnersSection />
-      <FaqSection />
       <ContactUs />
     </>
   );
