@@ -23,7 +23,6 @@ function App() {
       <HomePage />
       <WhyAQE />
       <Form />
-      <ContactUs />
       <Slider title="Succes stories" buttonsPlacment="title" slidesOtside>
         {[...Array(10)].map((_, i) => (
           <Slider.Slide key={i}>
@@ -32,6 +31,7 @@ function App() {
         ))}
       </Slider>
       <PartnersSection />
+      <ContactUs />
     </>
   );
 }
