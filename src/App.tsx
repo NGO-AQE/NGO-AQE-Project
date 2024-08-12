@@ -1,5 +1,4 @@
 import './App.scss';
-
 import { BasicCard } from './components/Slider/SliderExample';
 import Header from './components/Header/Header';
 import { HomePage } from './components/HomePage/HomePage';
@@ -12,6 +11,7 @@ import TrainingsSection from './components/TrainingsSection/TrainingsSection';
 import { useEffect } from 'react';
 import { useSanity } from './hooks/useSanity';
 import { ContactUs } from './components/ContactUs/ContactUs';
+import Footer from './components/Footer/Footer.tsx';
 
 function App() {
   const sanity = useSanity();
@@ -36,6 +36,7 @@ function App() {
       </Slider>
       <PartnersSection />
       <ContactUs />
+      <Footer />
     </>
   );
 }
