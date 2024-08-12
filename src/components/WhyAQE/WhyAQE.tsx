@@ -11,7 +11,7 @@ const WhyAQE = () => {
     {
       icon: lightbulbIcon,
       subtitle: 'Inspiring Environment',
-      text: 'We create stimulating and inspiring atmosphere that encourages  creativity, innovation, and a lifelong love for learning among educators.',
+      text: 'We create stimulating and inspiring atmosphere that encourages creativity, innovation, and a lifelong love for learning among educators.',
     },
     {
       icon: batteryIcon,
@@ -30,14 +30,16 @@ const WhyAQE = () => {
     },
   ];
   return (
-    <div className={styles.whySection}>
-      <p className={styles.whySection__title}>Why AQE?</p>
-      <div className={styles.whySection__container}>
-        {subsections.map(data => (
-          <WhyAQESS key={data.subtitle} data={data} />
-        ))}
+    <section className={styles.container}>
+      <div className={styles.whySection}>
+        <p className={styles.whySection__title}>Why AQE?</p>
+        <div className={styles.whySection__container}>
+          {subsections.map(data => (
+            <WhyAQESS key={data.subtitle} data={data} />
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

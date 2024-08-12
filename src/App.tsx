@@ -1,11 +1,17 @@
 import './App.scss';
-import Footer from './components/Footer/Footer';
-import { Slider } from './components/Slider';
-import Header from './components/Header/Header';
 import { BasicCard } from './components/Slider/SliderExample';
+import Header from './components/Header/Header';
+import { HomePage } from './components/HomePage/HomePage';
 import PartnersSection from './components/PartnersSection/PartnersSection';
+import { Slider } from './components/Slider';
+import WhyAQE from './components/WhyAQE/WhyAQE';
+import Form from './components/Form/Form.tsx';
+import TrainingsSection from './components/TrainingsSection/TrainingsSection';
+
 import { useEffect } from 'react';
 import { useSanity } from './hooks/useSanity';
+import { ContactUs } from './components/ContactUs/ContactUs';
+import Footer from './components/Footer/Footer.tsx';
 
 function App() {
   const sanity = useSanity();
@@ -17,6 +23,10 @@ function App() {
   return (
     <>
       <Header />
+      <HomePage />
+      <WhyAQE />
+      <TrainingsSection />
+      <Form />
       <Slider title="Succes stories" buttonsPlacment="title" slidesOtside>
         {[...Array(10)].map((_, i) => (
           <Slider.Slide key={i}>
@@ -24,14 +34,8 @@ function App() {
           </Slider.Slide>
         ))}
       </Slider>
-      <Slider title="Our partners" buttonsPlacment="title" slidesOtside>
-        {[...Array(10)].map((_, i) => (
-          <Slider.Slide key={i}>
-            <BasicCard width={262} index={i} />
-          </Slider.Slide>
-        ))}
-      </Slider>
       <PartnersSection />
+      <ContactUs />
       <Footer />
     </>
   );
