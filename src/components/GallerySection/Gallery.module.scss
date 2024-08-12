@@ -81,6 +81,7 @@
 .embla {
   overflow: hidden;
   width: 100%;
+  position: relative;
 
   @include tablet {
     display: flex;
@@ -88,8 +89,40 @@
   }
 }
 
+.embla__prev,
+.embla__next {
+  border-radius: 8px;
+  background-color: rgb(255 255 255 / 80%);
+  top: 45%;
+  padding: 4px;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+  @include tablet {
+    display: none;
+  }
+
+  img {
+    width: 48px; /* Adjust size if needed */
+    height: 48px; /* Adjust size if needed */
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+
+.embla__prev {
+  left: 0;
+}
+
+.embla__next {
+  right: 10px;
+}
 .embla__container {
   display: flex;
+  transition: transform 0.3s ease;
 
   @include tablet {
     flex-direction: row;
