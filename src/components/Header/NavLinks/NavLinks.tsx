@@ -82,8 +82,8 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({
       <ul
         className={`${styles.navlinks} ${isMobile ? styles['navlinks--mobile'] : ''} ${className}`}
       >
-        {links.map(link => (
-          <li>
+        {links.map((link, i) => (
+          <li key={i}>
             <a className={styles.navlink} href={link.to}>
               {link.text}
             </a>
