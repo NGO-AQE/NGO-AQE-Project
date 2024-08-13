@@ -1,9 +1,9 @@
-@use '../../../styles/mediaQueries.module.scss' as *;
-@import '../../../styles/colors.scss';
-@import '../../../styles/fonts.scss';
+@use '../../../styles/mediaQueries.module.scss' as mQ;
+@use '../../../styles/colors.scss' as color;
+@use '../../../styles/fonts.scss' as font;
 
 .container {
-  width: 75%;
+  width: 100%;
 }
 
 .navlinks {
@@ -14,18 +14,24 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 16px;
     align-items: center;
-    @include description-text;
+    gap: 16px;
+
+    @include font.description-text;
     font-size: 18px;
 
-    @include tablet {
+    @include mQ.tablet {
       gap: 32px;
     }
   }
 
   .navlink {
-    @include description-text;
+    @include font.description-text;
+
+    @include mQ.tablet {
+      @include font.big-body-text;
+    }
+
     &:hover {
       border-bottom: 2px solid var(--black, #191919);
     }
@@ -33,7 +39,7 @@
 
   .navlink__customSelect {
     .react-select__control {
-      font-size: 16px;
+      @include font.big-body-text;
       padding: 5px;
       border-color: #ddd;
 
@@ -68,7 +74,7 @@
   }
 }
 
-@include desktop {
+@include mQ.desktop {
   .navlinks {
     display: flex;
     align-items: center;

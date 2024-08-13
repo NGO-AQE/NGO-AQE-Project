@@ -1,6 +1,6 @@
-@use '../../styles/mediaQueries.module.scss' as *;
-@import '../../styles/colors.scss';
-@import '../../styles/fonts.scss';
+@use '../../styles/mediaQueries.module.scss' as mQ;
+@use '../../styles/colors.scss' as color;
+@use '../../styles/fonts.scss' as font;
 
 .header {
   position: relative;
@@ -8,14 +8,24 @@
   top: 0;
   z-index: 10;
   margin-top: 16px;
-  background: $white;
+  background: color.$white;
 
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 2;
+
+    @include mQ.tablet {
+      height: 67px;
+    }
+
+    @include mQ.desktop {
+      height: 111px;
+    }
+
   }
+
   &__buttons {
     display: flex;
     gap: 16px;
@@ -25,14 +35,16 @@
   &__links {
     flex: 1;
   }
+
   &__burger {
     cursor: pointer;
     display: block;
 
-    @include desktop {
+    @include mQ.desktop {
       display: none;
     }
   }
+
   &__button {
     height: 40px;
     padding: 10px 16px;
@@ -46,8 +58,9 @@
     font-weight: 500;
     line-height: normal;
   }
+
   &__menu {
-    padding: 10% 0 20%;
+    padding: 88px 0 243px;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -55,16 +68,24 @@
     width: 100%;
     transform: translateX(100%);
     height: fit-content;
-    background: $white;
+    background: color.$white;
     transition: transform 0.5s ease-in-out;
+    display: none;
+
+    @include mQ.tablet {
+      padding: 160px 0 350px;
+    }
+
+    @include mQ.desktop {
+      display: none;
+    }
 
     &.active {
       transform: translate(0);
+      display: block;
     }
 
-    @include desktop {
-      display: none;
-    }
+  
   }
 
   &__link {
@@ -74,24 +95,21 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
     &:hover {
-      border-bottom: 2px solid $black;
+      border-bottom: 2px solid color.$black;
     }
   }
 }
 
-@include tablet {
+@include mQ.tablet {
   .header {
     margin-top: 32px;
   }
 }
 
-@include desktop {
+@include mQ.desktop {
   .header {
     margin: 0;
-
-    &__container {
-      height: 111px;
-    }
   }
 }
