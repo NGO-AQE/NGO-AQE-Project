@@ -16,11 +16,10 @@ const Header = () => {
   return (
     <header className={`${styles.header} ${isMenuOpen ? styles.active : ''}`}>
       <div className={`${styles.header__container} ${sectionStyles.container}`}>
-        <img src={Logo} alt="logo" />
+        <img className={styles.header__img} src={Logo} alt="logo" />
         <NavLinks />
         <div className={styles.header__buttons}>
           <Button className={styles.header__button}>Get info</Button>
-
           <button onClick={toggleMenu}>
             <img
               src={isMenuOpen ? BurgerClosed : Burger}

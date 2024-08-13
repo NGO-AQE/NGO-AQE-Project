@@ -32,6 +32,10 @@
       @include font.big-body-text;
     }
 
+    @include mQ.tablet {
+      @include font.description-text;
+    }
+
     &:hover {
       border-bottom: 2px solid var(--black, #191919);
     }
@@ -42,6 +46,8 @@
       @include font.big-body-text;
       padding: 5px;
       border-color: #ddd;
+
+     
 
       &:hover {
         border-color: var(--black, #191919);
