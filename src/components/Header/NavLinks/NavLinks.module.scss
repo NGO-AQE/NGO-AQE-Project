@@ -27,7 +27,8 @@
     font-size: 18px;
 
     @include mQ.tablet {
-      gap: 38px;
+      gap: 32px;
+      @include font.big-body-text;
     }
   }
 

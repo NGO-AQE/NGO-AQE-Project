@@ -29,7 +29,10 @@ const customStyles: StylesConfig<OptionType, false> = {
     ...provided,
     border: 'none',
     fontFamily: 'Poppins, sans-serif',
-    fontSize: '16px',
+    fontSize: '18px',
+    '@media (min-width: 744px)': {
+      fontSize: '24px',
+    },
   }),
 
   menu: provided => ({
@@ -94,7 +97,7 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({
             </a>
           </li>
         ))}
-        <li className={styles.navlink__customSelect}>
+        <li>
           <Select
             options={languageOptions}
             styles={customStyles}

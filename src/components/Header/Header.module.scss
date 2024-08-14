@@ -47,6 +47,10 @@
     display: flex;
     gap: 16px;
     flex: none;
+
+    @include mQ.tablet {
+      gap: 32px;
+    }
   }
 
   &__links {
@@ -65,18 +69,14 @@
   &__button {
     height: 40px;
     padding: 10px 16px;
-    border: 0;
-    border-radius: 12px;
-    background: var(--primary-color, #2c74d3);
-    color: var(--white, #fcfcfc);
-    text-align: center;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+
+    @include mQ.tablet {
+      margin-left: 48px;
+    }
 
     @include mQ.desktop {
       margin-left: 50px;
+      font-size: 20px;
     }
   }
 
