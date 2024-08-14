@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import styles from './Gallery.module.scss'; // Adjust path as needed
 import leftArrow from '../../assets/icons/left-arrow.svg';
