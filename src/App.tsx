@@ -1,13 +1,19 @@
 import './App.scss';
-import Header from './components/Header/Header';
+
 import { BasicCard } from './components/Slider/SliderExample';
+import { ContactUs } from './components/ContactUs/ContactUs';
+import { FaqSection } from './components/FaqSection/FaqSection.tsx';
+import Footer from './components/Footer/Footer.tsx';
+import Form from './components/Form/Form.tsx';
+import Header from './components/Header/Header';
+import { HomePage } from './components/HomePage/HomePage';
 import PartnersSection from './components/PartnersSection/PartnersSection';
 import { Slider } from './components/Slider';
-import { useEffect } from 'react';
-import { useSanity } from './hooks/useSanity';
-import { HomePage } from './components/HomePage/HomePage';
+import TrainingsSection from './components/TrainingsSection/TrainingsSection';
 import WhyAQE from './components/WhyAQE/WhyAQE';
 import Gallery from './components/GallerySection/Gallery';
+import { useEffect } from 'react';
+import { useSanity } from './hooks/useSanity';
 
 function App() {
   const sanity = useSanity();
@@ -21,7 +27,9 @@ function App() {
       <Header />
       <HomePage />
       <WhyAQE />
+      <TrainingsSection />
       <Gallery />
+      <Form />
       <Slider title="Succes stories" buttonsPlacment="title" slidesOtside>
         {[...Array(10)].map((_, i) => (
           <Slider.Slide key={i}>
@@ -30,11 +38,9 @@ function App() {
         ))}
       </Slider>
       <PartnersSection />
-    </>
-  );
-  return (
-    <>
-      <HomePage />
+      <FaqSection />
+      <ContactUs />
+      <Footer />
     </>
   );
 }

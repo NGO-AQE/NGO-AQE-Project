@@ -1,0 +1,187 @@
+@use '../../../styles/colors.scss' as color;
+@use '../../../styles/fonts.scss' as font;
+@use '../../../styles/mediaQueries.module.scss' as mQ;
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  @include mQ.tablet {
+    display: grid;
+    column-gap: 24px;
+    margin-bottom: 88px;
+    &:nth-child(1) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        'location img'
+        'infoWrapper img'
+        'moreInfo img'
+        'button img';
+    }
+
+    &:nth-child(2) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        'img location '
+        'img infoWrapper '
+        'img moreInfo '
+        'img button ';
+    }
+
+    &:nth-child(3) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        'location img'
+        'infoWrapper img'
+        'moreInfo img'
+        'button img';
+    }
+
+    @include mQ.desktop {
+      column-gap: 119px;
+    }
+  }
+
+  &__img {
+    grid-area: img;
+
+    @include mQ.tablet {
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+  }
+
+  &__location {
+    text-transform: uppercase;
+    grid-area: location;
+    margin: 16px 0;
+    justify-content: start;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+    align-items: center;
+    display: inline-block;
+    width: max-content;
+
+    @include font.h4-font;
+
+    &-element {
+      content: '';
+      background: rgba(57, 119, 200, 0.372);
+      height: 60%;
+      position: absolute;
+      top: 40%;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+    }
+
+    @include mQ.desktop {
+      @include font.h3-font;
+      font-weight: bold;
+    }
+  }
+
+  &__infoWrapper {
+    grid-area: infoWrapper;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 27px;
+
+    @include mQ.desktop {
+      gap: 24px;
+      margin-bottom: 68px;
+    }
+  }
+
+  &__termRow {
+    grid-area: termRow;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__termText {
+    @include font.description-text;
+
+    @include mQ.desktop {
+      @include font.big-body-text;
+    }
+  }
+
+  &__termDates {
+    @include font.body-text;
+
+    @include mQ.desktop {
+      @include font.accented-text;
+    }
+  }
+
+  &__detailGroup {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__duration {
+    @include font.description-text;
+
+    @include mQ.desktop {
+      @include font.big-body-text;
+    }
+  }
+
+  &__label {
+    @include font.description-text;
+    text-transform: uppercase;
+
+    @include mQ.desktop {
+      @include font.big-body-text;
+    }
+  }
+
+  &__value {
+    @include font.body-text;
+
+    @include mQ.desktop {
+      @include font.accented-text;
+    }
+  }
+
+  &__statusIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__moreInfo {
+    grid-area: moreInfo;
+    display: flex;
+    justify-content: start;
+
+    @include font.accented-text;
+
+    @include mQ.tablet {
+      margin-top: 0;
+    }
+
+    @include mQ.desktop {
+      @include font.h4-font;
+    }
+  }
+
+  &__button {
+    grid-area: button;
+    margin-top: 16px;
+    margin-bottom: 72px;
+
+    @include mQ.tablet {
+      align-self: start;
+      margin-bottom: 0;
+    }
+
+    @include mQ.desktop {
+      max-width: 60%;
+    }
+  }
+}
