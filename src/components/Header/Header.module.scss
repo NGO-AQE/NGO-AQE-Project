@@ -69,6 +69,7 @@
   &__button {
     height: 40px;
     padding: 10px 16px;
+    font-size: 16px;
 
     @include mQ.tablet {
       margin-left: 48px;

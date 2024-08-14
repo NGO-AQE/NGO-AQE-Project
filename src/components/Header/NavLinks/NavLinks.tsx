@@ -33,6 +33,9 @@ const customStyles: StylesConfig<OptionType, false> = {
     '@media (min-width: 744px)': {
       fontSize: '24px',
     },
+    '@media (min-width: 1440px)': {
+      fontSize: '16px',
+    },
   }),
 
   menu: provided => ({
