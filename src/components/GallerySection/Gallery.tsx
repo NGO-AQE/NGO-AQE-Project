@@ -42,8 +42,7 @@ const Gallery = () => {
       <div className={styles.gallerySection}>
         <h2 className={styles.gallerySection__title}>Gallery</h2>
         <p className={styles.gallerySection__description}>
-          Explore our gallery with swipe and button navigation.
-        </p>
+          Step into a world where learning comes to life and inspiration knows no  bounds. In this vibrant space, we invite you to explore captivating  moments captured during our educational camps for teachers.        </p>
         <div className={styles.gallerySection__container}>
           <div className={styles.embla} ref={emblaRef}>
             <div className={styles.embla__container}>
