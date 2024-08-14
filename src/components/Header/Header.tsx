@@ -4,8 +4,8 @@ import Burger from '../../assets/icons/burger-icon.svg';
 import BurgerClosed from '../../assets/icons/burger-icon-closed.svg';
 import NavLinks from './NavLinks/NavLinks';
 import Button from '../Button/Button';
-import styles from './Header.module.scss';
 import sectionStyles from '../../styles/sectionAndContainer.module.scss';
+import styles from './Header.module.scss';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

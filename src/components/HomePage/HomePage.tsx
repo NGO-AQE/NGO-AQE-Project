@@ -1,10 +1,10 @@
-import s from './HomePage.module.scss';
-import WorldMap from '/img/World Map.svg';
 import Button from '../Button/Button';
+import WorldMap from '/img/World Map.svg';
+import s from './HomePage.module.scss';
 
 export const HomePage = () => {
   return (
-    <section className={s['container']}>
+    <section id="home" className={s['container']}>
       <div className={s['home-page']}>
         <div className={s['home-page__title-container']}>
           <h1 className={s['home-page__title']}>

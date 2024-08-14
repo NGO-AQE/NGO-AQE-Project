@@ -3,6 +3,10 @@
 @use './styles/fonts.scss' as f;
 @import './reset.scss';
 
+html {
+  scroll-behavior: smooth;
+}
+
 .section {
   padding-top: 36px;
   padding-bottom: 36px;
@@ -42,8 +46,8 @@
 }
 
 .container {
-  width: 100%;
   margin: 0 auto;
+  width: 100%;
   max-width: 343px;
 
   @include mQ.tablet {
