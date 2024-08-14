@@ -30,6 +30,7 @@ const customStyles: StylesConfig<OptionType, false> = {
     border: 'none',
     fontFamily: 'Poppins, sans-serif',
     fontSize: '18px',
+    background: '#fcfcfc',
     '@media (min-width: 744px)': {
       fontSize: '24px',
     },

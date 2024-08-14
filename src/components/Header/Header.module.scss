@@ -7,12 +7,12 @@
   width: 100%;
   top: 0;
   z-index: 10;
-  margin-top: 16px;
+  padding-top: 16px;
   background: color.$white;
 
   @include mQ.tablet {
     .header {
-      margin-top: 32px;
+      padding-top: 32px;
     }
   }
 
