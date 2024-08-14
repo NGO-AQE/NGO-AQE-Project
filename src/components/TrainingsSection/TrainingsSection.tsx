@@ -1,8 +1,8 @@
-import TrainingCard from './TrainingCard/TrainingCard';
-import s from './TrainingsSection.module.scss';
-import Malta from '../../../public/img/tranings/malta.png';
 import Canary from '../../../public/img/tranings/canary.png';
 import Ireland from '../../../public/img/tranings/ireland.png';
+import Malta from '../../../public/img/tranings/malta.png';
+import TrainingCard from './TrainingCard/TrainingCard';
+import s from './TrainingsSection.module.scss';
 
 enum EnglishLevel {
   Basic = 'Basic',
@@ -91,7 +91,7 @@ export const TrainingsSection = () => {
   ];
 
   return (
-    <section className={s.container}>
+    <section id="trainings" className={s.container}>
       <div className={s.section}>
         <h1 className={s.section__title}>Trainings</h1>
         <p className={s.section__description}>

@@ -1,5 +1,6 @@
-import { FunctionComponent } from 'react';
 import Select, { SingleValue, StylesConfig } from 'react-select';
+
+import { FunctionComponent } from 'react';
 import styles from './NavLinks.module.scss';
 
 interface OptionType {
@@ -14,13 +15,13 @@ const languageOptions: OptionType[] = [
 ];
 
 const links = [
-  { text: 'Home', to: '#' },
-  { text: 'About us', to: '#' },
-  { text: 'Trainings', to: '#' },
-  { text: 'Gallery', to: '#' },
-  { text: 'Stories', to: '#' },
-  { text: 'Partners', to: '#' },
-  { text: 'FAQ', to: '#' },
+  { text: 'Home', to: '#home' },
+  { text: 'About us', to: '#about' },
+  { text: 'Trainings', to: '#trainings' },
+  { text: 'Gallery', to: '#gallery' },
+  { text: 'Stories', to: '#stories' },
+  { text: 'Partners', to: '#partners' },
+  { text: 'FAQ', to: '#faq' },
 ];
 
 const customStyles: StylesConfig<OptionType, false> = {

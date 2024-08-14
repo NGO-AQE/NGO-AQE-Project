@@ -1,16 +1,16 @@
 import React from 'react';
-import styles from './Footer.module.scss';
-import sectionStyles from '../../styles/sectionAndContainer.module.scss';
 import mateIcon from '../../assets/icons/maLogo.png';
+import sectionStyles from '../../styles/sectionAndContainer.module.scss';
+import styles from './Footer.module.scss';
 
 const links = [
-  { text: 'Home', to: '#' },
-  { text: 'About us', to: '#' },
-  { text: 'Trainings', to: '#' },
-  { text: 'Gallery', to: '#' },
-  { text: 'FAQ', to: '#' },
-  { text: 'Stories', to: '#' },
-  { text: 'Partners', to: '#' },
+  { text: 'Home', to: '#home' },
+  { text: 'About us', to: '#about' },
+  { text: 'Trainings', to: '#trainings' },
+  { text: 'Gallery', to: '#gallery' },
+  { text: 'FAQ', to: '#faq' },
+  { text: 'Stories', to: '#stories' },
+  { text: 'Partners', to: '#partners' },
   { text: '+1 (555) 123-4567', to: 'tel:+15551234567' },
 ];
 

@@ -28,7 +28,12 @@ function App() {
       <WhyAQE />
       <TrainingsSection />
       <Form />
-      <Slider title="Succes stories" buttonsPlacment="title" slidesOtside>
+      <Slider
+        id="stories"
+        title="Succes stories"
+        buttonsPlacment="title"
+        slidesOtside
+      >
         {[...Array(10)].map((_, i) => (
           <Slider.Slide key={i}>
             <BasicCard width={262} index={i} withText />
