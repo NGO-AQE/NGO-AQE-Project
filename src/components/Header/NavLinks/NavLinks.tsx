@@ -30,6 +30,7 @@ const customStyles: StylesConfig<OptionType, false> = {
     fontFamily: 'Poppins, sans-serif',
     fontSize: '16px',
   }),
+
   menu: provided => ({
     ...provided,
     zIndex: 9999,
@@ -40,6 +41,7 @@ const customStyles: StylesConfig<OptionType, false> = {
     borderLeft: '1px solid #CFCFCF',
     background: '#FCFCFC',
   }),
+
   option: (provided, state) => ({
     ...provided,
     backgroundColor: state.isSelected ? '#007bff' : '#fff',
@@ -48,9 +50,11 @@ const customStyles: StylesConfig<OptionType, false> = {
       backgroundColor: '#e0e0e0',
     },
   }),
+
   indicatorSeparator: () => ({
     display: 'none',
   }),
+
   dropdownIndicator: provided => ({
     ...provided,
     color: '#000',

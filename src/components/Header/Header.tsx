@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Logo from '../../assets/icons/Logo.png';
 import Burger from '../../assets/icons/burger-icon.svg';
 import BurgerClosed from '../../assets/icons/burger-icon-closed.svg';
@@ -9,9 +9,23 @@ import sectionStyles from '../../styles/sectionAndContainer.module.scss';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const toggleMenu = () => {
     setIsMenuOpen(prev => !prev);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1440) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <header className={`${styles.header} ${isMenuOpen ? styles.active : ''}`}>

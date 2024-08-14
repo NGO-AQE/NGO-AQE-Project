@@ -10,6 +10,12 @@
   display: none;
   list-style: none;
 
+  @include mQ.desktop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   &--mobile {
     display: flex;
     flex-direction: column;
@@ -21,69 +27,13 @@
     font-size: 18px;
 
     @include mQ.tablet {
-      gap: 32px;
+      gap: 38px;
     }
   }
 
   .navlink {
-    @include font.description-text;
-
-    @include mQ.tablet {
-      @include font.big-body-text;
-    }
-
-    @include mQ.tablet {
-      @include font.description-text;
-    }
-
     &:hover {
       border-bottom: 2px solid var(--black, #191919);
     }
-  }
-
-  .navlink__customSelect {
-    .react-select__control {
-      @include font.big-body-text;
-      padding: 5px;
-      border-color: #ddd;
-
-     
-
-      &:hover {
-        border-color: var(--black, #191919);
-      }
-
-      &--is-focused {
-        border-color: var(--primary-color, #007bff);
-        box-shadow: 0 0 0 1px var(--primary-color, #007bff);
-      }
-    }
-
-    .react-select__menu {
-      z-index: 9999;
-    }
-
-    .react-select__option {
-      background-color: #fff;
-      color: #333;
-      border-radius: 0px 0px 15px 15px;
-
-      &:hover {
-        background-color: #e0e0e0;
-      }
-
-      &--is-selected {
-        background-color: var(--primary-color, #007bff);
-        color: #fff;
-      }
-    }
-  }
-}
-
-@include mQ.desktop {
-  .navlinks {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
 }

@@ -15,7 +15,7 @@
       margin-top: 32px;
     }
   }
-  
+
   @include mQ.desktop {
     .header {
       margin: 0;
@@ -106,19 +106,4 @@
       display: block;
     }
   }
-
-  &__link {
-    color: var(--black, #191919);
-    text-align: center;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-
-    &:hover {
-      border-bottom: 2px solid color.$black;
-    }
-  }
 }
-
-
