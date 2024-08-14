@@ -7,11 +7,10 @@
   border: none;
   border-radius: 10px;
   transition: background-color 0.3s ease;
-  display: flex;
   justify-content: center;
   align-items: center;
 
-  @include font.body-text;
+  @include font.button-text;
 
   &:not(:disabled) {
     cursor: pointer;
