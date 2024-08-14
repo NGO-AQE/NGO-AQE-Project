@@ -1,7 +1,7 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
 import Button from '../Button/Button';
+import React from 'react';
 import styles from './Form.module.scss';
+import { useForm } from 'react-hook-form';
 
 type FormData = {
   fullName: string;
@@ -22,7 +22,7 @@ const Form: React.FC = () => {
   };
 
   return (
-    <section className={`section ${styles.section}`}>
+    <section id="form" className={`section ${styles.section}`}>
       <h6 className={`section__title ${styles.section__title}`}>
         Get more in our info package
       </h6>

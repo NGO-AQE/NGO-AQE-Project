@@ -41,7 +41,7 @@ export const FaqSection = () => {
   };
 
   return (
-    <section className={'section container ' + s.section}>
+    <section id="faq" className={'section container ' + s.section}>
       <header className={'section__title ' + s.title}>{data.title}</header>
       <div className={s.faq}>
         {data.faq.map((qa, i) => (
