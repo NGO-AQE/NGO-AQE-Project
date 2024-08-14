@@ -189,3 +189,7 @@
   border-radius: 0 12px;
   font-size: 1rem;
 }
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

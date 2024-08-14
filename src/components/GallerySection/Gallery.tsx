@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import styles from './Gallery.module.scss'; // Adjust path as needed
 import leftArrow from '../../assets/icons/left-arrow.svg';
@@ -20,29 +20,51 @@ const pictures = [
 ];
 
 const Gallery = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
 
   const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
+    if (emblaApi) {
+      emblaApi.scrollPrev();
+      setCanScrollNext(true);
+      if (!emblaApi.canScrollPrev()) {
+        setCanScrollPrev(false);
+      }
+    }
   }, [emblaApi]);
 
   const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
+    if (emblaApi) {
+      emblaApi.scrollNext();
+      setCanScrollPrev(true);
+      if (!emblaApi.canScrollNext()) {
+        setCanScrollNext(false);
+      }
+    }
+  }, [emblaApi]);
+
+  const updateButtons = useCallback(() => {
+    if (emblaApi) {
+      setCanScrollPrev(emblaApi.canScrollPrev());
+      setCanScrollNext(emblaApi.canScrollNext());
+    }
   }, [emblaApi]);
 
   useEffect(() => {
     if (emblaApi) {
-      // Check if emblaApi is properly initialized
-      console.log('Embla API Initialized:', emblaApi);
+      updateButtons();
+      emblaApi.on('select', updateButtons);
     }
-  }, [emblaApi]);
+  }, [emblaApi, updateButtons]);
 
   return (
     <section className={styles.container}>
       <div className={styles.gallerySection}>
         <h2 className={styles.gallerySection__title}>Gallery</h2>
         <p className={styles.gallerySection__description}>
-          Step into a world where learning comes to life and inspiration knows no  bounds. In this vibrant space, we invite you to explore captivating  moments captured during our educational camps for teachers.        </p>
+          Step into a world where learning comes to life and inspiration knows no bounds. In this vibrant space, we invite you to explore captivating moments captured during our educational camps for teachers.
+        </p>
         <div className={styles.gallerySection__container}>
           <div className={styles.embla} ref={emblaRef}>
             <div className={styles.embla__container}>
@@ -55,10 +77,18 @@ const Gallery = () => {
                 </div>
               ))}
             </div>
-            <button className={styles.embla__prev} onClick={scrollPrev}>
+            <button
+              className={`${styles.embla__prev} ${!canScrollPrev ? styles.disabled : ''}`}
+              onClick={scrollPrev}
+              disabled={!canScrollPrev}
+            >
               <img src={leftArrow} alt="Previous" />
             </button>
-            <button className={styles.embla__next} onClick={scrollNext}>
+            <button
+              className={`${styles.embla__next} ${!canScrollNext ? styles.disabled : ''}`}
+              onClick={scrollNext}
+              disabled={!canScrollNext}
+            >
               <img src={rightArrow} alt="Next" />
             </button>
           </div>
