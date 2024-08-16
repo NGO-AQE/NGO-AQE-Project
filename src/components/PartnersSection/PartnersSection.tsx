@@ -10,7 +10,12 @@ const PartnersSection = () => {
   }
 
   return (
-    <Slider title={partnersSection.title} buttonsPlacment="title" slidesOtside>
+    <Slider
+      id="partners"
+      title={partnersSection.title}
+      buttonsPlacment="title"
+      slidesOtside
+    >
       {partnersSection.partners.map(partner => {
         return (
           <Slider.Slide key={partner._id}>

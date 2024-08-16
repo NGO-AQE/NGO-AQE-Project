@@ -25,7 +25,7 @@ const Form: React.FC = () => {
   };
 
   return (
-    <section className={`section ${styles.section}`}>
+    <section id="form" className={`section ${styles.section}`}>
       <h6 className={`section__title ${styles.section__title}`}>
         Get more in our info package
       </h6>
