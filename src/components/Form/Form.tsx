@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import Button from '../Button/Button';
 import styles from './Form.module.scss';
+import sendMail from '../../sendMail.ts';
 
 type FormData = {
   fullName: string;
@@ -18,7 +19,9 @@ const Form: React.FC = () => {
   } = useForm<FormData>({ criteriaMode: 'all' });
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
+    sendMail(data.email, data.fullName, data.country).then(data =>
+      console.log(data),
+    );
   };
 
   return (
