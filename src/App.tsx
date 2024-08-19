@@ -12,6 +12,7 @@ import { Slider } from './components/Slider';
 import TrainingsSection from './components/TrainingsSection/TrainingsSection';
 import WhyAQE from './components/WhyAQE/WhyAQE';
 import Gallery from './components/GallerySection/Gallery';
+import AboutUs from './components/AboutUs/AboutUs';
 import { useEffect } from 'react';
 import { useSanity } from './hooks/useSanity';
 
@@ -26,6 +27,7 @@ function App() {
     <>
       <Header />
       <HomePage />
+      <AboutUs />
       <WhyAQE />
       <TrainingsSection />
       <Gallery />
