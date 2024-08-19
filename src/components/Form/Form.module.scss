@@ -1,32 +1,44 @@
 @use '../../styles/colors' as color;
 @use '../../styles/mediaQueries.module' as mQ;
 
-.section {
-  background-color: color.$black;
-  padding: 48px 0;
-
-  &__titleContainer {
-    position: relative;
-  }
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   &__title {
-    color: color.$background-color;
-    text-align: center;
-  }
+    width: 250px;
+    margin: 0 auto 16px;
 
-  &__descriptionContainer {
-    text-align: center;
-  }
+    @include mQ.tablet {
+      width: 600px;
+    }
 
-  &__subtitle {
-    text-align: left;
-    color: color.$white;
+    @include mQ.desktop {
+      width: 500px;
+    }
   }
 
   &__description {
-    text-align: center;
-    color: color.$border-color;
-    padding: 16px 0;
+    width: 300px;
+    margin: 0 auto 24px;
+
+    @include mQ.tablet {
+      width: 100%;
+      margin: 0 auto 48px;
+    }
+
+    @include mQ.desktop {
+      width: 100%;
+      margin: 0 auto 40px;
+    }
+  }
+
+  &__labelAndInput {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
   }
 
   &__input {
@@ -54,29 +66,6 @@
     border: 1px solid #818181;
   }
 
-  &__field {
-    padding: 8px 0 24px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__agreement {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 8px 0 64px;
-    width: 343px;
-
-    @include mQ.desktop {
-      width: 548px;
-    }
-  }
-
-  &__agree {
-    margin-left: 12px;
-    align-self: center;
-  }
-
   input[type='checkbox'] {
     appearance: none;
     border: none;
@@ -85,16 +74,29 @@
   }
 
   input[type='checkbox']:before {
+    display: flex;
+    position: relative;
     content: '';
-    width: 24px;
     height: 24px;
-    display: inline-block;
+    width: 24px;
     border: 1px solid color.$gray-light;
     border-radius: 6px;
   }
 
   input[type='checkbox']:checked:before {
     background-color: #21c932;
+  }
+
+  &__agreement {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 343px;
+    margin-bottom: 64px;
+
+    @include mQ.desktop {
+      width: 548px;
+    }
   }
 
   &__button {
@@ -106,9 +108,4 @@
     color: #e44e4e;
   }
 }
-//
-//.container {
-//  display: flex;
-//  flex-direction: column;
-//  align-items: center;
-//}
+
