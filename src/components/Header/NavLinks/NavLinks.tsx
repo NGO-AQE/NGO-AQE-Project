@@ -2,6 +2,7 @@ import Select, { SingleValue, StylesConfig } from 'react-select';
 
 import { FunctionComponent } from 'react';
 import styles from './NavLinks.module.scss';
+import { useSanity } from '../../../hooks/useSanity';
 
 interface OptionType {
   value: string;
@@ -70,11 +71,12 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({
   isMobile,
   className,
 }) => {
+  const sanity = useSanity();
+
   // Handle language change
   const handleLanguageChange = (selectedOption: SingleValue<OptionType>) => {
     if (selectedOption) {
-      console.log('Selected language:', selectedOption.value);
-      // Implement the language change logic here
+      sanity.changeLanguage(selectedOption.value);
     }
   };
 
@@ -84,7 +86,7 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({
         className={`${styles.navlinks} ${isMobile ? styles['navlinks--mobile'] : ''} ${className}`}
       >
         {links.map(link => (
-          <li>
+          <li key={link.to}>
             <a className={styles.navlink} href={link.to}>
               {link.text}
             </a>
