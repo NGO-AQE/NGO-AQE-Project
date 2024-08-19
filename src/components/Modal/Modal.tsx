@@ -41,41 +41,39 @@ const Modal: React.FC<
     }, 150);
   }
 
-  const preparedData = {
-    error: {
-      icon: modalError,
-      title: 'Error',
-      description: (
-        <>
-          Email with the training info has <span className={s.red}>NOT</span>{' '}
-          been sent to <span className={s.bold}>{props?.email}.</span>
-        </>
-      ),
-    },
-    success: {
-      icon: modalSuccess,
-      title: 'Success',
-      description: (
-        <>
-          Email with the training info has been sent to
-          <span className={s.bold}> {props?.email} </span>
-          <span className={s.green}>successfully.</span>
-        </>
-      ),
-    },
-  };
+  let data;
 
-  const isPreparedProps = (
-    props: CustomProps | PreparedProps,
-  ): props is PreparedProps => props.modalType !== 'custom';
-
-  const data = isPreparedProps(props)
-    ? preparedData[props.modalType]
-    : {
-        icon: props.iconSrc,
-        title: props.title,
-        description: props.description,
-      };
+  if (props.modalType === 'custom') {
+    data = {
+      icon: props.iconSrc,
+      title: props.title,
+      description: props.description,
+    };
+  } else {
+    data = {
+      error: {
+        icon: modalError,
+        title: 'Error',
+        description: (
+          <>
+            Email with the training info has <span className={s.red}>NOT </span>
+            been sent to <span className={s.bold}>{props?.email}.</span>
+          </>
+        ),
+      },
+      success: {
+        icon: modalSuccess,
+        title: 'Success',
+        description: (
+          <>
+            Email with the training info has been sent to
+            <span className={s.bold}> {props?.email} </span>
+            <span className={s.green}>successfully.</span>
+          </>
+        ),
+      },
+    }[props.modalType];
+  }
 
   return (
     <div
