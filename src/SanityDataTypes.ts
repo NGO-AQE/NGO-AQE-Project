@@ -1,28 +1,34 @@
+import { SanityDocument, SanityReference } from '@sanity/client';
+
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+
 export type SanityData = {
-  partnersSection: PartnersSection;
+  [key: string]: object[];
+  language: Language[];
+  partnersSection: PartnersSection[];
 };
 
-// type LanguageReference = SanityReference & {
-//   _type: 'reference';
-//   _ref: string;
-// };
+type LanguageReference = SanityReference & {
+  _type: 'reference';
+  _ref: string;
+};
 
-export type Language = {
+type Language = {
   code: string;
   title: string;
   _id: string;
 };
 
-export interface PartnersSection {
-  _id: string;
-  title: string;
-  partners: Partner[];
-}
-
-interface Partner {
-  _id: string;
-  name: string;
-  image: string;
-}
-
-export type LanguageDependent = Omit<SanityData, 'language'>;
+type PartnersSection = SanityDocument & {
+  titleSet: {
+    language: LanguageReference;
+    title: string;
+  }[];
+  partnersArray: {
+    image: SanityImageSource;
+    descriptionSet: {
+      language: LanguageReference;
+      description: string;
+    }[];
+  }[];
+};
