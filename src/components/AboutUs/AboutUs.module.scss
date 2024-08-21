@@ -1,0 +1,64 @@
+@use '../../styles/mediaQueries.module.scss' as mQ;
+@import '../../styles/colors.scss';
+
+.container {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 343px;
+
+  @include mQ.tablet {
+    max-width: 696px;
+  }
+
+  @include mQ.desktop {
+    flex-direction: column;
+    max-width: 1120px;
+  }
+}
+.info_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 24px;
+  @include mQ.tablet {
+    gap: 32px;
+    margin-top: 32px;
+  }
+
+  @include mQ.desktop {
+    flex-direction: row;
+    gap:0;
+    max-width: 1120px;
+    margin-top: 40px;
+  }
+}
+.card_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap:12px;
+  @include mQ.tablet {
+    gap:32px;
+  }
+
+  @include mQ.desktop {
+    width: 40%;
+    gap:16px;
+  }
+}
+
+.img_container {
+  width: 100%;
+  height: 100%;
+  margin-top: 32px;
+  @include mQ.tablet {
+    margin-top: 48px;
+  }
+}
+.selected_info {
+  color: $primary-color;
+}
