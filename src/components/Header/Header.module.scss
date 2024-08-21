@@ -1,97 +1,112 @@
-@use '../../styles/mediaQueries.module.scss' as *;
-@import '../../styles/colors.scss';
-@import '../../styles/fonts.scss';
+@use '../../styles/mediaQueries.module.scss' as mQ;
+@use '../../styles/colors.scss' as color;
+@use '../../styles/fonts.scss' as font;
 
 .header {
   position: relative;
   width: 100%;
   top: 0;
   z-index: 10;
-  margin-top: 16px;
-  background: $white;
+  padding-top: 16px;
+  background: color.$white;
+
+  @include mQ.tablet {
+    .header {
+      padding-top: 32px;
+    }
+  }
+
+  @include mQ.desktop {
+    .header {
+      margin: 0;
+    }
+  }
 
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 2;
+
+    @include mQ.tablet {
+      height: 67px;
+    }
+
+    @include mQ.desktop {
+      height: 111px;
+    }
   }
+
+  &__img {
+    @include mQ.desktop {
+      margin-right: 50px;
+    }
+  }
+
   &__buttons {
     display: flex;
     gap: 16px;
     flex: none;
+
+    @include mQ.tablet {
+      gap: 32px;
+    }
   }
 
   &__links {
     flex: 1;
   }
+
   &__burger {
     cursor: pointer;
     display: block;
 
-    @include desktop {
+    @include mQ.desktop {
       display: none;
     }
   }
+
   &__button {
     height: 40px;
     padding: 10px 16px;
-    border: 0;
-    border-radius: 12px;
-    background: var(--primary-color, #2c74d3);
-    color: var(--white, #fcfcfc);
-    text-align: center;
     font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+
+    @include mQ.tablet {
+      margin-left: 48px;
+    }
+
+    @include mQ.desktop {
+      margin-left: 50px;
+      font-size: 20px;
+    }
   }
+
   &__menu {
-    padding: 10% 0 20%;
+    padding: 88px 0;
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    min-height: 100vh;
     transform: translateX(100%);
     height: fit-content;
-    background: $white;
+    background: color.$white;
     transition: transform 0.5s ease-in-out;
+    display: none;
+    overflow-y: auto; 
+
+    @include mQ.tablet {
+      padding: 160px 0;
+    }
+
+    @include mQ.desktop {
+      display: none;
+    }
 
     &.active {
       transform: translate(0);
-    }
-
-    @include desktop {
-      display: none;
-    }
-  }
-
-  &__link {
-    color: var(--black, #191919);
-    text-align: center;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    &:hover {
-      border-bottom: 2px solid $black;
-    }
-  }
-}
-
-@include tablet {
-  .header {
-    margin-top: 32px;
-  }
-}
-
-@include desktop {
-  .header {
-    margin: 0;
-
-    &__container {
-      height: 111px;
+      display: block;
     }
   }
 }
