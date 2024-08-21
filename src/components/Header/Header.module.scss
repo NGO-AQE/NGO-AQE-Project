@@ -82,20 +82,22 @@
   }
 
   &__menu {
-    padding: 88px 0 243px;
+    padding: 88px 0;
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    min-height: 100vh;
     transform: translateX(100%);
     height: fit-content;
     background: color.$white;
     transition: transform 0.5s ease-in-out;
     display: none;
+    overflow-y: auto; 
 
     @include mQ.tablet {
-      padding: 160px 0 350px;
+      padding: 160px 0;
     }
 
     @include mQ.desktop {

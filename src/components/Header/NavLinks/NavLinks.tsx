@@ -8,6 +8,12 @@ interface OptionType {
   label: string;
 }
 
+interface NavLinksProps {
+  isMobile?: boolean;
+  className?: string;
+  closeMenu?: () => void;
+}
+
 const languageOptions: OptionType[] = [
   { value: 'en', label: 'English' },
   { value: 'pl', label: 'Polish' },
@@ -72,20 +78,20 @@ const customStyles: StylesConfig<OptionType, false> = {
   }),
 };
 
-interface NavLinksProps {
-  isMobile?: boolean;
-  className?: string;
-}
-
 const NavLinks: FunctionComponent<NavLinksProps> = ({
   isMobile,
   className,
+  closeMenu,
 }) => {
-  // Handle language change
   const handleLanguageChange = (selectedOption: SingleValue<OptionType>) => {
     if (selectedOption) {
       console.log('Selected language:', selectedOption.value);
-      // Implement the language change logic here
+    }
+  };
+
+  const handleLinkClick = () => {
+    if (isMobile && closeMenu) {
+      closeMenu();
     }
   };
 
@@ -96,7 +102,11 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({
       >
         {links.map((link, i) => (
           <li key={i}>
-            <a className={styles.navlink} href={link.to}>
+            <a
+              className={styles.navlink}
+              href={link.to}
+              onClick={handleLinkClick}
+            >
               {link.text}
             </a>
           </li>
@@ -107,7 +117,7 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({
             styles={customStyles}
             placeholder="Select language"
             onChange={handleLanguageChange}
-            defaultValue={languageOptions[0]} // Set default value to English
+            defaultValue={languageOptions[0]}
           />
         </li>
       </ul>

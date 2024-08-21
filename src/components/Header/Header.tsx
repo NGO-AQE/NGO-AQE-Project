@@ -11,19 +11,33 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(prev => !prev);
+    setIsMenuOpen(prev => {
+      if (!prev) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+      return !prev;
+    });
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    document.body.style.overflow = '';
   };
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1440) {
         setIsMenuOpen(false);
+        document.body.style.overflow = '';
       }
     };
     window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      document.body.style.overflow = '';
     };
   }, []);
 
@@ -31,7 +45,7 @@ const Header = () => {
     <header className={`${styles.header} ${isMenuOpen ? styles.active : ''}`}>
       <div className={`${styles.header__container} ${sectionStyles.container}`}>
         <img className={styles.header__img} src={Logo} alt="logo" />
-        <NavLinks />
+        <NavLinks closeMenu={closeMenu} />{' '}
         <div className={styles.header__buttons}>
           <Button className={styles.header__button}>Get info</Button>
           <button onClick={toggleMenu}>
@@ -46,7 +60,7 @@ const Header = () => {
       <div
         className={`${styles.header__menu} ${isMenuOpen ? styles.active : ''}`}
       >
-        <NavLinks isMobile />
+        <NavLinks isMobile closeMenu={closeMenu} />
       </div>
     </header>
   );
