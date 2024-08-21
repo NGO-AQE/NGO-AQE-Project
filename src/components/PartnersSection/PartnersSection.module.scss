@@ -1,10 +1,11 @@
 @use '../../styles/colors.scss' as color;
 @use '../../styles/fonts.scss' as font;
 
-.container {
+
+.slide {
   border-radius: 12px;
-  border: 1px solid #CFCFCF;
   overflow: hidden;
+
 }
 
 .description {
