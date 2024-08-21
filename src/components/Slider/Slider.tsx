@@ -1,13 +1,12 @@
+import { ButtonsPlacment, SliderContext } from './SliderContext';
 import { FC, PropsWithChildren, useCallback } from 'react';
+
+import { ButtonGroup } from './components/ButtonsGroup';
+import { Slide } from './components/Slide';
+import { Slides } from './components/Slides';
+import { align } from './utils';
 import styles from '../../styles/sectionAndContainer.module.scss';
 import useEmblaCarousel from 'embla-carousel-react';
-import { align } from './utils';
-import { ButtonsPlacment, SliderContext } from './SliderContext';
-import { Slide } from './components/Slide';
-import { ButtonGroup } from './components/ButtonsGroup';
-import { Slides } from './components/Slides';
-
-import s from './Slider.module.scss';
 
 interface Props extends PropsWithChildren {
   title: string;
@@ -15,6 +14,7 @@ interface Props extends PropsWithChildren {
   slidesToShow?: number; //number of full slides in view
   slidesOtside?: true; //determines if slides should be outside container taking full width of section
   buttonsPlacment: ButtonsPlacment; //buttons placment in title section or on the slider
+  id?: string;
 }
 
 interface SubComponents {
@@ -28,6 +28,7 @@ export const Slider: FC<Props> & SubComponents = ({
   buttonsPlacment,
   children,
   description,
+  id,
 }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -57,9 +58,9 @@ export const Slider: FC<Props> & SubComponents = ({
 
   return (
     <SliderContext.Provider value={contextValue}>
-      <div className={`${s.slider} ${styles.section}`}>
+      <div id={id} className={`flex flex-col ${styles.section}`}>
         <div className={styles.container}>
-          <div className={s.slider__header}>
+          <div className={styles.slider__header}>
             <h2 className={styles.section__title}>{title}</h2>
             {buttonsPlacment === 'title' && <ButtonGroup />}
           </div>
