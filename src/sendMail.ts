@@ -13,8 +13,9 @@ export default async function sendMail(
       import.meta.env.VITE_EMAILJS_USER_ID,
     );
 
-    console.log('Success:', result);
+    return result;
   } catch (error) {
-    console.error('Error:', error);
+    console.log(error);
+    return error;
   }
 }
