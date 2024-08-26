@@ -19,7 +19,7 @@ const PartnersSection = () => {
       {partnersSection.partners.map(partner => {
         return (
           <Slider.Slide key={partner._id}>
-            <div>
+            <div className={styles.slide}>
               <img src={partner.image} alt={`${partner.name} image`} />
               <p className={styles.description}>{partner.name}</p>
             </div>
