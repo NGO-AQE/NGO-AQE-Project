@@ -3,6 +3,10 @@ import useEmblaCarousel from 'embla-carousel-react';
 import styles from './Gallery.module.scss'; // Adjust path as needed
 import leftArrow from '../../assets/icons/left-arrow.svg';
 import rightArrow from '../../assets/icons/right-arrow.svg';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const pictures = [
   {
@@ -59,8 +63,8 @@ const Gallery = () => {
   }, [emblaApi, updateButtons]);
 
   return (
-    <section className={`section ${styles.container}`}>
-      <div className={styles.gallerySection}>
+    <div className={styles.container}>
+      <section id='gallery' className={`section ${styles.gallerySection}`}>
         <h2 className={styles.gallerySection__title}>Gallery</h2>
         <p className={styles.gallerySection__description}>
           Step into a world where learning comes to life and inspiration knows no bounds. In this vibrant space, we invite you to explore captivating moments captured during our educational camps for teachers.
@@ -93,8 +97,8 @@ const Gallery = () => {
             </button>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

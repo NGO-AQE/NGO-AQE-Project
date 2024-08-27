@@ -25,27 +25,49 @@ function App() {
   useEffect(() => {
     sanity.changeLanguage(window.location.pathname.split('/').slice(-1)[0]);
 
-    // Скролл анімація
     const sections = document.querySelectorAll('.section');
 
-    sections.forEach(section => {
-      gsap.fromTo(section,
+    sections.forEach((section) => {
+      if (section.id === 'trainings') return;
+
+      gsap.fromTo(
+        section,
         { opacity: 0 },
         {
           opacity: 1,
-          
           duration: 1,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: section,
-            start: 'top 100%',
-            end: 'top 0',
+            start: 'top 90%',
+            end: 'bottom 90%',
             scrub: true,
             markers: false,
-          }
+          },
+        }
+      );
+
+      const sectionElements = section.children;
+
+      gsap.fromTo(
+        sectionElements,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 90%',
+            end: 'bottom 80%',
+            scrub: true,
+            markers: false,
+          },
         }
       );
     });
-
   }, [sanity]);
 
   return (

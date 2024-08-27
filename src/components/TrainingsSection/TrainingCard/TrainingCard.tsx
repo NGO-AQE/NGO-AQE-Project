@@ -1,6 +1,11 @@
-import Button from '../../Button/Button';
+import { FC, useRef, useEffect } from 'react';
 import s from './TrainingCard.module.scss';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import Button from '../../Button/Button';
 import DoneIcon from '../../../assets/icons/done.svg';
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Term = {
   location?: string;
@@ -40,7 +45,7 @@ const calculateDuration = (start: string, end: string): string => {
   return `from ${daysDiff} days`;
 };
 
-export const TrainingCard = ({
+export const TrainingCard: FC<Training> = ({
   img,
   mainLocation,
   terms,
@@ -48,6 +53,49 @@ export const TrainingCard = ({
   statusIcon,
   requiredLevel,
 }: Training): JSX.Element => {
+  const infoWrapperRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!infoWrapperRef.current || !cardRef) return;
+
+    const infoChildren = infoWrapperRef.current.children;
+    const card = cardRef.current;
+
+    gsap.fromTo(infoChildren,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.3,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: infoWrapperRef.current,
+          start: 'top 80%',
+          end: 'bottom 80%',
+          scrub: true,
+          markers: false,
+        }
+      }
+    );
+    gsap.fromTo(card,
+      { opacity: 0},
+      {
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: 'top 80%',
+          end: 'bottom 80%',
+          scrub: true,
+          markers: false,
+        }
+      }
+    );
+  }, []);
+
   const statusIconDone = () => {
     if (statusIcon === 'Need') {
       return <img src={DoneIcon} alt="Done" className={s.card__statusIcon} />;
@@ -56,13 +104,13 @@ export const TrainingCard = ({
   };
 
   return (
-    <div className={s.card}>
+    <div className={s.card}  ref={cardRef}>
       <img src={img} alt="img" className={s.card__img} />
       <h1 className={s.card__location}>
         <span className={s['card__location-element']}></span>
         {mainLocation}
       </h1>
-      <div className={s.card__infoWrapper}>
+      <div className={s.card__infoWrapper} ref={infoWrapperRef}>
         <div>
           {terms.map((term, i) => (
             <div key={i} className={s.card__termRow}>
