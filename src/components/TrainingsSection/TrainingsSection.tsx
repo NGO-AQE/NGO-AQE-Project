@@ -91,7 +91,7 @@ export const TrainingsSection = () => {
   ];
 
   return (
-    <section id="trainings" className={s.container}>
+    <section id="trainings" className={`section ${s.container}`}>
       <div className={s.section}>
         <h1 className={s.section__title}>Trainings</h1>
         <p className={s.section__description}>

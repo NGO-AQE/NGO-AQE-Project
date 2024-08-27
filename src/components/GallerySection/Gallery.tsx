@@ -59,7 +59,7 @@ const Gallery = () => {
   }, [emblaApi, updateButtons]);
 
   return (
-    <section className={styles.container}>
+    <section className={`section ${styles.container}`}>
       <div className={styles.gallerySection}>
         <h2 className={styles.gallerySection__title}>Gallery</h2>
         <p className={styles.gallerySection__description}>

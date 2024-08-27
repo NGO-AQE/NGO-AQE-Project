@@ -30,7 +30,7 @@ const WhyAQE = () => {
     },
   ];
   return (
-    <section className={styles.container}>
+    <section id='whyAQE' className={`section ${styles.container}`}>
       <div className={styles.whySection}>
         <p className={styles.whySection__title}>Why AQE?</p>
         <div className={styles.whySection__container}>

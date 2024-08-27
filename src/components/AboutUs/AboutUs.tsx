@@ -15,7 +15,8 @@ const data = [
 
 const AboutUs = () => {
   return (
-    <div className={styles.section}>
+    
+    <section id="aboutUs" className={`section ${styles.section}`}>
       <div className={styles.container}>
         <h2 className={styles.section__title}>About Us</h2>
         <div className={s.container}>
@@ -33,7 +34,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 export default AboutUs;

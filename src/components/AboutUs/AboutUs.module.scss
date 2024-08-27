@@ -1,6 +1,9 @@
 @use '../../styles/mediaQueries.module.scss' as mQ;
 @import '../../styles/colors.scss';
 
+#aboutUs {
+  background-color: white;
+}
 .container {
   display: flex;
   flex-direction: column-reverse;
