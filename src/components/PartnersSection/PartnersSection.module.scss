@@ -1,8 +1,20 @@
 @use '../../styles/colors.scss' as color;
 @use '../../styles/fonts.scss' as font;
 
-.description {
-  padding-top: 10px;
-  @include font.body-text;
-  text-align: center;
+.sliderContainer {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  
+  .slide {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .description {
+    padding: 10px 0 10px;
+    @include font.accented-text;
+    text-align: center;
+  }
 }

@@ -1,0 +1,15 @@
+@use '../../styles/mediaQueries.module.scss' as *;
+@import '../../styles/colors.scss';
+@import '../../styles/fonts.scss';
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f7f7;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
