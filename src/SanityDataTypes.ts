@@ -25,4 +25,17 @@ interface Partner {
   image: string;
 }
 
+export interface WhyAQESection {
+  _id: string;
+  title: string;
+  cards: WhyAQECard[];
+}
+
+interface WhyAQECard {
+  _id: string;
+  image: string;
+  subtitle: string;
+  text: string;
+}
+
 export type LanguageDependent = Omit<SanityData, 'language'>;

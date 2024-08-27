@@ -1,10 +1,11 @@
 import React, { createContext, useEffect, useState } from 'react';
 
-import { Language, PartnersSection } from './SanityDataTypes';
-import { fetchLanguages, fetchPartnersSection } from './utils/sanityFetch';
+import { Language, PartnersSection, WhyAQESection } from './SanityDataTypes';
+import { fetchLanguages, fetchPartnersSection, fetchWhyAQESection } from './utils/sanityFetch';
 
 export interface SanityContextType {
   partnersSection: PartnersSection | null;
+  whyAQESection: WhyAQESection | null;
   languages: Language[] | null;
   loading: boolean;
   error: Error | null;
@@ -25,6 +26,8 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [languages, setLanguages] = useState<Language[] | null>([]);
   const [partnersSection, setPartnersSection] =
     useState<PartnersSection | null>(null);
+  const [whyAQESection, setWhyAQESection] =
+    useState<WhyAQESection | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -64,6 +67,9 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
       fetchPartnersSection(selectedLanguage).then(data =>
         setPartnersSection(data),
       ),
+      fetchWhyAQESection(selectedLanguage).then(data =>
+        setWhyAQESection(data)
+      ),
     ])
       .catch(err => {
         console.error('Error fetching data:', err);
@@ -78,6 +84,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         selectedLanguage,
         changeLanguage,
         partnersSection,
+        whyAQESection,
         languages,
         loading,
         error,
