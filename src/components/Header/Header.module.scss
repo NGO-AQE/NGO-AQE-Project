@@ -94,7 +94,7 @@
     background: color.$white;
     transition: transform 0.5s ease-in-out;
     display: none;
-    overflow-y: auto; 
+    overflow-y: auto;
 
     @include mQ.tablet {
       padding: 160px 0;

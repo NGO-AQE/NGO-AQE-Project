@@ -86,7 +86,7 @@
     text-align: left;
 
     @include mQ.tablet {
-      @include font.h5-font
+      @include font.h5-font;
     }
   }
 
