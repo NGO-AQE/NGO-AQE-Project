@@ -1,18 +1,18 @@
 import './App.scss';
 
+import AboutUs from './components/AboutUs/AboutUs';
 import { BasicCard } from './components/Slider/SliderExample';
 import { ContactUs } from './components/ContactUs/ContactUs';
 import { FaqSection } from './components/FaqSection/FaqSection.tsx';
 import Footer from './components/Footer/Footer.tsx';
 import Form from './components/Form/Form.tsx';
+import Gallery from './components/GallerySection/Gallery';
 import Header from './components/Header/Header';
 import { HomePage } from './components/HomePage/HomePage';
 import PartnersSection from './components/PartnersSection/PartnersSection';
 import { Slider } from './components/Slider';
 import TrainingsSection from './components/TrainingsSection/TrainingsSection';
 import WhyAQE from './components/WhyAQE/WhyAQE';
-import Gallery from './components/GallerySection/Gallery';
-import AboutUs from './components/AboutUs/AboutUs';
 import { useEffect } from 'react';
 import { useSanity } from './hooks/useSanity';
 
