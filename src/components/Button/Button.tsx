@@ -12,7 +12,6 @@ interface ButtonProps {
   speed?: number;
   tollerance?: number;
   scale?: number;
-  debug?: boolean;
   borderRadius?: number | string;
 }
 
@@ -26,7 +25,6 @@ const Button: React.FC<ButtonProps> = ({
   speed = 1,
   tollerance = 0.8,
   scale = 1.05,
-  debug = false,
   borderRadius = 10,
 }) => {
   const $root = useRef<HTMLButtonElement>(null);

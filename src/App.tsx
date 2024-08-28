@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import './App.scss';
 import AboutUs from './components/AboutUs/AboutUs';
 import { BasicCard } from './components/Slider/SliderExample';
