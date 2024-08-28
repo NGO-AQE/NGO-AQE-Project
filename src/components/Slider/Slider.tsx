@@ -5,7 +5,6 @@ import { ButtonGroup } from './components/ButtonsGroup';
 import { Slide } from './components/Slide';
 import { Slides } from './components/Slides';
 import { align } from './utils';
-import styles from '../../styles/sectionAndContainer.module.scss';
 import useEmblaCarousel from 'embla-carousel-react';
 
 interface Props extends PropsWithChildren {
@@ -58,15 +57,13 @@ export const Slider: FC<Props> & SubComponents = ({
 
   return (
     <SliderContext.Provider value={contextValue}>
-      <div id={id} className={`flex flex-col ${styles.section}`}>
-        <div className={styles.container}>
-          <div className={styles.slider__header}>
-            <h2 className={styles.section__title}>{title}</h2>
+      <div id={id} className={`flex flex-col section`}>
+        <div className="container">
+          <div className="slider__header">
+            <h2 className="section__title">{title}</h2>
             {buttonsPlacment === 'title' && <ButtonGroup />}
           </div>
-          {description && (
-            <p className={styles.section__description}>{description}</p>
-          )}
+          {description && <p className="section__description">{description}</p>}
           {!slidesOtside && <Slides>{children}</Slides>}
         </div>
         {slidesOtside && <Slides>{children}</Slides>}

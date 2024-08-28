@@ -1,6 +1,5 @@
 import React from 'react';
 import mateIcon from '../../assets/icons/maLogo.png';
-import sectionStyles from '../../styles/sectionAndContainer.module.scss';
 import styles from './Footer.module.scss';
 
 const links = [
@@ -17,7 +16,7 @@ const links = [
 const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
-      <div className={`${styles.container} ${sectionStyles.container}`}>
+      <div className={`${styles.container} container`}>
         {links.map(link => (
           <a key={link.text} className={styles.link} href={link.to}>
             {link.text}

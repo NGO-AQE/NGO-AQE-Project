@@ -5,7 +5,6 @@ import chartIcon from '../../assets/icons/mingcute_chart-bar-2-line.svg';
 import lightbulbIcon from '../../assets/icons/mingcute_light-line.svg';
 import WhyAQESS from './WhyAQESubSection';
 
-import '../../styles/sectionAndContainer.module.scss';
 const WhyAQE = () => {
   const subsections = [
     {

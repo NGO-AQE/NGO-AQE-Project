@@ -22,7 +22,7 @@ html {
   }
 
   &__title {
-    @include f.big-text;
+    @include f.accented-text;
     color: color.$black;
 
     @include mQ.tablet {
@@ -31,7 +31,7 @@ html {
   }
 
   &__subtitle {
-    @include f.accented-text;
+    @include f.body-text;
     color: color.$black;
 
     @include mQ.tablet {

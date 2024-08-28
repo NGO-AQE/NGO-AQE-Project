@@ -1,6 +1,5 @@
 import faqArrow from '../../assets/icons/faqArrow.svg';
 import s from './FaqSection.module.scss';
-import section from '../../styles/sectionAndContainer.module.scss';
 
 import { useState } from 'react';
 
@@ -43,11 +42,8 @@ export const FaqSection = () => {
   };
 
   return (
-    <section
-      id="faq"
-      className={`${section.section} ${section.container} ${s.section}`}
-    >
-      <h2 className={`${section.section__title} ${s.title}`}>{data.title}</h2>
+    <section id="faq" className={`section container ${s.section}`}>
+      <h2 className={`section__title ${s.title}`}>{data.title}</h2>
       <div className={s.faq}>
         {data.faq.map((qa, i) => (
           <QASet key={i} {...qa} />
