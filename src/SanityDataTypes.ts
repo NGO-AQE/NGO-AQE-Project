@@ -1,5 +1,6 @@
 export type SanityData = {
   partnersSection: PartnersSection;
+  contactUs: ContactUs | null;
 };
 
 // type LanguageReference = SanityReference & {
@@ -24,5 +25,14 @@ interface Partner {
   name: string;
   image: string;
 }
+
+export type ContactUs = {
+  title: string;
+  email: string;
+  officeHours: string;
+  address: string;
+  mapLink: string;
+  phoneNumber: string;
+};
 
 export type LanguageDependent = Omit<SanityData, 'language'>;

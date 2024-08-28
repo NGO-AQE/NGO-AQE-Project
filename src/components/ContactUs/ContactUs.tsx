@@ -1,6 +1,13 @@
+import { useSanity } from '../../hooks/useSanity';
 import s from './ContactUs.module.scss';
 
 export const ContactUs = () => {
+  const { contactUs } = useSanity();
+
+  if (!contactUs) {
+    return <div>No avaliable.</div>;
+  }
+
   return (
     <section className={s.container}>
       <div className={s.contact}>
