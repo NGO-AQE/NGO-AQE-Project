@@ -12,7 +12,7 @@ export interface SanityContextType {
   languages: Language[] | null;
   loading: boolean;
   error: Error | null;
-  selectedLanguage: string | null;
+  selectedLanguage: string;
   changeLanguage: (newLang: string) => void;
 }
 
@@ -27,7 +27,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [selectedLanguage, setSelectedLanguage] =
     useState<string>(defaultLanguageCode);
-  const [languages, setLanguages] = useState<Language[] | null>(null); // Użyj null zamiast pustej tablicy
+  const [languages, setLanguages] = useState<Language[] | null>(null);
   const [partnersSection, setPartnersSection] =
     useState<PartnersSection | null>(null);
   const [contactUs, setContactUs] = useState<ContactUs | null>(null);
@@ -38,10 +38,10 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
     if (!loading && languages) {
       const langCodes = languages.map(l => l.code);
       if (langCodes.includes(newLangCode)) {
-        window.history.replaceState({}, '', newLangCode);
+        window.history.replaceState({}, '', `/${newLangCode}`);
         setSelectedLanguage(newLangCode);
       } else {
-        window.history.replaceState({}, '', defaultLanguageCode);
+        window.history.replaceState({}, '', `/${defaultLanguageCode}`);
         setSelectedLanguage(defaultLanguageCode);
       }
     }
@@ -62,6 +62,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
     if (!languages) return;
 
     setLoading(true);
+
     Promise.all([
       fetchPartnersSection(selectedLanguage).then(data =>
         setPartnersSection(data),

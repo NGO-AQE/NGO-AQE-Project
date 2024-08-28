@@ -34,6 +34,5 @@ export async function fetchContactUs(language: string): Promise<ContactUs> {
     mapLink,
     phoneNumber
   }`;
-  const result = await client.fetch(query, { language });
-  return result;
+  return client.fetch(query, { language });
 }
