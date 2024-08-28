@@ -1,5 +1,6 @@
 import faqArrow from '../../assets/icons/faqArrow.svg';
 import s from './FaqSection.module.scss';
+
 import { useState } from 'react';
 
 export const FaqSection = () => {
@@ -41,20 +42,20 @@ export const FaqSection = () => {
   };
 
   return (
-    <section id="faq" className={'section container ' + s.section}>
-      <header className={'section__title ' + s.title}>{data.title}</header>
+    <section id="faq" className={`section container ${s.section}`}>
+      <h2 className={`section__title ${s.title}`}>{data.title}</h2>
       <div className={s.faq}>
         {data.faq.map((qa, i) => (
           <QASet key={i} {...qa} />
         ))}
       </div>
 
-      <footer className={s.footer}>
+      <div className={s.footer}>
         <span className={s.footerText}>{data.footerText + ' '}</span>
         <a className={s.footerLink} href="">
           {data.footerLink}
         </a>
-      </footer>
+      </div>
     </section>
   );
 };

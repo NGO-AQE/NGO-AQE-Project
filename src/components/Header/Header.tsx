@@ -4,7 +4,6 @@ import Burger from '../../assets/icons/burger-icon.svg';
 import BurgerClosed from '../../assets/icons/burger-icon-closed.svg';
 import NavLinks from './NavLinks/NavLinks';
 import Button from '../Button/Button';
-import sectionStyles from '../../styles/sectionAndContainer.module.scss';
 import styles from './Header.module.scss';
 
 const Header = () => {
@@ -43,7 +42,7 @@ const Header = () => {
 
   return (
     <header className={`${styles.header} ${isMenuOpen ? styles.active : ''}`}>
-      <div className={`${styles.header__container} ${sectionStyles.container}`}>
+      <div className={`${styles.header__container} container`}>
         <img className={styles.header__img} src={Logo} alt="logo" />
         <NavLinks closeMenu={closeMenu} />{' '}
         <div className={styles.header__buttons}>

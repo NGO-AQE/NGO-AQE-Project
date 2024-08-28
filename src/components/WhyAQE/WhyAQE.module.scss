@@ -82,8 +82,12 @@
   }
 
   &__subtitle {
-    @include font.h5-font;
+    @include font.body-text;
     text-align: left;
+
+    @include mQ.tablet {
+      @include font.h5-font;
+    }
   }
 
   &__img {
