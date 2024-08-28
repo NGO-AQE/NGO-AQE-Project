@@ -25,6 +25,7 @@
       .question {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         gap: 16px;
 
         .text {
@@ -32,37 +33,17 @@
         }
 
         .icon {
-          transition:
-            rotate 0.3s cubic-bezier(0.075, 0.82, 0.165, 1.5) 0.3s,
-            opacity 0.2s;
           width: 24px;
           height: 32px;
-        }
-
-        .icon.open {
-          rotate: 90deg;
-          opacity: 0.5;
-          transition: rotate 0.1s;
         }
       }
 
       .answer {
         @include font.description-text;
         opacity: 0;
-        transition:
-          max-height 0.5s,
-          opacity 0.2s,
-          padding 0.5s;
         padding: 0;
-        max-height: 0;
         overflow: hidden;
         color: #6c6c6c;
-      }
-
-      .answer.open {
-        opacity: 1;
-        padding-top: 16px;
-        max-height: 1000px;
       }
     }
   }

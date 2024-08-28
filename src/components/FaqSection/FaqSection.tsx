@@ -1,7 +1,7 @@
-import { FC, useState, useRef, useEffect } from 'react';
+import { FC, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import faqArrow from '../../assets/icons/faqArrow.svg';
+import { QASet } from './QASet';
 import s from './FaqSection.module.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,8 +11,7 @@ export const FaqSection: FC = () => {
     title: 'Frequently asked questions',
     faq: [
       {
-        question:
-          'Can I access the community forum on my mobile device, or is it only available on desktop computers?',
+        question: 'Can I access the community forum on my mobile device, or is it only available on desktop computers?',
         answer: 'Yes, sure. Our platform is available on mobile devices.',
       },
       {
@@ -21,12 +20,10 @@ export const FaqSection: FC = () => {
       },
       {
         question: 'Can I create new discussion threads or topics in the forum?',
-        answer:
-          'Any user can start discussions on new topics, within the community guideline rules.',
+        answer: 'Any user can start discussions on new topics, within the community guideline rules.',
       },
       {
-        question:
-          'Are there moderators who oversee forum activity and enforce community guidelines?',
+        question: 'Are there moderators who oversee forum activity and enforce community guidelines?',
         answer: 'Of course, we keep up a safe environment for our users.',
       },
       {
@@ -34,10 +31,8 @@ export const FaqSection: FC = () => {
         answer: 'No, every message is available for all to see.',
       },
       {
-        question:
-          'Can I receive notifications for replies or updates to discussions I`m involved in?',
-        answer:
-          'Yes, you can receive notifications through email, or our mobile app.',
+        question: 'Can I receive notifications for replies or updates to discussions I`m involved in?',
+        answer: 'Yes, you can receive notifications through email, or our mobile app.',
       },
     ],
     footerText: 'Didn`t find the answer?',
@@ -89,26 +84,5 @@ export const FaqSection: FC = () => {
         </a>
       </footer>
     </section>
-  );
-};
-
-const QASet = ({ question, answer }: { question: string; answer: string }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div onClick={() => setIsOpen((prev) => !prev)} className={s.card}>
-      <div className={s.question}>
-        <span className={s.text}>{question}</span>
-        <img
-          className={`${s.icon} ${isOpen ? s.open : s.closed}`}
-          src={faqArrow}
-          alt="arrow"
-        />
-      </div>
-
-      <div className={`${s.answer} ${isOpen ? s.open : s.closed}`}>
-        {answer}
-      </div>
-    </div>
   );
 };
