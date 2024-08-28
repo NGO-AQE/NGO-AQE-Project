@@ -62,6 +62,7 @@ export const FaqSection: FC = () => {
             end: 'bottom 20%',
             scrub: true,
             markers: false,
+            once:true,
           },
         }
       );
