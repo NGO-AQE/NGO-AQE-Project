@@ -12,6 +12,7 @@
   margin: 0 auto;
   max-width: 343px;
   padding: 48px 0 24px 0;
+  overflow: hidden;
 
   @include mQ.tablet {
     max-width: 696px;
