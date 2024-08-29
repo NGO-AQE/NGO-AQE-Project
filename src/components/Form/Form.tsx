@@ -5,6 +5,7 @@ import Modal from '../Modal/Modal';
 import sendMail from '../../sendMail';
 import styles from './Form.module.scss';
 import { useForm } from 'react-hook-form';
+import classNames from 'classnames';
 
 type FormData = {
   fullName: string;
@@ -20,6 +21,10 @@ const Form: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({ criteriaMode: 'all' });
+
+  const watchFullName = watch('fullName');
+  const watchEmail = watch('email');
+  const watchCountry = watch('country');
 
   const onSubmit = async ({ country, email, fullName }: FormData) => {
     const res = (await sendMail(email, fullName, country)) as {
@@ -45,38 +50,58 @@ const Form: React.FC = () => {
         email={watch('email')}
         isOpen={modalType !== 'closed'}
       />
-      <section id="form" className={`section ${styles.section}`}>
-        <h6 className={`section__title ${styles.section__title}`}>
-          Get more in our info package
-        </h6>
-        <p className={`section__description ${styles.section__description}`}>
-          Fill the form and we`ll send you a file with actual information
-        </p>
+
+      <section id="form" className={`section--form`}>
+        <div className={styles.form__title}>
+          <p className={`section__title--form`}>Get more in our info package</p>
+        </div>
+        <div className={styles.form__description}>
+          <p className={`section__description--form`}>
+            Fill the form and we`ll send you a file with actual information
+          </p>
+        </div>
 
         <form
-          className={`container ${styles.container}`}
+          className={`container ${styles.form}`}
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className={styles.section__field}>
-            <label className={styles.section__subtitle} htmlFor="fullName*">
+          <div className={styles.form__labelAndInput}>
+            <label className={`section__subtitle--form`} htmlFor="fullName*">
               Full Name*
             </label>
             <input
-              className={styles.section__input}
-              {...register('fullName', { required: true })}
+              id="fullName"
+              style={{
+                borderColor: watchFullName
+                  ? 'form__input--active'
+                  : 'form__input--default',
+              }}
+              className={classNames(styles.form__input, {
+                [styles['form__input--active']]: watchFullName,
+                [styles['form__input--default']]: !watchFullName,
+                [styles['form__input--error']]: errors.fullName,
+              })}
+              {...register('fullName', { required: 'This field is required' })}
               placeholder="John Doe"
             />
-            {errors.fullName && (
-              <span className={styles.section__errorMessage}>Error name</span>
-            )}
+            <div
+              className={`${styles.form__errorMessage} ${errors.fullName ? styles.visible : ''}`}
+            >
+              {errors.fullName?.message}
+            </div>
           </div>
 
-          <div className={styles.section__field}>
-            <label className={styles.section__subtitle} htmlFor="email*">
+          <div className={styles.form__labelAndInput}>
+            <label className={`section__subtitle--form`} htmlFor="email*">
               Email*
             </label>
             <input
-              className={styles.section__input}
+              id="email"
+              className={classNames(styles.form__input, {
+                [styles['form__input__active']]: watchEmail,
+                [styles['form__input--default']]: !watchEmail,
+                [styles['form__input__error']]: errors.email,
+              })}
               {...register('email', {
                 required: 'This field is required',
                 pattern: {
@@ -85,36 +110,46 @@ const Form: React.FC = () => {
                 },
               })}
               placeholder="aqe@email.com"
+              style={{
+                borderColor: watchEmail
+                  ? 'color.$primary-color'
+                  : 'color.$gray-light',
+              }}
             />
-            {errors.email && (
-              <span className={styles.section__errorMessage}>
-                {errors.email.message}
-              </span>
-            )}
+            <div
+              className={`${styles.form__errorMessage} ${errors.email ? styles.visible : ''}`}
+            >
+              {errors.email?.message}
+            </div>
           </div>
 
-          <div className={styles.section__field}>
-            <label className={styles.section__subtitle} htmlFor="country">
+          <div className={styles.form__labelAndInput}>
+            <label className={`section__subtitle--form`} htmlFor="country">
               Country
             </label>
             <input
-              className={styles.section__input}
+              className={styles.form__input}
               {...register('country')}
               placeholder="Poland"
+              style={{
+                borderColor: watchCountry
+                  ? 'color.$primary-color'
+                  : 'color.$gray-light',
+              }}
             />
           </div>
 
-          <div className={styles.section__agreement}>
-            <label className={styles.section__subtitle} htmlFor="agree">
-              <input {...register('agree')} type="checkbox" />
-              <span className={styles.section__agree}>
-                I agree to receive information about the further courses from
-                AQE.
-              </span>
+          <div>
+            <label
+              className={`section__subtitle--form ${styles.form__agreement}`}
+              htmlFor="agree"
+            >
+              <input {...register('agree')} type="checkbox" />I agree to receive
+              information about the further courses from AQE.
             </label>
           </div>
 
-          <Button className={styles.section__button} type="submit">
+          <Button className={styles.form__button} type="submit">
             Get info package
           </Button>
         </form>
