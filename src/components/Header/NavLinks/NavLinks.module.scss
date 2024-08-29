@@ -1,77 +1,40 @@
-@use '../../../styles/mediaQueries.module.scss' as *;
-@import '../../../styles/colors.scss';
-@import '../../../styles/fonts.scss';
+@use '../../../styles/mediaQueries.module.scss' as mQ;
+@use '../../../styles/colors.scss' as color;
+@use '../../../styles/fonts.scss' as font;
 
 .container {
-  width: 75%;
+  width: 100%;
 }
 
 .navlinks {
   display: none;
   list-style: none;
 
+  @include mQ.desktop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   &--mobile {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 16px;
     align-items: center;
-    @include description-text;
+    gap: 16px;
+
+    @include font.description-text;
     font-size: 18px;
 
-    @include tablet {
+    @include mQ.tablet {
       gap: 32px;
+      @include font.big-body-text;
     }
   }
 
   .navlink {
-    @include description-text;
     &:hover {
       border-bottom: 2px solid var(--black, #191919);
     }
-  }
-
-  .navlink__customSelect {
-    .react-select__control {
-      font-size: 16px;
-      padding: 5px;
-      border-color: #ddd;
-
-      &:hover {
-        border-color: var(--black, #191919);
-      }
-
-      &--is-focused {
-        border-color: var(--primary-color, #007bff);
-        box-shadow: 0 0 0 1px var(--primary-color, #007bff);
-      }
-    }
-
-    .react-select__menu {
-      z-index: 9999;
-    }
-
-    .react-select__option {
-      background-color: #fff;
-      color: #333;
-      border-radius: 0px 0px 15px 15px;
-
-      &:hover {
-        background-color: #e0e0e0;
-      }
-
-      &--is-selected {
-        background-color: var(--primary-color, #007bff);
-        color: #fff;
-      }
-    }
-  }
-}
-
-@include desktop {
-  .navlinks {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
 }
