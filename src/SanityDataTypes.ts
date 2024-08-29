@@ -26,13 +26,19 @@ interface Partner {
   image: string;
 }
 
-export type ContactUs = {
+export interface ContactUs {
   title: string;
   email: string;
   officeHours: string;
   address: string;
   mapLink: string;
   phoneNumber: string;
-};
+  translations: {
+    emailLabel: string;
+    officeHoursLabel: string;
+    addressLabel: string;
+    phoneNumberLabel: string;
+  };
+}
 
 export type LanguageDependent = Omit<SanityData, 'language'>;

@@ -1,54 +1,77 @@
+import React from 'react';
 import { useSanity } from '../../hooks/useSanity';
 import s from './ContactUs.module.scss';
 
-export const ContactUs = () => {
+interface ContactUsProps {
+  language: string;
+}
+
+export const ContactUs: React.FC<ContactUsProps> = () => {
   const { contactUs } = useSanity();
 
   if (!contactUs) {
-    return <div>No avaliable.</div>;
+    return <div>Dane kontaktowe nie są dostępne.</div>;
   }
+
+  const {
+    title,
+    email,
+    officeHours,
+    address,
+    mapLink,
+    phoneNumber,
+    translations,
+  } = contactUs;
 
   return (
     <section className={s.container}>
       <div className={s.contact}>
-        <h1 className={s.contact__title}>{contactUs.title}</h1>
+        <h1 className={s.contact__title}>{title}</h1>
         <address className={s.contact__address}>
           <div>
-            <h4 className={s.contact__label}>Email</h4>
+            <h4 className={s.contact__label}>{translations.emailLabel}</h4>
             <a
-              href={`mailto:${contactUs.email}`}
+              href={`mailto:${email}`}
               type="email"
               className={s.contact__description}
             >
-              {contactUs.email}
+              {email}
             </a>
           </div>
           <div className={s.contact__officeDesktop}>
-            <h4 className={s.contact__label}>Office Hours</h4>
-            <p className={s.contact__description}>{contactUs.officeHours}</p>
+            <h4 className={s.contact__label}>
+              {translations.officeHoursLabel}
+            </h4>
+            <p className={s.contact__description}>{officeHours}</p>
           </div>
           <div>
-            <h4 className={s.contact__label}>Address</h4>
+            <h4 className={s.contact__label}>{translations.addressLabel}</h4>
             <a
-              href={contactUs.mapLink}
+              href={mapLink}
               type="address"
               className={s.contact__description}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {contactUs.address}
+              {address}
             </a>
           </div>
           <div className={s.contact__officeMobile}>
-            <h4 className={s.contact__label}>Office Hours</h4>
-            <p className={s.contact__description}>{contactUs.officeHours}</p>
+            <h4 className={s.contact__label}>
+              {translations.officeHoursLabel}
+            </h4>
+            <p className={s.contact__description}>{officeHours}</p>
           </div>
           <div>
-            <h4 className={s.contact__label}>Phone Number</h4>
+            <h4 className={s.contact__label}>
+              {translations.phoneNumberLabel}
+            </h4>
             <a
-              href={`tel:${contactUs.phoneNumber}`}
+              href={`tel:${phoneNumber}`}
               type="tel"
               className={s.contact__description}
             >
-              {contactUs.phoneNumber}
+              {phoneNumber}
             </a>
           </div>
         </address>

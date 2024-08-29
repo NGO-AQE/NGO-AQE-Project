@@ -24,15 +24,8 @@ export function fetchLanguages(): Promise<Language[]> {
 `);
 }
 
-export async function fetchContactUs(language: string): Promise<ContactUs> {
-  const query = `*[_type == "contactUs" && language == $language][0]{
-    _id,
-    title,
-    email,
-    officeHours,
-    address,
-    mapLink,
-    phoneNumber
-  }`;
-  return client.fetch(query, { language });
-}
+export const fetchContactUs = async (lang: string): Promise<ContactUs> => {
+  return client.fetch('*[_type == "contactUs" && language == $lang][0]', {
+    lang,
+  });
+};
