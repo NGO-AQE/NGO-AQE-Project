@@ -110,7 +110,6 @@
 @use '../../styles/colors' as color;
 @use '../../styles/mediaQueries.module' as mQ;
 
-
 :root {
   --primary-color: color.$primary-color;
   --gray-light: color.$gray-light;
@@ -245,4 +244,3 @@
     visibility: visible;
   }
 }
-
