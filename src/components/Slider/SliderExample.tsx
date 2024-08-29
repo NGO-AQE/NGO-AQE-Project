@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Slider } from './Slider';
+import styles from './BasicCard.module.scss';
 
 interface BasicCardProps {
   width?: number;
@@ -8,12 +9,12 @@ interface BasicCardProps {
 }
 
 export const BasicCard: FC<BasicCardProps> = ({ width, index, withText }) => (
-  <div className="flex flex-col" style={{ width }}>
+  <div className={`${styles.basicCard}`} style={{ width }}>
     <img
       src={`https://placehold.co/${width || 160}x${width || 160}.png`}
       className="flex-none"
     />
-    <div>
+    <div className="p-5">
       <h1 className="text-xl">{`Slide: ${index}`}</h1>
       {withText && (
         <p className="text-base">

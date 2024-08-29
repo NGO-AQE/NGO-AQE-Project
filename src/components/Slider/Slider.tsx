@@ -60,16 +60,12 @@ export const Slider: FC<Props> & SubComponents = ({
     <SliderContext.Provider value={contextValue}>
       <div id={id} className={`flex flex-col ${styles.section}`}>
         <div className={styles.container}>
-          <div className="flex items-center md:justify-between">
+          <div className={styles.slider__header}>
             <h2 className={styles.section__title}>{title}</h2>
             {buttonsPlacment === 'title' && <ButtonGroup />}
           </div>
           {description && (
-            <p
-              className={`${styles.section__description} text-left mt-4 md:mt-8`}
-            >
-              {description}
-            </p>
+            <p className={styles.section__description}>{description}</p>
           )}
           {!slidesOtside && <Slides>{children}</Slides>}
         </div>

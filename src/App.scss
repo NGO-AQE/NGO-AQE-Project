@@ -21,12 +21,27 @@ html {
     padding-bottom: 72px;
   }
 
+  &--form {
+    background-color: color.$black;
+    padding: 48px 0;
+  }
+
   &__title {
     @include f.big-text;
     color: color.$black;
 
     @include mQ.tablet {
       @include f.h2-font;
+    }
+
+    &--form {
+      @include f.big-body-text;
+      color: color.$background-color;
+      text-align: center;
+
+      @include mQ.tablet {
+        @include f.h2-font;
+      }
     }
   }
 
@@ -37,11 +52,21 @@ html {
     @include mQ.tablet {
       @include f.h5-font;
     }
+
+    &--form {
+      color: color.$white;
+      text-align: left;
+    }
   }
 
   &__description {
     @include f.description-text;
     color: color.$gray-dark;
+
+    &--form {
+      text-align: center;
+      color: color.$border-color;
+    }
   }
 }
 
