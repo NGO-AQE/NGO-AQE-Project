@@ -24,12 +24,11 @@ export function fetchWhyAQESection(
   cards[] -> {
     _id,
     "image": image.asset->url,
-    "subtitle": name[_key == "${language}"][0].value,
-    "text": name[_key == "${language}"][0].value
+    "subtitle": subtitle[_key == "${language}"][0].value,
+    "text": text[_key == "${language}"][0].value 
   }
 }`);
 }
-
 export function fetchLanguages(): Promise<Language[]> {
   return client.fetch(`*[_type == "language"] {
   _id,
