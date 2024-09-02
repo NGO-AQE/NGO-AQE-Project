@@ -1,20 +1,15 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { ContactUs, Language, PartnersSection, WhyAQESection } from './SanityDataTypes';
-import {
-  fetchContactUs,
-  fetchLanguages,
-  fetchPartnersSection,
-  fetchWhyAQESection,
-} from './utils/sanityFetch';
+
+import { Language, PartnersSection, WhyAQESection } from './SanityDataTypes';
+import { fetchLanguages, fetchPartnersSection, fetchWhyAQESection } from './utils/sanityFetch';
 
 export interface SanityContextType {
-  contactUs: ContactUs | null;
   partnersSection: PartnersSection | null;
   whyAQESection: WhyAQESection | null;
   languages: Language[] | null;
   loading: boolean;
   error: Error | null;
-  selectedLanguage: string;
+  selectedLanguage: string | null;
   changeLanguage: (newLang: string) => void;
 }
 
@@ -27,43 +22,44 @@ const defaultLanguageCode = 'en';
 const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [selectedLanguage, setSelectedLanguage] =
-    useState<string>(defaultLanguageCode);
-  const [languages, setLanguages] = useState<Language[] | null>(null);
+  const [selectedLanguage, setSelectedLanguage] = useState(defaultLanguageCode);
+  const [languages, setLanguages] = useState<Language[] | null>([]);
   const [partnersSection, setPartnersSection] =
     useState<PartnersSection | null>(null);
-  const [contactUs, setContactUs] = useState<ContactUs | null>(null);
   const [whyAQESection, setWhyAQESection] =
     useState<WhyAQESection | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
   const changeLanguage = (newLangCode: string) => {
-    if (!loading && languages) {
-      const langCodes = languages.map(l => l.code);
-      if (langCodes.includes(newLangCode)) {
-        window.history.replaceState({}, '', `/${newLangCode}`);
+    if (!loading) {
+      const langs = languages;
+      const langCodes = langs?.map(l => l.code);
+
+      if (langCodes?.includes(newLangCode) && langs) {
+        window.history.replaceState({}, '', newLangCode);
         setSelectedLanguage(newLangCode);
       } else {
-        window.history.replaceState({}, '', `/${defaultLanguageCode}`);
+        window.history.replaceState({}, '', 'en');
         setSelectedLanguage(defaultLanguageCode);
       }
     }
   };
 
   useEffect(() => {
-    setLoading(true);
     fetchLanguages()
       .then(data => setLanguages(data))
       .catch(err => {
-        console.error('Error fetching languages:', err);
+        console.error('Error fetching data:', err);
         setError(err as Error);
       })
       .finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
-    if (!languages) return;
+    if (!languages) {
+      return;
+    }
 
     setLoading(true);
 
@@ -71,7 +67,6 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
       fetchPartnersSection(selectedLanguage).then(data =>
         setPartnersSection(data),
       ),
-      fetchContactUs(selectedLanguage).then(data => setContactUs(data)),
       fetchWhyAQESection(selectedLanguage).then(data =>
         setWhyAQESection(data)
       ),
@@ -81,7 +76,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         setError(err as Error);
       })
       .finally(() => setLoading(false));
-  }, [languages, selectedLanguage]);
+  }, [languages, selectedLanguage]); //add language if we should refetch data after it changes
 
   return (
     <SanityContext.Provider
@@ -89,7 +84,6 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         selectedLanguage,
         changeLanguage,
         partnersSection,
-        contactUs,
         whyAQESection,
         languages,
         loading,
