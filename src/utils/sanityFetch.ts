@@ -1,5 +1,5 @@
 import { client } from '../SanityClient';
-import { ContactUs, Language, PartnersSection } from '../SanityDataTypes';
+import { ContactUs, HomeSection, Language, PartnersSection } from '../SanityDataTypes';
 
 export function fetchPartnersSection(
   language: string,
@@ -13,6 +13,20 @@ export function fetchPartnersSection(
     "image": image.asset->url
   }
 }`);
+}
+
+export function fetchHomeSection(
+  language: string,
+): Promise<HomeSection> {
+  return client.fetch(`
+    *[_type == 'homeSection'][0] {
+      _id,
+      "title": title[_key == "${language}"][0].value,
+      "subtitle": subtitle[_key == "${language}"][0].value,
+      "buttonText": buttonText[_key == "${language}"][0].value,
+      "linkNames": linkNames[]
+    }
+  `);
 }
 
 export function fetchLanguages(): Promise<Language[]> {

@@ -41,4 +41,12 @@ export interface ContactUs {
   };
 }
 
+export interface HomeSection {
+  _id: string;
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  linkNames: string[];
+}
+
 export type LanguageDependent = Omit<SanityData, 'language'>;
