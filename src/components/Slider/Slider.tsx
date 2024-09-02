@@ -6,6 +6,7 @@ import { Slide } from './components/Slide';
 import { Slides } from './components/Slides';
 import { align } from './utils';
 import styles from '../../styles/sectionAndContainer.module.scss';
+import s from './Slider.module.scss';
 import useEmblaCarousel from 'embla-carousel-react';
 
 interface Props extends PropsWithChildren {
@@ -60,7 +61,7 @@ export const Slider: FC<Props> & SubComponents = ({
     <SliderContext.Provider value={contextValue}>
       <div id={id} className={`flex flex-col ${styles.section}`}>
         <div className={styles.container}>
-          <div className={styles.slider__header}>
+          <div className={s.slider__header}>
             <h2 className={styles.section__title}>{title}</h2>
             {buttonsPlacment === 'title' && <ButtonGroup />}
           </div>
