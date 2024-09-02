@@ -1,5 +1,5 @@
 import { client } from '../SanityClient';
-import { Language, PartnersSection, WhyAQESection } from '../SanityDataTypes';
+import { ContactUs, Language, PartnersSection, WhyAQESection } from '../SanityDataTypes';
 
 export function fetchPartnersSection(
   language: string,
@@ -29,6 +29,8 @@ export function fetchWhyAQESection(
   }
 }`);
 }
+
+
 export function fetchLanguages(): Promise<Language[]> {
   return client.fetch(`*[_type == "language"] {
   _id,
@@ -37,3 +39,9 @@ export function fetchLanguages(): Promise<Language[]> {
 }
 `);
 }
+
+export const fetchContactUs = async (lang: string): Promise<ContactUs> => {
+  return client.fetch('*[_type == "contactUs" && language == $lang][0]', {
+    lang,
+  });
+};

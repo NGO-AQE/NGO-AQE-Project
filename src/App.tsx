@@ -2,7 +2,6 @@ import './App.scss';
 
 import AboutUs from './components/AboutUs/AboutUs';
 import { BasicCard } from './components/Slider/SliderExample';
-import { ContactUs } from './components/ContactUs/ContactUs';
 import { FaqSection } from './components/FaqSection/FaqSection.tsx';
 import Footer from './components/Footer/Footer.tsx';
 import Form from './components/Form/Form.tsx';
@@ -15,6 +14,7 @@ import TrainingsSection from './components/TrainingsSection/TrainingsSection';
 import WhyAQE from './components/WhyAQE/WhyAQE';
 import { useEffect } from 'react';
 import { useSanity } from './hooks/useSanity';
+import ContactUs from './components/ContactUs/ContactUs';
 
 function App() {
   const sanity = useSanity();
@@ -46,7 +46,7 @@ function App() {
       </Slider>
       <PartnersSection />
       <FaqSection />
-      <ContactUs />
+      <ContactUs language={''} />
       <Footer />
     </>
   );
