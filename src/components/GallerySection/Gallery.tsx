@@ -1,25 +1,16 @@
 import { useCallback, useEffect, useState } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import styles from './Gallery.module.scss'; // Adjust path as needed
+
 import leftArrow from '../../assets/icons/left-arrow.svg';
 import rightArrow from '../../assets/icons/right-arrow.svg';
-
-const pictures = [
-  {
-    image: '/img/MaltaPic.png',
-    subtitle: 'Malta, 2020',
-  },
-  {
-    image: '/img/IrelandPic.png',
-    subtitle: 'Ireland, 2022',
-  },
-  {
-    image: '/img/CanaryPic.png',
-    subtitle: 'Canary isl, 2023',
-  },
-];
+import styles from './Gallery.module.scss'; // Adjust path as needed
+import useEmblaCarousel from 'embla-carousel-react';
+import { useSanity } from '../../hooks/useSanity';
 
 const Gallery = () => {
+  const { gallerySection } = useSanity();
+
+  console.log(gallerySection);
+
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
@@ -61,20 +52,20 @@ const Gallery = () => {
   return (
     <section className={styles.container}>
       <div className={styles.gallerySection}>
-        <h2 className={styles.gallerySection__title}>Gallery</h2>
+        <h2 className={styles.gallerySection__title}>
+          {gallerySection?.title}
+        </h2>
         <p className={styles.gallerySection__description}>
-          Step into a world where learning comes to life and inspiration knows
-          no bounds. In this vibrant space, we invite you to explore captivating
-          moments captured during our educational camps for teachers.
+          {gallerySection?.description}
         </p>
         <div className={styles.gallerySection__container}>
           <div className={styles.embla} ref={emblaRef}>
             <div className={styles.embla__container}>
-              {pictures.map((data, index) => (
-                <div className={styles.embla__slide} key={index}>
+              {gallerySection?.cards.map(({ _id, image, label }) => (
+                <div className={styles.embla__slide} key={_id}>
                   <div className={styles.img__container}>
-                    <img src={data.image} alt={data.subtitle} />
-                    <div className={styles.img__subtitle}>{data.subtitle}</div>
+                    <img src={image} alt={label} />
+                    <div className={styles.img__subtitle}>{label}</div>
                   </div>
                 </div>
               ))}

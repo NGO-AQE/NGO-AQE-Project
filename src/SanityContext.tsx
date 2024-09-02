@@ -1,7 +1,14 @@
+import {
+  ContactUs,
+  GallerySection,
+  Language,
+  PartnersSection,
+  WhyAQESection,
+} from './SanityDataTypes';
 import React, { createContext, useEffect, useState } from 'react';
-import { ContactUs, Language, PartnersSection, WhyAQESection } from './SanityDataTypes';
 import {
   fetchContactUs,
+  fetchGallerySection,
   fetchLanguages,
   fetchPartnersSection,
   fetchWhyAQESection,
@@ -11,6 +18,7 @@ export interface SanityContextType {
   contactUs: ContactUs | null;
   partnersSection: PartnersSection | null;
   whyAQESection: WhyAQESection | null;
+  gallerySection: GallerySection | null;
   languages: Language[] | null;
   loading: boolean;
   error: Error | null;
@@ -33,8 +41,12 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [partnersSection, setPartnersSection] =
     useState<PartnersSection | null>(null);
   const [contactUs, setContactUs] = useState<ContactUs | null>(null);
-  const [whyAQESection, setWhyAQESection] =
-    useState<WhyAQESection | null>(null);
+  const [whyAQESection, setWhyAQESection] = useState<WhyAQESection | null>(
+    null,
+  );
+  const [gallerySection, setGallerySection] = useState<GallerySection | null>(
+    null,
+  );
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -72,8 +84,9 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         setPartnersSection(data),
       ),
       fetchContactUs(selectedLanguage).then(data => setContactUs(data)),
-      fetchWhyAQESection(selectedLanguage).then(data =>
-        setWhyAQESection(data)
+      fetchWhyAQESection(selectedLanguage).then(data => setWhyAQESection(data)),
+      fetchGallerySection(selectedLanguage).then(data =>
+        setGallerySection(data),
       ),
     ])
       .catch(err => {
@@ -91,6 +104,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         partnersSection,
         contactUs,
         whyAQESection,
+        gallerySection,
         languages,
         loading,
         error,
