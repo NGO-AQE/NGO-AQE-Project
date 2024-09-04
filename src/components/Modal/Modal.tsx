@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
 
 import modalButton from '../../assets/icons/modalButton.png';
 import modalError from '../../assets/icons/modalError.png';
@@ -22,23 +23,36 @@ interface FunctionalProps {
   closer: () => void;
 }
 
-const Modal: React.FC<
-  (CustomProps | PreparedProps) & FunctionalProps
-> = props => {
+const Modal: React.FC<(CustomProps | PreparedProps) & FunctionalProps> = props => {
   const modalRef = useRef<HTMLDivElement>(null);
   const backRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (props.isOpen) {
+      gsap.fromTo(
+        modalRef.current,
+        { y: '-100%', rotate: 60, opacity: 0 },
+        { y: 0, rotate: 0, opacity: 1, duration: 0.7, ease: 'power4.out' }
+      );
+      gsap.fromTo(
+        backRef.current,
+        { opacity: 0},
+        { opacity: 0.95, duration: 0.3 }
+      );
+    }
+  }, [props.isOpen]);
+
+  const willClose = () => {
+    gsap.to(modalRef.current, {
+      scaleX: 0,
+      duration: 0.3,
+      onComplete: props.closer
+    });
+    gsap.to(backRef.current, { opacity: 0, duration: 0.3});
+  };
+
   if (!props.isOpen) {
     return null;
-  }
-
-  function willClose() {
-    modalRef?.current?.classList.add(s.closing);
-    backRef?.current?.classList.add(s.closing);
-
-    setTimeout(() => {
-      props.closer();
-    }, 150);
   }
 
   let data;

@@ -31,7 +31,9 @@ export const HomePage = () => {
             </a>
           ))}
         </div>
-        <Button className={s['home-page__button']}>Get info package </Button>
+        <Button className={s['home-page__button']}>
+          <a href="#form">Get info package</a>
+        </Button>
       </div>
     </section>
   );

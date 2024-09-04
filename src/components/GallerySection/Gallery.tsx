@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 
 import leftArrow from '../../assets/icons/left-arrow.svg';
 import rightArrow from '../../assets/icons/right-arrow.svg';
-import styles from './Gallery.module.scss'; // Adjust path as needed
+import styles from './Gallery.module.scss';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useSanity } from '../../hooks/useSanity';
 
@@ -49,7 +49,7 @@ const Gallery = () => {
 
   return (
     <section id="gallery" className={styles.container + ' gallery'}>
-      <div className={styles.gallerySection}>
+      <div className={styles.gallerySection + ' section'}>
         <h2 className={styles.gallerySection__title}>
           {gallerySection?.title}
         </h2>

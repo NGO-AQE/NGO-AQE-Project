@@ -59,7 +59,7 @@ export const Slider: FC<Props> & SubComponents = ({
 
   return (
     <SliderContext.Provider value={contextValue}>
-      <div id={id} className={`flex flex-col ${styles.section}`}>
+      <section id={id} className={`flex flex-col ${styles.section} section`}>
         <div className={styles.container}>
           <div className={s.slider__header}>
             <h2 className={styles.section__title}>{title}</h2>
@@ -71,7 +71,7 @@ export const Slider: FC<Props> & SubComponents = ({
           {!slidesOtside && <Slides>{children}</Slides>}
         </div>
         {slidesOtside && <Slides>{children}</Slides>}
-      </div>
+      </section>
     </SliderContext.Provider>
   );
 };

@@ -4,33 +4,8 @@ import Malta from '../../../public/img/tranings/malta.png';
 import TrainingCard from './TrainingCard/TrainingCard';
 import s from './TrainingsSection.module.scss';
 
-enum EnglishLevel {
-  Basic = 'Basic',
-  Intermediate = 'Interm.',
-  Advanced = 'Advanced',
-}
-
-enum IconStatus {
-  Need = 'Need',
-  NoNeed = 'NoNeed',
-}
-
-type Training = {
-  img: string;
-  mainLocation: string;
-  terms: {
-    location?: string;
-    title?: string;
-    start: string;
-    end: string;
-  }[];
-  learningModule: string;
-  statusIcon: IconStatus;
-  requiredLevel: EnglishLevel;
-};
-
 export const TrainingsSection = () => {
-  const trainingsContent: Training[] = [
+  const trainingsContent = [
     {
       img: Malta,
       mainLocation: 'Malta',
@@ -47,8 +22,8 @@ export const TrainingsSection = () => {
         },
       ],
       learningModule: 'Learning english module',
-      statusIcon: IconStatus.Need,
-      requiredLevel: EnglishLevel.Basic,
+      statusIcon: 'Need',
+      requiredLevel: 'Basic',
     },
     {
       img: Canary,
@@ -66,8 +41,8 @@ export const TrainingsSection = () => {
         },
       ],
       learningModule: 'Learning english module',
-      statusIcon: IconStatus.Need,
-      requiredLevel: EnglishLevel.Intermediate,
+      statusIcon: 'Need',
+      requiredLevel: 'Intermediate',
     },
     {
       img: Ireland,
@@ -85,13 +60,13 @@ export const TrainingsSection = () => {
         },
       ],
       learningModule: 'Learning english module',
-      statusIcon: IconStatus.Need,
-      requiredLevel: EnglishLevel.Intermediate,
+      statusIcon: 'Need',
+      requiredLevel: 'Intermediate',
     },
   ];
 
   return (
-    <section id="trainings" className={s.container}>
+    <section id="trainings" className={`${s.container}`}>
       <div className={s.section}>
         <h1 className={s.section__title}>Trainings</h1>
         <p className={s.section__description}>
