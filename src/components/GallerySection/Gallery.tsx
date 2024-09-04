@@ -9,8 +9,6 @@ import { useSanity } from '../../hooks/useSanity';
 const Gallery = () => {
   const { gallerySection } = useSanity();
 
-  console.log(gallerySection);
-
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
@@ -50,7 +48,7 @@ const Gallery = () => {
   }, [emblaApi, updateButtons]);
 
   return (
-    <section className={styles.container}>
+    <section id="gallery" className={styles.container + ' gallery'}>
       <div className={styles.gallerySection}>
         <h2 className={styles.gallerySection__title}>
           {gallerySection?.title}
