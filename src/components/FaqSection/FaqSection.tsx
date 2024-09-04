@@ -48,7 +48,7 @@ export const FaqSection: FC = () => {
     faqCards.forEach(card => {
       gsap.fromTo(
         card,
-        { opacity: 0, x: -100 },
+        { opacity: 0, x: 20 },
         {
           opacity: 1,
           x: 0,
@@ -58,11 +58,10 @@ export const FaqSection: FC = () => {
           ease: 'power3.out',
           scrollTrigger: {
             trigger: card,
-            start: 'top 20%',
-            end: 'bottom 20%',
+            start: 'top 80%',
+            end: 'bottom 70%',
             scrub: true,
             markers: false,
-            once:true,
           },
         }
       );

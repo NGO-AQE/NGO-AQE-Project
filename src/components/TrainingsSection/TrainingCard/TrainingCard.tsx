@@ -80,21 +80,21 @@ export const TrainingCard: FC<Training> = ({
       }
     );
     gsap.fromTo(card,
-      { opacity: 0},
+      { opacity: 0 },
       {
         opacity: 1,
         duration: 0.6,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: cardRef.current,
-          start: 'top 80%',
-          end: 'bottom 80%',
+          start: 'top 90%',
+          end: 'bottom 90%',
           scrub: true,
           markers: false,
         }
       }
     );
-  }, []);
+  }, [infoWrapperRef, cardRef]);
 
   const statusIconDone = () => {
     if (statusIcon === 'Need') {

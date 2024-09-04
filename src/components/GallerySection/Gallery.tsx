@@ -49,7 +49,7 @@ const Gallery = () => {
 
   return (
     <section id="gallery" className={styles.container + ' gallery'}>
-      <div className={styles.gallerySection}>
+      <div className={styles.gallerySection + ' section'}>
         <h2 className={styles.gallerySection__title}>
           {gallerySection?.title}
         </h2>

@@ -12,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const WhyAQE = () => {
   const { whyAQESection } = useSanity();
+  if (!whyAQESection) return;
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +33,7 @@ const WhyAQE = () => {
           duration: 1,
           scrollTrigger: {
             trigger: card,
-            start: 'top 80%',
+            start: 'top 90%',
             end: 'bottom 80%',
             scrub: true,
             markers: false,
@@ -45,9 +46,9 @@ const WhyAQE = () => {
   return (
     <section id='whyAQE' className={`section ${styles.container}`}>
       <div className={styles.whySection}>
-        <p className={styles.whySection__title}>{whyAQESection?.title}</p>
+        <p className={styles.whySection__title}>{whyAQESection.title}</p>
         <div className={styles.whySection__container} ref={containerRef}>
-          {whyAQESection?.cards.map(data => (
+          {whyAQESection.cards.map(data => (
             <WhyAQESS key={data._id} data={data} />
           ))}
         </div>

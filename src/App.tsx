@@ -55,9 +55,9 @@ function App() {
         {
           opacity: 1,
           y: 0,
-          duration: 1,
+          duration: 2,
           ease: 'power3.out',
-          stagger: 0.2,
+          stagger: 0.6,
           scrollTrigger: {
             trigger: section,
             start: 'top 90%',

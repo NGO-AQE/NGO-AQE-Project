@@ -11,7 +11,7 @@ export const QASet: FC<{ question: string; answer: string }> = ({ question, answ
 
   useEffect(() => {
     if (!answerRef.current || !iconRef.current) return;
-
+    
     if (animationRef.current) {
       animationRef.current.kill();
     }
