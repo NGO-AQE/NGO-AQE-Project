@@ -30,22 +30,17 @@ export const HomePage = () => {
           <img className={s['home-page__img']} src={WorldMap} alt="World Map" />
         </div>
         <div className={s['home-page__container-links']}>
-          {homePage.linkNames.map(link => (
-            <a href="#" className={s['home-page__link']}>
+          {homePage.linkNames.map((link, i) => (
+            <a
+              key={i}
+              href="#"
+              className={s['home-page__link']}
+            >
               {link}
             </a>
           ))}
-          {/* <a href="#" className={s['home-page__link']}>
-            Malta
-          </a>
-          <a href="#" className={s['home-page__link']}>
-            Canary
-          </a>
-          <a href="#" className={s['home-page__link']}>
-            Ireland
-          </a> */}
         </div>
-        <Button className={s['home-page__button']}>Get info package </Button>
+        <Button className={s['home-page__button']}>{homePage.buttonText}</Button>
       </div>
     </section>
   );
