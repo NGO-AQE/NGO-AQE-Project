@@ -104,7 +104,11 @@ export const TrainingCard: FC<Training> = ({
   };
 
   return (
-    <div className={s.card}  ref={cardRef}>
+    <div
+      id={mainLocation.split(' ')[0].toLowerCase()}
+      className={s.card}
+      ref={cardRef}
+    >
       <img src={img} alt="img" className={s.card__img} />
       <h1 className={s.card__location}>
         <span className={s['card__location-element']}></span>
@@ -141,7 +145,9 @@ export const TrainingCard: FC<Training> = ({
         </div>
       </div>
       <h2 className={s.card__moreInfo}>Want more info?</h2>
-      <Button className={s.card__button}>Get info package</Button>
+      <Button className={s.card__button}>
+        <a href="#form">Get info package</a>
+      </Button>
     </div>
   );
 };

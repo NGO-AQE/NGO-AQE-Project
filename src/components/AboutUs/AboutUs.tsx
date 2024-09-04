@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const data = [
   {
     subtitle: 'Our mission',
-    info: 'Through innovative training initiatives and personalized support, we aim to equip educators with the knowledge, skills, and confidence needed to inspire lifelong learning and academic success in their students.'
+    info: 'Through innovative training initiatives and personalized support, we aim to equip educators with the knowledge, skills, and confidence needed to inspire lifelong learning and academic success in their students.',
   },
   {
     subtitle: 'Our vision',

@@ -1,7 +1,7 @@
 import Select, { SingleValue, StylesConfig } from 'react-select';
-
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useContext } from 'react';
 import styles from './NavLinks.module.scss';
+import { SanityContext } from '../../../SanityContext';
 
 interface OptionType {
   value: string;
@@ -83,9 +83,18 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({
   className,
   closeMenu,
 }) => {
+  const sanity = useContext(SanityContext);
+
+  if (!sanity) {
+    throw new Error('SanityContext is not provided');
+  }
+
   const handleLanguageChange = (selectedOption: SingleValue<OptionType>) => {
     if (selectedOption) {
-      console.log('Selected language:', selectedOption.value);
+      const newLangCode = selectedOption.value;
+      sanity.changeLanguage(newLangCode);
+
+      window.history.replaceState({}, '', `/${newLangCode}`);
     }
   };
 
@@ -117,7 +126,11 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({
             styles={customStyles}
             placeholder="Select language"
             onChange={handleLanguageChange}
-            defaultValue={languageOptions[0]}
+            defaultValue={
+              languageOptions.find(
+                option => option.value === sanity.selectedLanguage,
+              ) || languageOptions[0]
+            }
           />
         </li>
       </ul>
