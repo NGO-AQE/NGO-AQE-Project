@@ -1,5 +1,4 @@
 import { createClient } from '@sanity/client';
-
 const sanityConfig = {
   projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
   dataset: 'production',
