@@ -5,11 +5,11 @@ import styles from './Footer.module.scss';
 
 const links = [
   { text: 'Home', to: '#home' },
-  { text: 'About us', to: '#about' },
   { text: 'Trainings', to: '#trainings' },
-  { text: 'Gallery', to: '#gallery' },
-  { text: 'FAQ', to: '#faq' },
   { text: 'Stories', to: '#stories' },
+  { text: 'FAQ', to: '#faq' },
+  { text: 'About us', to: '#about' },
+  { text: 'Gallery', to: '#gallery' },
   { text: 'Partners', to: '#partners' },
   { text: '+1 (555) 123-4567', to: 'tel:+15551234567' },
 ];

@@ -1,6 +1,6 @@
-import styles from '../../styles/sectionAndContainer.module.scss';
-import s from './AboutUs.module.scss';
 import AboutUsCard from './AboutUsCard';
+import s from './AboutUs.module.scss';
+import styles from '../../styles/sectionAndContainer.module.scss';
 
 const data = [
   {
@@ -15,7 +15,7 @@ const data = [
 
 const AboutUs = () => {
   return (
-    <div className={styles.section}>
+    <div id="about" className={styles.section}>
       <div className={styles.container}>
         <h2 className={styles.section__title}>About Us</h2>
         <div className={s.container}>

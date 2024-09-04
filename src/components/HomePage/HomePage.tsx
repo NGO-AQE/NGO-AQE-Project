@@ -33,9 +33,8 @@ export const HomePage = () => {
           {homePage.linkNames.map((link, i) => (
             <a
               key={i}
-              href="#"
-              className={s['home-page__link']}
-            >
+              href={'#' + link.toLowerCase()}
+              className={s['home-page__link']}>
               {link}
             </a>
           ))}
