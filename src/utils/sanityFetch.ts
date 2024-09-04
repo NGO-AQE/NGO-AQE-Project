@@ -15,9 +15,7 @@ export function fetchPartnersSection(
 }`);
 }
 
-export function fetchWhyAQESection(
-  language: string,
-): Promise<WhyAQESection> {
+export function fetchWhyAQESection(language: string): Promise<WhyAQESection> {
   return client.fetch(`*[_type == 'whyAQESection'][0] {
   _id,
   "title": title[_key == "${language}"][0].value,

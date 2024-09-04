@@ -54,6 +54,20 @@ interface WhyAQECard {
   text: string;
 }
 
+export interface GallerySection {
+  _id: string;
+  title: string;
+  description: string;
+  cards: GalleryCard[];
+}
+
+interface GalleryCard {
+  _id: string;
+  image: string;
+  label: string;
+}
+
+
 export interface HomeSection {
   _id: string;
   title: string;
@@ -61,5 +75,6 @@ export interface HomeSection {
   buttonText: string;
   linkNames: string[];
 }
+
 
 export type LanguageDependent = Omit<SanityData, 'language'>;
