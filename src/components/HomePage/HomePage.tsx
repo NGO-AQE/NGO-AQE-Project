@@ -3,6 +3,8 @@ import WorldMap from '/img/World Map.svg';
 import s from './HomePage.module.scss';
 
 export const HomePage = () => {
+  const links = ['Malta', 'Canary', 'Ireland'];
+
   return (
     <section id="home" className={s['container']}>
       <div className={s['home-page']}>
@@ -23,15 +25,11 @@ export const HomePage = () => {
           <img className={s['home-page__img']} src={WorldMap} alt="World Map" />
         </div>
         <div className={s['home-page__container-links']}>
-          <a href="#" className={s['home-page__link']}>
-            Malta
-          </a>
-          <a href="#" className={s['home-page__link']}>
-            Canary
-          </a>
-          <a href="#" className={s['home-page__link']}>
-            Ireland
-          </a>
+          {links.map(link => (
+            <a href={'#' + link.toLowerCase()} className={s['home-page__link']}>
+              {link}
+            </a>
+          ))}
         </div>
         <Button className={s['home-page__button']}>Get info package </Button>
       </div>

@@ -1,6 +1,6 @@
 import Button from '../../Button/Button';
-import s from './TrainingCard.module.scss';
 import DoneIcon from '../../../assets/icons/done.svg';
+import s from './TrainingCard.module.scss';
 
 type Term = {
   location?: string;
@@ -56,7 +56,7 @@ export const TrainingCard = ({
   };
 
   return (
-    <div className={s.card}>
+    <div className={s.card} id={mainLocation.split(' ')[0].toLowerCase()}>
       <img src={img} alt="img" className={s.card__img} />
       <h1 className={s.card__location}>
         <span className={s['card__location-element']}></span>
@@ -93,7 +93,9 @@ export const TrainingCard = ({
         </div>
       </div>
       <h2 className={s.card__moreInfo}>Want more info?</h2>
-      <Button className={s.card__button}>Get info package</Button>
+      <Button className={s.card__button}>
+        <a href="#form">Get info package</a>
+      </Button>
     </div>
   );
 };
