@@ -1,5 +1,6 @@
 import {
   ContactUs,
+  FormSection,
   GallerySection,
   Language,
   PartnersSection,
@@ -8,6 +9,7 @@ import {
 import React, { createContext, useEffect, useState } from 'react';
 import {
   fetchContactUs,
+  fetchFormSection,
   fetchGallerySection,
   fetchLanguages,
   fetchPartnersSection,
@@ -19,6 +21,7 @@ export interface SanityContextType {
   partnersSection: PartnersSection | null;
   whyAQESection: WhyAQESection | null;
   gallerySection: GallerySection | null;
+  formSection: FormSection | null;
   languages: Language[] | null;
   loading: boolean;
   error: Error | null;
@@ -47,6 +50,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [gallerySection, setGallerySection] = useState<GallerySection | null>(
     null,
   );
+  const [formSection, setFormSection] = useState<FormSection | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -88,6 +92,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
       fetchGallerySection(selectedLanguage).then(data =>
         setGallerySection(data),
       ),
+      fetchFormSection(selectedLanguage).then(data => setFormSection(data)),
     ])
       .catch(err => {
         console.error('Error fetching data:', err);
@@ -105,6 +110,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         contactUs,
         whyAQESection,
         gallerySection,
+        formSection,
         languages,
         loading,
         error,

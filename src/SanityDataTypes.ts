@@ -67,4 +67,20 @@ interface GalleryCard {
   label: string;
 }
 
+export interface FormSection {
+  _id: string;
+  title: string;
+  description: string;
+  nameLabel: string;
+  namePlaceholder: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  countryLabel: string;
+  countryPlaceholder: string;
+  checkboxLabel: string;
+  buttonLabel: string;
+  fieldMissingError: string;
+  fieldFormatError: string;
+}
+
 export type LanguageDependent = Omit<SanityData, 'language'>;
