@@ -1,152 +1,68 @@
-import { FC, useRef, useEffect } from 'react';
-import s from './TrainingCard.module.scss';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Button from '../../Button/Button';
 import DoneIcon from '../../../assets/icons/done.svg';
+import { TrainingsCard } from '../../../SanityDataTypes';
+import s from './TrainingCard.module.scss';
 
-gsap.registerPlugin(ScrollTrigger);
+interface props extends TrainingsCard {
+  infoTitle: string;
+  infoButton: string;
+}
 
-type Term = {
-  location?: string;
-  title?: string;
-  start: string;
-  end: string;
-};
-
-type Training = {
-  img: string;
-  mainLocation: string;
-  terms: Term[];
-  learningModule: string;
-  statusIcon: string;
-  requiredLevel: string;
-};
-
-const convertDate = (dateStr: string): string => {
-  const date = new Date(dateStr);
-  return formatDate(date);
-};
-
-const formatDate = (date: Date): string => {
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const year = date.getFullYear();
-  return `${day}.${month}.${year}`;
-};
-
-const calculateDuration = (start: string, end: string): string => {
-  const startDate = new Date(start);
-  const endDate = new Date(end);
-
-  const timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
-  const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-  return `from ${daysDiff} days`;
-};
-
-export const TrainingCard: FC<Training> = ({
-  img,
-  mainLocation,
-  terms,
-  learningModule,
-  statusIcon,
-  requiredLevel,
-}: Training): JSX.Element => {
-  const infoWrapperRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!infoWrapperRef.current || !cardRef) return;
-
-    const infoChildren = infoWrapperRef.current.children;
-    const card = cardRef.current;
-
-    gsap.fromTo(infoChildren,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.3,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: infoWrapperRef.current,
-          start: 'top 80%',
-          end: 'bottom 80%',
-          scrub: true,
-          markers: false,
-        }
-      }
-    );
-    gsap.fromTo(card,
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 0.6,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: 'top 90%',
-          end: 'bottom 90%',
-          scrub: true,
-          markers: false,
-        }
-      }
-    );
-  }, [infoWrapperRef, cardRef]);
-
-  const statusIconDone = () => {
-    if (statusIcon === 'Need') {
-      return <img src={DoneIcon} alt="Done" className={s.card__statusIcon} />;
-    }
-    return '-';
-  };
+export const TrainingCard = ({
+  durationLabel,
+  durationValue,
+  firstTermLabel,
+  firstTermValue,
+  image,
+  levelLabel,
+  levelValue,
+  moduleLabel,
+  secondTermLabel,
+  secondTermValue,
+  title,
+  infoButton,
+  infoTitle,
+}: props): JSX.Element => {
+  const dates = [
+    { l: firstTermLabel, v: firstTermValue },
+    { l: secondTermLabel, v: secondTermValue },
+  ];
 
   return (
-    <div
-      id={mainLocation.split(' ')[0].toLowerCase()}
-      className={s.card}
-      ref={cardRef}
-    >
-      <img src={img} alt="img" className={s.card__img} />
+    <div className={s.card} id={title.split(' ')[0].toLowerCase()}>
+      <img src={image} alt="img" className={s.card__img} />
       <h1 className={s.card__location}>
         <span className={s['card__location-element']}></span>
-        {mainLocation}
+        {title}
       </h1>
-      <div className={s.card__infoWrapper} ref={infoWrapperRef}>
-        <div>
-          {terms.map((term, i) => (
-            <div key={i} className={s.card__termRow}>
-              <p className={s.card__termText}>
-                {term.location ? `${term.location}: ` : `${term.title} `}
-              </p>
-              <p className={s.card__termDates}>
-                {convertDate(term.start)} - {convertDate(term.end)}
-              </p>
+      <div className={s.card__infoWrapper}>
+        {dates.map(({ l, v }) => (
+          <div key={v}>
+            <div className={s.card__termRow}>
+              <p className={s.card__termText}>{l}</p>
+              <p className={s.card__termDates}>{v}</p>
             </div>
-          ))}
+          </div>
+        ))}
+
+        <div className={s.card__detailGroup}>
+          <p className={s.card__duration}>{durationLabel}</p>
+          <p className={s.card__value}>{durationValue}</p>
         </div>
         <div className={s.card__detailGroup}>
-          <p className={s.card__duration}>Duration:</p>
+          <p className={s.card__label}>{moduleLabel}</p>
           <p className={s.card__value}>
-            {terms.length > 0
-              ? calculateDuration(terms[0].start, terms[0].end)
-              : '-'}
+            <img src={DoneIcon} alt="Done" className={s.card__statusIcon} />
           </p>
         </div>
         <div className={s.card__detailGroup}>
-          <p className={s.card__label}>{learningModule}</p>
-          <p className={s.card__value}>{statusIconDone()}</p>
-        </div>
-        <div className={s.card__detailGroup}>
-          <p className={s.card__label}>Required English level</p>
-          <p className={s.card__value}>{requiredLevel}</p>
+          <p className={s.card__label}>{levelLabel}</p>
+          <p className={s.card__value}>{levelValue}</p>
         </div>
       </div>
-      <h2 className={s.card__moreInfo}>Want more info?</h2>
+      <h2 className={s.card__moreInfo}>{infoTitle}</h2>
       <Button className={s.card__button}>
-        <a href="#form">Get info package</a>
+        <a href="#form">{infoButton}</a>
       </Button>
     </div>
   );
