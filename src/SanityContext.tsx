@@ -1,4 +1,5 @@
 import {
+  AboutUsSection,
   ContactUs,
   GallerySection,
   Language,
@@ -7,6 +8,7 @@ import {
 } from './SanityDataTypes';
 import React, { createContext, useEffect, useState } from 'react';
 import {
+  fetchAboutSection,
   fetchContactUs,
   fetchGallerySection,
   fetchLanguages,
@@ -15,6 +17,7 @@ import {
 } from './utils/sanityFetch';
 
 export interface SanityContextType {
+  aboutUsSection: AboutUsSection | null;
   contactUs: ContactUs | null;
   partnersSection: PartnersSection | null;
   whyAQESection: WhyAQESection | null;
@@ -45,6 +48,9 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
     null,
   );
   const [gallerySection, setGallerySection] = useState<GallerySection | null>(
+    null,
+  );
+  const [aboutUsSection, setAboutUsSection] = useState<AboutUsSection | null>(
     null,
   );
   const [loading, setLoading] = useState<boolean>(true);
@@ -88,6 +94,9 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
       fetchGallerySection(selectedLanguage).then(data =>
         setGallerySection(data),
       ),
+      fetchAboutSection(selectedLanguage).then(data =>
+        setAboutUsSection(data),
+      ),
     ])
       .catch(err => {
         console.error('Error fetching data:', err);
@@ -105,6 +114,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         contactUs,
         whyAQESection,
         gallerySection,
+        aboutUsSection,
         languages,
         loading,
         error,

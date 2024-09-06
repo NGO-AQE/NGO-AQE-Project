@@ -7,6 +7,18 @@ export type SanityData = {
 //   _type: 'reference';
 //   _ref: string;
 // };
+export interface AboutUsSection {
+  _id: string;
+  title: string;
+  cards: AboutUsCard[];
+  img: string;
+}
+
+interface AboutUsCard {
+  _id: string;
+  subtitle: string;
+  info: string;
+}
 
 export type Language = {
   code: string;

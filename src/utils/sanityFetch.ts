@@ -1,4 +1,5 @@
 import {
+  AboutUsSection,
   ContactUs,
   GallerySection,
   Language,
@@ -62,3 +63,18 @@ export const fetchContactUs = async (lang: string): Promise<ContactUs> => {
     lang,
   });
 };
+
+export function fetchAboutSection(language: string): Promise<AboutUsSection> {
+  return client.fetch(`*[_type == 'aboutSection'][0] {
+    _id,
+    "title": title[_key == "${language}"][0].value,
+    "img": image.asset->url,
+    cards: subsections[] -> {
+      _id,
+      "subtitle": subtitle[_key == "${language}"][0].value,
+      "info": description[_key == "${language}"][0].value
+    }
+  }`);
+}
+
+
