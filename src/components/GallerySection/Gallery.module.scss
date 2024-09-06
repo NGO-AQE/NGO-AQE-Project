@@ -21,14 +21,14 @@
 }
 
 .gallerySection {
-  padding-top: 72px;
+  padding-top: 40px;
 
   @include tablet {
-    padding-top: 124px;
+    padding-top: 62px;
   }
 
   @include desktop {
-    padding-top: 154px;
+    padding-top: 82px;
   }
 
   &__title {
@@ -107,8 +107,8 @@
   }
 
   img {
-    width: 48px; /* Adjust size if needed */
-    height: 48px; /* Adjust size if needed */
+    width: 48px;
+    height: 48px; 
   }
 
   &:focus {
