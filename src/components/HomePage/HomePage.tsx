@@ -39,7 +39,9 @@ export const HomePage = () => {
             </a>
           ))}
         </div>
-        <Button className={s['home-page__button']}>{homePage.buttonText}</Button>
+        <Button className={s['home-page__button']}>
+          <a href="#form">{homePage.buttonText}</a>
+        </Button>
       </div>
     </section>
   );
