@@ -24,7 +24,7 @@ export const ContactUs: React.FC<ContactUsProps> = () => {
   } = contactUs;
 
   return (
-    <section className={s.container}>
+    <section className={`section ${s.container}`}>
       <div className={s.contact}>
         <h1 className={s.contact__title}>{title}</h1>
         <address className={s.contact__address}>
