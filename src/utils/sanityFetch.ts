@@ -1,14 +1,5 @@
-import {
-  ContactUs,
-  GallerySection,
-  Language,
-  PartnersSection,
-  TrainingsSection,
-  WhyAQESection,
-} from '../SanityDataTypes';
-
 import { client } from '../SanityClient';
-import { ContactUs, Language, PartnersSection, WhyAQESection, HomeSection, GallerySection } from '../SanityDataTypes';
+import { ContactUs, Language, PartnersSection, WhyAQESection, HomeSection, GallerySection, TrainingsSection } from '../SanityDataTypes';
 
 export function fetchPartnersSection(
   language: string,
