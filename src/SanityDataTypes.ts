@@ -10,7 +10,7 @@ export type SanityData = {
 export interface AboutUsSection {
   _id: string;
   title: string;
-  cards: AboutUsCard[];
+  subsections: AboutUsCard[];
   img: string;
 }
 

@@ -47,7 +47,7 @@ const AboutUs = () => {
         <h2 className={styles.section__title}>{aboutUsSection.title}</h2>
         <div className={s.container} ref={containerRef}>
           <div className={s.info_container}>
-            {aboutUsSection.cards.map((card) => (
+            {aboutUsSection.subsections.map((card) => (
               <AboutUsCard
                 key={card._id}
                 subtitle={card.subtitle}
