@@ -1,13 +1,5 @@
-import {
-  AboutUsSection,
-  ContactUs,
-  GallerySection,
-  Language,
-  PartnersSection,
-  WhyAQESection,
-} from '../SanityDataTypes';
-
 import { client } from '../SanityClient';
+import { ContactUs, Language, PartnersSection, WhyAQESection, HomeSection, GallerySection, TrainingsSection, AboutUsSection } from '../SanityDataTypes';
 
 export function fetchPartnersSection(
   language: string,
@@ -49,6 +41,32 @@ export function fetchGallerySection(language: string): Promise<GallerySection> {
 }`);
 }
 
+export function fetchTrainingsSection(
+  language: string,
+): Promise<TrainingsSection> {
+  return client.fetch(`*[_type == 'trainingsSection'][0] {
+  _id,
+  "title": title[_key == "${language}"][0].value,
+  "description": description[_key == "${language}"][0].value,
+  "infoTitle": infoTitle[_key == "${language}"][0].value,
+  "infoButton": infoButton[_key == "${language}"][0].value,
+  cards[] -> {
+    _id,
+    "image": image.asset->url,
+    "title": title[_key == "${language}"][0].value,
+    "firstTermLabel": firstTermLabel[_key == "${language}"][0].value,
+    "firstTermValue": firstTermValue[_key == "${language}"][0].value,
+    "secondTermLabel": secondTermLabel[_key == "${language}"][0].value,
+    "secondTermValue": secondTermValue[_key == "${language}"][0].value,
+    "durationLabel": durationLabel[_key == "${language}"][0].value,
+    "durationValue": durationValue[_key == "${language}"][0].value,
+    "moduleLabel": moduleLabel[_key == "${language}"][0].value,
+    "levelLabel": levelLabel[_key == "${language}"][0].value,
+    "levelValue": levelValue[_key == "${language}"][0].value,
+  }
+}`);
+}
+
 export function fetchLanguages(): Promise<Language[]> {
   return client.fetch(`*[_type == "language"] {
   _id,
@@ -64,6 +82,21 @@ export const fetchContactUs = async (lang: string): Promise<ContactUs> => {
   });
 };
 
+
+export function fetchHomeSection(
+  language: string,
+): Promise<HomeSection> {
+  return client.fetch(`
+    *[_type == 'homeSection'][0] {
+      _id,
+      "title": title[_key == "${language}"][0].value,
+      "subtitle": subtitle[_key == "${language}"][0].value,
+      "buttonText": buttonText[_key == "${language}"][0].value,
+      "linkNames": linkNames[]
+    }
+  `);
+}
+
 export function fetchAboutSection(language: string): Promise<AboutUsSection> {
   return client.fetch(`*[_type == 'aboutSection'][0] {
     _id,
@@ -76,5 +109,3 @@ export function fetchAboutSection(language: string): Promise<AboutUsSection> {
     "img": image.asset->url
   }`);
 }
-
-

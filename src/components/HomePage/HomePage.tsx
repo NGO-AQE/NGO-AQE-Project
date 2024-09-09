@@ -1,38 +1,46 @@
 import Button from '../Button/Button';
 import WorldMap from '/img/World Map.svg';
 import s from './HomePage.module.scss';
+import { useSanity } from '../../hooks/useSanity';
 
 export const HomePage = () => {
-  const links = ['Malta', 'Canary', 'Ireland'];
+  const { homePage } = useSanity();
+
+  if (!homePage) {
+    return;
+  }
 
   return (
     <section id="home" className={s['container']}>
       <div className={s['home-page']}>
         <div className={s['home-page__title-container']}>
           <h1 className={s['home-page__title']}>
-            Empower with AQE Educate.
+            {homePage.title}
             <div className={s['home-page__title-element']}></div>
           </h1>
           <p className={s['home-page__paragraph']}>
-            Your trusted partner in professional development for educators.
+            {homePage.subtitle}
           </p>
         </div>
         <Button className={s['home-page__button-tablet']}>
-          Get info package
+          {homePage.buttonText}
         </Button>
         <div className={s['home-page__img-wrapper']}>
           {' '}
           <img className={s['home-page__img']} src={WorldMap} alt="World Map" />
         </div>
         <div className={s['home-page__container-links']}>
-          {links.map(link => (
-            <a href={'#' + link.toLowerCase()} className={s['home-page__link']}>
+          {homePage.linkNames.map((link, i) => (
+            <a
+              key={i}
+              href={'#' + link.toLowerCase()}
+              className={s['home-page__link']}>
               {link}
             </a>
           ))}
         </div>
         <Button className={s['home-page__button']}>
-          <a href="#form">Get info package</a>
+          <a href="#form">{homePage.buttonText}</a>
         </Button>
       </div>
     </section>

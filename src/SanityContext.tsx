@@ -4,15 +4,19 @@ import {
   GallerySection,
   Language,
   PartnersSection,
+  TrainingsSection,
   WhyAQESection,
+  HomeSection
 } from './SanityDataTypes';
 import React, { createContext, useEffect, useState } from 'react';
 import {
   fetchAboutSection,
   fetchContactUs,
   fetchGallerySection,
+  fetchHomeSection,
   fetchLanguages,
   fetchPartnersSection,
+  fetchTrainingsSection,
   fetchWhyAQESection,
 } from './utils/sanityFetch';
 
@@ -22,6 +26,8 @@ export interface SanityContextType {
   partnersSection: PartnersSection | null;
   whyAQESection: WhyAQESection | null;
   gallerySection: GallerySection | null;
+  trainingsSection: TrainingsSection | null;
+  homePage: HomeSection | null,
   languages: Language[] | null;
   loading: boolean;
   error: Error | null;
@@ -50,6 +56,9 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [gallerySection, setGallerySection] = useState<GallerySection | null>(
     null,
   );
+  const [trainingsSection, setTrainingsSection] =
+    useState<TrainingsSection | null>(null);
+  const [homePage, setHomePage] = useState<HomeSection | null>(null);
   const [aboutUsSection, setAboutUsSection] = useState<AboutUsSection | null>(
     null,
   );
@@ -94,6 +103,10 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
       fetchGallerySection(selectedLanguage).then(data =>
         setGallerySection(data),
       ),
+      fetchTrainingsSection(selectedLanguage).then(data =>
+        setTrainingsSection(data),
+      ),
+      fetchHomeSection(selectedLanguage).then(data => setHomePage(data)),
       fetchAboutSection(selectedLanguage).then(data =>
         setAboutUsSection(data),
       ),
@@ -114,6 +127,8 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         contactUs,
         whyAQESection,
         gallerySection,
+        trainingsSection,
+        homePage,
         aboutUsSection,
         languages,
         loading,
