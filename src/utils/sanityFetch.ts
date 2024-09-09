@@ -1,13 +1,5 @@
-import {
-  ContactUs,
-  GallerySection,
-  Language,
-  PartnersSection,
-  TrainingsSection,
-  WhyAQESection,
-} from '../SanityDataTypes';
-
 import { client } from '../SanityClient';
+import { ContactUs, Language, PartnersSection, WhyAQESection, HomeSection, GallerySection, TrainingsSection } from '../SanityDataTypes';
 
 export function fetchPartnersSection(
   language: string,
@@ -89,3 +81,18 @@ export const fetchContactUs = async (lang: string): Promise<ContactUs> => {
     lang,
   });
 };
+
+
+export function fetchHomeSection(
+  language: string,
+): Promise<HomeSection> {
+  return client.fetch(`
+    *[_type == 'homeSection'][0] {
+      _id,
+      "title": title[_key == "${language}"][0].value,
+      "subtitle": subtitle[_key == "${language}"][0].value,
+      "buttonText": buttonText[_key == "${language}"][0].value,
+      "linkNames": linkNames[]
+    }
+  `);
+}
