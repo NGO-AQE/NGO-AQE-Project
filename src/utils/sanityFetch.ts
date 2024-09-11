@@ -2,12 +2,14 @@ import {
   ContactUs,
   FormSection,
   GallerySection,
+  HomeSection,
   Language,
   PartnersSection,
+  TrainingsSection,
   WhyAQESection,
 } from '../SanityDataTypes';
+
 import { client } from '../SanityClient';
-import { ContactUs, Language, PartnersSection, WhyAQESection, HomeSection, GallerySection, TrainingsSection } from '../SanityDataTypes';
 
 export function fetchPartnersSection(
   language: string,
@@ -65,7 +67,8 @@ export function fetchFormSection(language: string): Promise<FormSection> {
     "fieldMissingError": fieldMissingError[_key == "${language}"][0].value,
     "fieldFormatError": fieldFormatError[_key == "${language}"][0].value
   }`);
-  
+}
+
 export function fetchTrainingsSection(
   language: string,
 ): Promise<TrainingsSection> {
@@ -107,10 +110,7 @@ export const fetchContactUs = async (lang: string): Promise<ContactUs> => {
   });
 };
 
-
-export function fetchHomeSection(
-  language: string,
-): Promise<HomeSection> {
+export function fetchHomeSection(language: string): Promise<HomeSection> {
   return client.fetch(`
     *[_type == 'homeSection'][0] {
       _id,
