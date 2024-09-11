@@ -81,6 +81,37 @@ export interface FormSection {
   buttonLabel: string;
   fieldMissingError: string;
   fieldFormatError: string;
+  
+export interface TrainingsSection {
+  _id: string;
+  title: string;
+  description: string;
+  infoTitle: string;
+  infoButton: string;
+  cards: TrainingsCard[];
+}
+
+export interface TrainingsCard {
+  _id: string;
+  image: string;
+  title: string;
+  firstTermLabel: string;
+  firstTermValue: string;
+  secondTermLabel: string;
+  secondTermValue: string;
+  durationLabel: string;
+  durationValue: string;
+  moduleLabel: string;
+  levelLabel: string;
+  levelValue: string;
+}
+
+export interface HomeSection {
+  _id: string;
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  linkNames: string[];
 }
 
 export type LanguageDependent = Omit<SanityData, 'language'>;
