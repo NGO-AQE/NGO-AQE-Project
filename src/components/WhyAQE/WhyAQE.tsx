@@ -12,17 +12,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 const WhyAQE = () => {
   const { whyAQESection } = useSanity();
-  if (!whyAQESection) return;
 
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const cards = containerRef.current.querySelectorAll(`.${styles.whySection__subsection}`);
+    const cards = containerRef.current.querySelectorAll(
+      `.${styles.whySection__subsection}`,
+    );
 
     cards.forEach((card, i) => {
-      gsap.fromTo(card,
+      gsap.fromTo(
+        card,
         {
           opacity: 0,
           x: i % 2 === 0 ? -100 : 100, // Left for even, right for odd
@@ -38,13 +40,15 @@ const WhyAQE = () => {
             scrub: true,
             markers: false,
           },
-        }
+        },
       );
     });
   }, []);
 
+  if (!whyAQESection) return;
+
   return (
-    <section id='whyAQE' className={`section ${styles.container}`}>
+    <section id="whyAQE" className={`section ${styles.container}`}>
       <div className={styles.whySection}>
         <p className={styles.whySection__title}>{whyAQESection.title}</p>
         <div className={styles.whySection__container} ref={containerRef}>
