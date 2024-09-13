@@ -2,11 +2,12 @@ import {
   ContactUs,
   FormSection,
   GallerySection,
+  HomeSection,
   Language,
   PartnersSection,
+  StoriesSection,
   TrainingsSection,
   WhyAQESection,
-  HomeSection
 } from './SanityDataTypes';
 import React, { createContext, useEffect, useState } from 'react';
 import {
@@ -16,6 +17,7 @@ import {
   fetchHomeSection,
   fetchLanguages,
   fetchPartnersSection,
+  fetchStoriesSection,
   fetchTrainingsSection,
   fetchWhyAQESection,
 } from './utils/sanityFetch';
@@ -27,7 +29,8 @@ export interface SanityContextType {
   gallerySection: GallerySection | null;
   formSection: FormSection | null;
   trainingsSection: TrainingsSection | null;
-  homePage: HomeSection | null,
+  storiesSection: StoriesSection | null;
+  homePage: HomeSection | null;
   languages: Language[] | null;
   loading: boolean;
   error: Error | null;
@@ -59,7 +62,10 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [formSection, setFormSection] = useState<FormSection | null>(null);
   const [trainingsSection, setTrainingsSection] =
     useState<TrainingsSection | null>(null);
-  const [homePage, setHomePage] = useState<HomeSection | null>(null)
+  const [storiesSection, setStoriesSection] = useState<StoriesSection | null>(
+    null,
+  );
+  const [homePage, setHomePage] = useState<HomeSection | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -106,6 +112,9 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         setTrainingsSection(data),
       ),
       fetchHomeSection(selectedLanguage).then(data => setHomePage(data)),
+      fetchStoriesSection(selectedLanguage).then(data =>
+        setStoriesSection(data),
+      ),
     ])
       .catch(err => {
         console.error('Error fetching data:', err);
@@ -121,6 +130,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         changeLanguage,
         partnersSection,
         contactUs,
+        storiesSection,
         whyAQESection,
         gallerySection,
         formSection,

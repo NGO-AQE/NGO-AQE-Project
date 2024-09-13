@@ -5,6 +5,7 @@ import {
   HomeSection,
   Language,
   PartnersSection,
+  StoriesSection,
   TrainingsSection,
   WhyAQESection,
 } from '../SanityDataTypes';
@@ -120,4 +121,17 @@ export function fetchHomeSection(language: string): Promise<HomeSection> {
       "linkNames": linkNames[]
     }
   `);
+}
+
+export function fetchStoriesSection(language: string): Promise<StoriesSection> {
+  return client.fetch(`*[_type == 'storiesSection'][0] {
+  _id,
+  "title": title[_key == "${language}"][0].value,
+  cards[] -> {
+    _id,
+    "image": image.asset->url,
+    "description": description[_key == "${language}"][0].value,
+    "label": label[_key == "${language}"][0].value,
+  }
+}`);
 }
