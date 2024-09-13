@@ -81,7 +81,8 @@ export interface FormSection {
   buttonLabel: string;
   fieldMissingError: string;
   fieldFormatError: string;
-  
+}
+
 export interface TrainingsSection {
   _id: string;
   title: string;
