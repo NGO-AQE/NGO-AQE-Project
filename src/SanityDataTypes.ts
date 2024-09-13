@@ -7,18 +7,6 @@ export type SanityData = {
 //   _type: 'reference';
 //   _ref: string;
 // };
-export interface AboutUsSection {
-  _id: string;
-  title: string;
-  subsections: AboutUsCard[];
-  img: string;
-}
-
-interface AboutUsCard {
-  _id: string;
-  subtitle: string;
-  info: string;
-}
 
 export type Language = {
   code: string;
@@ -79,6 +67,22 @@ interface GalleryCard {
   label: string;
 }
 
+export interface FormSection {
+  _id: string;
+  title: string;
+  description: string;
+  nameLabel: string;
+  namePlaceholder: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  countryLabel: string;
+  countryPlaceholder: string;
+  checkboxLabel: string;
+  buttonLabel: string;
+  fieldMissingError: string;
+  fieldFormatError: string;
+}
+
 export interface TrainingsSection {
   _id: string;
   title: string;
@@ -102,6 +106,7 @@ export interface TrainingsCard {
   levelLabel: string;
   levelValue: string;
 }
+
 export interface HomeSection {
   _id: string;
   title: string;

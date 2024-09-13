@@ -2,10 +2,11 @@ import React, { useCallback, useState } from 'react';
 
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
+import classNames from 'classnames';
 import sendMail from '../../sendMail';
 import styles from './Form.module.scss';
 import { useForm } from 'react-hook-form';
-import classNames from 'classnames';
+import { useSanity } from '../../hooks/useSanity';
 
 type FormData = {
   fullName: string;
@@ -15,6 +16,8 @@ type FormData = {
 };
 
 const Form: React.FC = () => {
+  const { formSection } = useSanity();
+
   const {
     watch,
     register,
@@ -53,11 +56,11 @@ const Form: React.FC = () => {
 
       <section id="form" className={`section--form section`}>
         <div className={styles.form__title}>
-          <p className={`section__title--form`}>Get more in our info package</p>
+          <p className={`section__title--form`}>{formSection?.title}</p>
         </div>
         <div className={styles.form__description}>
           <p className={`section__description--form`}>
-            Fill the form and we`ll send you a file with actual information
+            {formSection?.description}
           </p>
         </div>
 
@@ -67,7 +70,7 @@ const Form: React.FC = () => {
         >
           <div className={styles.form__labelAndInput}>
             <label className={`section__subtitle--form`} htmlFor="fullName*">
-              Full Name*
+              {formSection?.nameLabel}
             </label>
             <input
               id="fullName"
@@ -81,8 +84,10 @@ const Form: React.FC = () => {
                 [styles['form__input--default']]: !watchFullName,
                 [styles['form__input--error']]: errors.fullName,
               })}
-              {...register('fullName', { required: 'This field is required' })}
-              placeholder="John Doe"
+              {...register('fullName', {
+                required: formSection?.fieldMissingError,
+              })}
+              placeholder={formSection?.namePlaceholder}
             />
             <div
               className={`${styles.form__errorMessage} ${errors.fullName ? styles.visible : ''}`}
@@ -93,7 +98,7 @@ const Form: React.FC = () => {
 
           <div className={styles.form__labelAndInput}>
             <label className={`section__subtitle--form`} htmlFor="email*">
-              Email*
+              {formSection?.emailLabel}
             </label>
             <input
               id="email"
@@ -103,13 +108,13 @@ const Form: React.FC = () => {
                 [styles['form__input__error']]: errors.email,
               })}
               {...register('email', {
-                required: 'This field is required',
+                required: formSection?.fieldMissingError,
                 pattern: {
                   value: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
-                  message: 'Entered value does not match email format',
+                  message: formSection?.fieldFormatError + '  ',
                 },
               })}
-              placeholder="aqe@email.com"
+              placeholder={formSection?.emailPlaceholder}
               style={{
                 borderColor: watchEmail
                   ? 'color.$primary-color'
@@ -125,12 +130,12 @@ const Form: React.FC = () => {
 
           <div className={styles.form__labelAndInput}>
             <label className={`section__subtitle--form`} htmlFor="country">
-              Country
+              {formSection?.countryLabel}
             </label>
             <input
               className={styles.form__input}
               {...register('country')}
-              placeholder="Poland"
+              placeholder={formSection?.countryPlaceholder}
               style={{
                 borderColor: watchCountry
                   ? 'color.$primary-color'
@@ -144,13 +149,13 @@ const Form: React.FC = () => {
               className={`section__subtitle--form ${styles.form__agreement}`}
               htmlFor="agree"
             >
-              <input {...register('agree')} type="checkbox" />I agree to receive
-              information about the further courses from AQE.
+              <input {...register('agree')} type="checkbox" />
+              {formSection?.checkboxLabel}
             </label>
           </div>
 
           <Button className={styles.form__button} type="submit">
-            Get info package
+            {formSection?.buttonLabel}
           </Button>
         </form>
       </section>

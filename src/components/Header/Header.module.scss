@@ -3,7 +3,7 @@
 @use '../../styles/fonts.scss' as font;
 
 .header {
-  position: sticky;
+  position: relative;
   width: 100%;
   top: 0;
   z-index: 10;
