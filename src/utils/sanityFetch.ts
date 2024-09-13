@@ -1,5 +1,5 @@
 import { client } from '../SanityClient';
-import { ContactUs, Language, PartnersSection, WhyAQESection, HomeSection, GallerySection, TrainingsSection, AboutUsSection } from '../SanityDataTypes';
+import { ContactUs, Language, PartnersSection, WhyAQESection, HomeSection, GallerySection, TrainingsSection, AboutUsSection, FAQSection } from '../SanityDataTypes';
 
 export function fetchPartnersSection(
   language: string,
@@ -109,3 +109,19 @@ export function fetchAboutSection(language: string): Promise<AboutUsSection> {
     "img": image.asset->url
   }`);
 }
+
+export const fetchFAQSection = async (lang: string): Promise<FAQSection> => {
+  return client.fetch(`*[_type == "FAQSection"][0] {
+    _id,
+    "title": title[_key == "${lang}"][0].value,
+    faq[] -> {
+      _id,
+      "question": question[_key == "${lang}"][0].value,
+      "answer": answer[_key == "${lang}"][0].value
+    },
+    "footerText": footerText[_key == "${lang}"][0].value,
+    "footerLink": footerLink[_key == "${lang}"][0].value
+  }`);
+};
+
+

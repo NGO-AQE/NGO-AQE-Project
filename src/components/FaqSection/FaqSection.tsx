@@ -3,42 +3,13 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { QASet } from './QASet';
 import s from './FaqSection.module.scss';
+import { useSanity } from '../../hooks/useSanity';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const FaqSection: FC = () => {
-  const data = {
-    title: 'Frequently asked questions',
-    faq: [
-      {
-        question: 'Can I access the community forum on my mobile device, or is it only available on desktop computers?',
-        answer: 'Yes, sure. Our platform is available on mobile devices.',
-      },
-      {
-        question: 'Is there a registration fee to access the forum?',
-        answer: 'No, there is no fee.',
-      },
-      {
-        question: 'Can I create new discussion threads or topics in the forum?',
-        answer: 'Any user can start discussions on new topics, within the community guideline rules.',
-      },
-      {
-        question: 'Are there moderators who oversee forum activity and enforce community guidelines?',
-        answer: 'Of course, we keep up a safe environment for our users.',
-      },
-      {
-        question: 'Can I private message other members within the forum?',
-        answer: 'No, every message is available for all to see.',
-      },
-      {
-        question: 'Can I receive notifications for replies or updates to discussions I`m involved in?',
-        answer: 'Yes, you can receive notifications through email, or our mobile app.',
-      },
-    ],
-    footerText: 'Didn`t find the answer?',
-    footerLink: 'Contact us',
-  };
-
+  const { faqSection } = useSanity()
   const faqSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -68,19 +39,21 @@ export const FaqSection: FC = () => {
     })
   }, []);
 
+  if (!faqSection) return null;
+
   return (
     <section id="faq" className={`section container ${s.section}`} ref={faqSectionRef}>
-      <header className={`section__title ${s.title}`}>{data.title}</header>
+      <header className={`section__title ${s.title}`}>{faqSection.title}</header>
       <div className={s.faq}>
-        {data.faq.map((qa, i) => (
+        {faqSection.faq.map((qa, i) => (
           <QASet key={i} {...qa} />
         ))}
       </div>
 
       <footer className={s.footer}>
-        <span className={s.footerText}>{data.footerText + ' '}</span>
+        <span className={s.footerText}>{faqSection.footerText + ' '}</span>
         <a className={s.footerLink} href="">
-          {data.footerLink}
+          {faqSection.footerLink}
         </a>
       </footer>
     </section>
