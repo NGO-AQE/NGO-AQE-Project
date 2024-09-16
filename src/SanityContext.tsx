@@ -1,6 +1,7 @@
 import {
   AboutUsSection,
   ContactUs,
+  FAQSection,
   FormSection,
   GallerySection,
   HomeSection,
@@ -9,13 +10,12 @@ import {
   StoriesSection,
   TrainingsSection,
   WhyAQESection,
-  HomeSection,
-  FAQSection,
 } from './SanityDataTypes';
 import React, { createContext, useEffect, useState } from 'react';
 import {
   fetchAboutSection,
   fetchContactUs,
+  fetchFAQSection,
   fetchFormSection,
   fetchGallerySection,
   fetchHomeSection,
@@ -24,7 +24,6 @@ import {
   fetchStoriesSection,
   fetchTrainingsSection,
   fetchWhyAQESection,
-  fetchFAQSection,
 } from './utils/sanityFetch';
 
 export interface SanityContextType {
@@ -72,7 +71,6 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [storiesSection, setStoriesSection] = useState<StoriesSection | null>(
     null,
   );
-  const [homePage, setHomePage] = useState<HomeSection | null>(null);
   const [homePage, setHomePage] = useState<HomeSection | null>(null);
   const [aboutUsSection, setAboutUsSection] = useState<AboutUsSection | null>(
     null,
@@ -127,9 +125,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
       fetchStoriesSection(selectedLanguage).then(data =>
         setStoriesSection(data),
       ),
-      fetchAboutSection(selectedLanguage).then(data =>
-        setAboutUsSection(data),
-      ),
+      fetchAboutSection(selectedLanguage).then(data => setAboutUsSection(data)),
       fetchFAQSection(selectedLanguage).then(data => setFaqSection(data)),
     ])
       .catch(err => {
