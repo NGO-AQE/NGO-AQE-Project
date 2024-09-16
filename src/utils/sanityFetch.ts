@@ -146,7 +146,8 @@ export const fetchNavLinks = async (lang: string): Promise<Links> => {
     "links": links[] {
       "text": text[_key == "${lang}"][0].value,
       "to": to
-    }
+    },
+    "buttonText": buttonText[_key == "${lang}"][0].value
   }`);
 }
 
