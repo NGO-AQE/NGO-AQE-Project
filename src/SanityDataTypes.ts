@@ -124,5 +124,11 @@ export interface FAQCard {
   answer: string;
 }
 
+export interface Links {
+  links: Array<{
+    text: string;
+    to: string;
+  }>;
+}
 
 export type LanguageDependent = Omit<SanityData, 'language'>;
