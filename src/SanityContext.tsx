@@ -13,6 +13,7 @@ import {
 } from './SanityDataTypes';
 import React, { createContext, useEffect, useState } from 'react';
 import {
+  fetchAboutSection,
   fetchContactUs,
   fetchFormSection,
   fetchGallerySection,
@@ -23,7 +24,6 @@ import {
   fetchWhyAQESection,
   fetchFAQSection,
   fetchNavLinks,
-  fetchAboutSection,
 } from './utils/sanityFetch';
 
 export interface SanityContextType {
