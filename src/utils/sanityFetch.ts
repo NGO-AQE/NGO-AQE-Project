@@ -1,18 +1,5 @@
-import {
-  AboutUsSection,
-  ContactUs,
-  FAQSection,
-  FormSection,
-  GallerySection,
-  HomeSection,
-  Language,
-  Links,
-  PartnersSection,
-  TrainingsSection,
-  WhyAQESection,
-} from '../SanityDataTypes';
-
 import { client } from '../SanityClient';
+import { ContactUs, StoriesSection, Language, PartnersSection, WhyAQESection, HomeSection, GallerySection, TrainingsSection, AboutUsSection, FAQSection , FormSection, Links} from '../SanityDataTypes';
 
 export function fetchPartnersSection(
   language: string,
@@ -124,6 +111,22 @@ export function fetchHomeSection(language: string): Promise<HomeSection> {
     }
   `);
 }
+
+
+export function fetchStoriesSection(language: string): Promise<StoriesSection> {
+  return client.fetch(`*[_type == 'storiesSection'][0] {
+  _id,
+  "title": title[_key == "${language}"][0].value,
+  cards[] -> {
+    _id,
+    "image": image.asset->url,
+    "description": description[_key == "${language}"][0].value,
+    "label": label[_key == "${language}"][0].value,
+  }
+}`);
+}
+
+
 export const fetchFAQSection = async (lang: string): Promise<FAQSection> => {
   return client.fetch(`*[_type == "FAQSection"][0] {
     _id,
@@ -159,5 +162,6 @@ export function fetchAboutSection(language: string): Promise<AboutUsSection> {
     "img": image.asset->url
   }`);
 }
+
 
 
