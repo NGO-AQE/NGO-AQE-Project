@@ -6,9 +6,11 @@ import NavLinks from './NavLinks/NavLinks';
 import Button from '../Button/Button';
 import sectionStyles from '../../styles/sectionAndContainer.module.scss';
 import styles from './Header.module.scss';
+import { useSanity } from '../../hooks/useSanity';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { homePage } = useSanity();
 
   const toggleMenu = () => {
     setIsMenuOpen(prev => {
@@ -47,7 +49,9 @@ const Header = () => {
         <img className={styles.header__img} src={Logo} alt="logo" />
         <NavLinks closeMenu={closeMenu} />{' '}
         <div className={styles.header__buttons}>
-          <Button className={styles.header__button}>Get info</Button>
+          <Button className={styles.header__button}>
+            <a href="#form">{homePage?.buttonText}</a>
+          </Button>
           <button onClick={toggleMenu}>
             <img
               src={isMenuOpen ? BurgerClosed : Burger}
