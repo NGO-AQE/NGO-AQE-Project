@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
-import Logo from '../../assets/icons/Logo.png';
+
 import Burger from '../../assets/icons/burger-icon.svg';
 import BurgerClosed from '../../assets/icons/burger-icon-closed.svg';
-import NavLinks from './NavLinks/NavLinks';
 import Button from '../Button/Button';
+import Logo from '../../assets/icons/Logo.png';
+import NavLinks from './NavLinks/NavLinks';
 import sectionStyles from '../../styles/sectionAndContainer.module.scss';
 import styles from './Header.module.scss';
+import useDetectScroll from '@smakss/react-scroll-direction';
 
 const Header = () => {
+  const scrollDirection = useDetectScroll();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -42,7 +46,9 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`${styles.header} ${isMenuOpen ? styles.active : ''}`}>
+    <header
+      className={`${styles.header} ${isMenuOpen ? styles.active : ''} ${scrollDirection.scrollDir === 'up' || scrollDirection.scrollPosition.top < 400 ? '' : styles.hideMenu}`}
+    >
       <div className={`${styles.header__container} ${sectionStyles.container}`}>
         <img className={styles.header__img} src={Logo} alt="logo" />
         <NavLinks closeMenu={closeMenu} />{' '}
