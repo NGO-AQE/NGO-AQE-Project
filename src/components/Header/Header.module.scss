@@ -2,10 +2,15 @@
 @use '../../styles/colors.scss' as color;
 @use '../../styles/fonts.scss' as font;
 
+.hideMenu {
+  transform: translateY(-100%);
+}
+
 .header {
   position: sticky;
   top: 0;
   z-index: 10;
+  transition: transform 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
   box-shadow: 0 20px 50px color.$white;
   background: color.$white;
   padding-top: 16px;
