@@ -2,27 +2,23 @@ import React from 'react';
 import mateIcon from '../../assets/icons/maLogo.png';
 import sectionStyles from '../../styles/sectionAndContainer.module.scss';
 import styles from './Footer.module.scss';
-
-const links = [
-  { text: 'Home', to: '#home' },
-  { text: 'Trainings', to: '#trainings' },
-  { text: 'Stories', to: '#stories' },
-  { text: 'FAQ', to: '#faq' },
-  { text: 'About us', to: '#about' },
-  { text: 'Gallery', to: '#gallery' },
-  { text: 'Partners', to: '#partners' },
-  { text: '+1 (555) 123-4567', to: 'tel:+15551234567' },
-];
+import { useSanity } from '../../hooks/useSanity';
 
 const Footer: React.FC = () => {
+  const { navLinks, contactUs } = useSanity();
+  if (!navLinks || !contactUs) return null;
+
   return (
     <footer className={styles.footer}>
       <div className={`${styles.container} ${sectionStyles.container}`}>
-        {links.map(link => (
+        {navLinks.links.map(link => (
           <a key={link.text} className={styles.link} href={link.to}>
             {link.text}
           </a>
         ))}
+        <a key={contactUs.phoneNumber} className={styles.link} href={`tel:${contactUs.phoneNumber}`}>
+          {contactUs.phoneNumber}
+        </a>
         <p className={`${styles.rightsText} ${styles.bottomRow}`}>
           Alliance for Quality Education. All rights reserved
         </p>

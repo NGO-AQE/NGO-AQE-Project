@@ -141,6 +141,13 @@ export interface FAQCard {
   question: string;
   answer: string;
 }
+export interface Links {
+  links: Array<{
+    text: string;
+    to: string;
+  }>;
+  buttonText: string;
+}
 
 export interface AboutUsSection {
   _id: string;

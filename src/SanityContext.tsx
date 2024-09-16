@@ -10,6 +10,7 @@ import {
   StoriesSection,
   TrainingsSection,
   WhyAQESection,
+  Links,
 } from './SanityDataTypes';
 import React, { createContext, useEffect, useState } from 'react';
 import {
@@ -24,6 +25,7 @@ import {
   fetchStoriesSection,
   fetchTrainingsSection,
   fetchWhyAQESection,
+  fetchNavLinks,
 } from './utils/sanityFetch';
 
 export interface SanityContextType {
@@ -42,6 +44,7 @@ export interface SanityContextType {
   selectedLanguage: string;
   changeLanguage: (newLang: string) => void;
   faqSection: FAQSection | null;
+  navLinks: Links | null;
 }
 
 export const SanityContext = createContext<SanityContextType | undefined>(
@@ -78,7 +81,8 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
   const [faqSection, setFaqSection] = useState<FAQSection | null>(null);
-
+  const [navLinks, setNavLinks] = useState<Links | null>(null);
+  
   const changeLanguage = (newLangCode: string) => {
     if (!loading && languages) {
       const langCodes = languages.map(l => l.code);
@@ -127,6 +131,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
       ),
       fetchAboutSection(selectedLanguage).then(data => setAboutUsSection(data)),
       fetchFAQSection(selectedLanguage).then(data => setFaqSection(data)),
+      fetchNavLinks(selectedLanguage).then(data => setNavLinks(data)),
     ])
       .catch(err => {
         console.error('Error fetching data:', err);
@@ -138,12 +143,12 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <SanityContext.Provider
       value={{
-        aboutUsSection,
         selectedLanguage,
         changeLanguage,
         partnersSection,
         contactUs,
         storiesSection,
+        aboutUsSection,
         whyAQESection,
         gallerySection,
         formSection,
@@ -153,6 +158,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         loading,
         error,
         faqSection,
+        navLinks,
       }}
     >
       {children}

@@ -1,7 +1,8 @@
 import Select, { SingleValue, StylesConfig } from 'react-select';
-import { FunctionComponent, useContext } from 'react';
+import { FunctionComponent, useContext, useEffect } from 'react';
 import styles from './NavLinks.module.scss';
 import { SanityContext } from '../../../SanityContext';
+import { useSanity } from '../../../hooks/useSanity';
 
 interface OptionType {
   value: string;
@@ -18,16 +19,6 @@ const languageOptions: OptionType[] = [
   { value: 'en', label: 'English' },
   { value: 'pl', label: 'Polish' },
   { value: 'fr', label: 'French' },
-];
-
-const links = [
-  { text: 'Home', to: '#home' },
-  { text: 'About us', to: '#about' },
-  { text: 'Trainings', to: '#trainings' },
-  { text: 'Gallery', to: '#gallery' },
-  { text: 'Stories', to: '#stories' },
-  { text: 'Partners', to: '#partners' },
-  { text: 'FAQ', to: '#faq' },
 ];
 
 const customStyles: StylesConfig<OptionType, false> = {
@@ -84,7 +75,7 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({
   closeMenu,
 }) => {
   const sanity = useContext(SanityContext);
-
+  const { navLinks } = useSanity();
   if (!sanity) {
     throw new Error('SanityContext is not provided');
   }
@@ -104,12 +95,18 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({
     }
   };
 
+  useEffect(() => {
+    console.log(navLinks);
+  }, [navLinks]);
+
+  if (!navLinks) return null;
+
   return (
     <nav className={styles.container}>
       <ul
         className={`${styles.navlinks} ${isMobile ? styles['navlinks--mobile'] : ''} ${className}`}
       >
-        {links.map((link, i) => (
+        {navLinks.links.map((link, i) => (
           <li key={i}>
             <a
               className={styles.navlink}
