@@ -4,22 +4,13 @@ import s from './AboutUs.module.scss';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import AboutUsCard from './AboutUsCard';
+import { useSanity } from '../../hooks/useSanity';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const data = [
-  {
-    subtitle: 'Our mission',
-    info: 'Through innovative training initiatives and personalized support, we aim to equip educators with the knowledge, skills, and confidence needed to inspire lifelong learning and academic success in their students.',
-  },
-  {
-    subtitle: 'Our vision',
-    info: 'Our vision at AQE is to create a world where every educator has access to high-quality training and resources, empowering them to foster a dynamic and enriching learning environment for all students.'
-  }
-];
-
 const AboutUs = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { aboutUsSection } = useSanity();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -30,7 +21,7 @@ const AboutUs = () => {
       gsap.fromTo(card,
         {
           opacity: 0,
-          x: i % 2 === 0 ? -100 : 100, // Left for even, right for odd
+          x: i % 2 === 0 ? -100 : 100,
         },
         {
           opacity: 1,
@@ -48,23 +39,24 @@ const AboutUs = () => {
     });
   }, []);
 
-  return (
+  if (!aboutUsSection) return null;
 
+  return (
     <section id="about" className={`section ${styles.section}`}>
       <div className={styles.container}>
-        <h2 className={styles.section__title}>About Us</h2>
+        <h2 className={styles.section__title}>{aboutUsSection.title}</h2>
         <div className={s.container} ref={containerRef}>
           <div className={s.info_container}>
-            {data.map((ele, i) => (
+            {aboutUsSection.subsections.map((card) => (
               <AboutUsCard
-                key={i}
-                subtitle={ele.subtitle}
-                description={ele.info}
+                key={card._id}
+                subtitle={card.subtitle}
+                description={card.info}
               />
             ))}
           </div>
           <div className={s.img_container}>
-            <img src="/img/AboutUsPicture.png" alt="" />
+            <img src={aboutUsSection.img} alt="" />
           </div>
         </div>
       </div>

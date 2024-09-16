@@ -1,15 +1,5 @@
-import {
-  ContactUs,
-  FormSection,
-  GallerySection,
-  HomeSection,
-  Language,
-  PartnersSection,
-  TrainingsSection,
-  WhyAQESection,
-} from '../SanityDataTypes';
-
 import { client } from '../SanityClient';
+import { ContactUs, Language, PartnersSection, WhyAQESection, HomeSection, GallerySection, TrainingsSection, AboutUsSection, FAQSection , FormSection} from '../SanityDataTypes';
 
 export function fetchPartnersSection(
   language: string,
@@ -121,3 +111,32 @@ export function fetchHomeSection(language: string): Promise<HomeSection> {
     }
   `);
 }
+
+export function fetchAboutSection(language: string): Promise<AboutUsSection> {
+  return client.fetch(`*[_type == 'aboutSection'][0] {
+    _id,
+    "title": title[_key == "${language}"][0].value,
+    subsections[] -> {
+      _id,
+      "subtitle": subtitle[_key == "${language}"][0].value,
+      "info": description[_key == "${language}"][0].value
+    },
+    "img": image.asset->url
+  }`);
+}
+
+export const fetchFAQSection = async (lang: string): Promise<FAQSection> => {
+  return client.fetch(`*[_type == "FAQSection"][0] {
+    _id,
+    "title": title[_key == "${lang}"][0].value,
+    faq[] -> {
+      _id,
+      "question": question[_key == "${lang}"][0].value,
+      "answer": answer[_key == "${lang}"][0].value
+    },
+    "footerText": footerText[_key == "${lang}"][0].value,
+    "footerLink": footerLink[_key == "${lang}"][0].value
+  }`);
+};
+
+

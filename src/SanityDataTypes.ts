@@ -115,4 +115,31 @@ export interface HomeSection {
   linkNames: string[];
 }
 
+export interface FAQSection {
+  _id: string;
+  title: string;
+  faq: FAQCard[];
+  footerText: string;
+  footerLink: string;
+}
+
+export interface FAQCard {
+  _id: string;
+  question: string;
+  answer: string;
+}
+
+export interface AboutUsSection {
+  _id: string;
+  title: string;
+  subsections: AboutUsCard[];
+  img: string;
+}
+
+interface AboutUsCard {
+  _id: string;
+  subtitle: string;
+  info: string;
+}
+
 export type LanguageDependent = Omit<SanityData, 'language'>;
