@@ -1,5 +1,5 @@
 import { client } from '../SanityClient';
-import { ContactUs, Language, PartnersSection, WhyAQESection, HomeSection, GallerySection, TrainingsSection, AboutUsSection, FAQSection } from '../SanityDataTypes';
+import { ContactUs, Language, PartnersSection, WhyAQESection, HomeSection, GallerySection, TrainingsSection, AboutUsSection, FAQSection , FormSection} from '../SanityDataTypes';
 
 export function fetchPartnersSection(
   language: string,
@@ -39,6 +39,24 @@ export function fetchGallerySection(language: string): Promise<GallerySection> {
     "label": label[_key == "${language}"][0].value,
   }
 }`);
+}
+
+export function fetchFormSection(language: string): Promise<FormSection> {
+  return client.fetch(`*[_type == 'formSection'][0] {
+    _id,
+    "title": title[_key == "${language}"][0].value,
+    "description": description[_key == "${language}"][0].value,
+    "nameLabel": nameLabel[_key == "${language}"][0].value,
+    "namePlaceholder": namePlaceholder[_key == "${language}"][0].value,
+    "emailLabel": emailLabel[_key == "${language}"][0].value,
+    "emailPlaceholder": emailPlaceholder[_key == "${language}"][0].value,
+    "countryLabel": countryLabel[_key == "${language}"][0].value,
+    "countryPlaceholder": countryPlaceholder[_key == "${language}"][0].value,
+    "checkboxLabel": checkboxLabel[_key == "${language}"][0].value,
+    "buttonLabel": buttonLabel[_key == "${language}"][0].value,
+    "fieldMissingError": fieldMissingError[_key == "${language}"][0].value,
+    "fieldFormatError": fieldFormatError[_key == "${language}"][0].value
+  }`);
 }
 
 export function fetchTrainingsSection(
@@ -82,10 +100,7 @@ export const fetchContactUs = async (lang: string): Promise<ContactUs> => {
   });
 };
 
-
-export function fetchHomeSection(
-  language: string,
-): Promise<HomeSection> {
+export function fetchHomeSection(language: string): Promise<HomeSection> {
   return client.fetch(`
     *[_type == 'homeSection'][0] {
       _id,

@@ -1,6 +1,7 @@
 import {
   AboutUsSection,
   ContactUs,
+  FormSection,
   GallerySection,
   Language,
   PartnersSection,
@@ -13,6 +14,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import {
   fetchAboutSection,
   fetchContactUs,
+  fetchFormSection,
   fetchGallerySection,
   fetchHomeSection,
   fetchLanguages,
@@ -28,6 +30,7 @@ export interface SanityContextType {
   partnersSection: PartnersSection | null;
   whyAQESection: WhyAQESection | null;
   gallerySection: GallerySection | null;
+  formSection: FormSection | null;
   trainingsSection: TrainingsSection | null;
   homePage: HomeSection | null,
   languages: Language[] | null;
@@ -59,6 +62,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [gallerySection, setGallerySection] = useState<GallerySection | null>(
     null,
   );
+  const [formSection, setFormSection] = useState<FormSection | null>(null);
   const [trainingsSection, setTrainingsSection] =
     useState<TrainingsSection | null>(null);
   const [homePage, setHomePage] = useState<HomeSection | null>(null);
@@ -107,6 +111,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
       fetchGallerySection(selectedLanguage).then(data =>
         setGallerySection(data),
       ),
+      fetchFormSection(selectedLanguage).then(data => setFormSection(data)),
       fetchTrainingsSection(selectedLanguage).then(data =>
         setTrainingsSection(data),
       ),
@@ -126,15 +131,16 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <SanityContext.Provider
       value={{
+        aboutUsSection,
         selectedLanguage,
         changeLanguage,
         partnersSection,
         contactUs,
         whyAQESection,
         gallerySection,
+        formSection,
         trainingsSection,
         homePage,
-        aboutUsSection,
         languages,
         loading,
         error,
