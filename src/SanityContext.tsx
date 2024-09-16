@@ -1,6 +1,7 @@
 import {
   AboutUsSection,
   ContactUs,
+  FormSection,
   GallerySection,
   Language,
   PartnersSection,
@@ -12,8 +13,8 @@ import {
 } from './SanityDataTypes';
 import React, { createContext, useEffect, useState } from 'react';
 import {
-  fetchAboutSection,
   fetchContactUs,
+  fetchFormSection,
   fetchGallerySection,
   fetchHomeSection,
   fetchLanguages,
@@ -22,6 +23,7 @@ import {
   fetchWhyAQESection,
   fetchFAQSection,
   fetchNavLinks,
+  fetchAboutSection,
 } from './utils/sanityFetch';
 
 export interface SanityContextType {
@@ -30,6 +32,7 @@ export interface SanityContextType {
   partnersSection: PartnersSection | null;
   whyAQESection: WhyAQESection | null;
   gallerySection: GallerySection | null;
+  formSection: FormSection | null;
   trainingsSection: TrainingsSection | null;
   homePage: HomeSection | null,
   languages: Language[] | null;
@@ -62,12 +65,11 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [gallerySection, setGallerySection] = useState<GallerySection | null>(
     null,
   );
+  const [formSection, setFormSection] = useState<FormSection | null>(null);
   const [trainingsSection, setTrainingsSection] =
     useState<TrainingsSection | null>(null);
   const [homePage, setHomePage] = useState<HomeSection | null>(null);
-  const [aboutUsSection, setAboutUsSection] = useState<AboutUsSection | null>(
-    null,
-  );
+  const [aboutUsSection, setAboutUsSection] = useState<AboutUsSection | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
   const [faqSection, setFaqSection] = useState<FAQSection | null>(null);
@@ -111,6 +113,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
       fetchGallerySection(selectedLanguage).then(data =>
         setGallerySection(data),
       ),
+      fetchFormSection(selectedLanguage).then(data => setFormSection(data)),
       fetchTrainingsSection(selectedLanguage).then(data =>
         setTrainingsSection(data),
       ),
@@ -135,11 +138,12 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         changeLanguage,
         partnersSection,
         contactUs,
+        aboutUsSection,
         whyAQESection,
         gallerySection,
+        formSection,
         trainingsSection,
         homePage,
-        aboutUsSection,
         languages,
         loading,
         error,

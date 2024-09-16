@@ -1,5 +1,18 @@
+import {
+  AboutUsSection,
+  ContactUs,
+  FAQSection,
+  FormSection,
+  GallerySection,
+  HomeSection,
+  Language,
+  Links,
+  PartnersSection,
+  TrainingsSection,
+  WhyAQESection,
+} from '../SanityDataTypes';
+
 import { client } from '../SanityClient';
-import { ContactUs, Language, PartnersSection, WhyAQESection, HomeSection, GallerySection, TrainingsSection, AboutUsSection, FAQSection, Links } from '../SanityDataTypes';
 
 export function fetchPartnersSection(
   language: string,
@@ -39,6 +52,24 @@ export function fetchGallerySection(language: string): Promise<GallerySection> {
     "label": label[_key == "${language}"][0].value,
   }
 }`);
+}
+
+export function fetchFormSection(language: string): Promise<FormSection> {
+  return client.fetch(`*[_type == 'formSection'][0] {
+    _id,
+    "title": title[_key == "${language}"][0].value,
+    "description": description[_key == "${language}"][0].value,
+    "nameLabel": nameLabel[_key == "${language}"][0].value,
+    "namePlaceholder": namePlaceholder[_key == "${language}"][0].value,
+    "emailLabel": emailLabel[_key == "${language}"][0].value,
+    "emailPlaceholder": emailPlaceholder[_key == "${language}"][0].value,
+    "countryLabel": countryLabel[_key == "${language}"][0].value,
+    "countryPlaceholder": countryPlaceholder[_key == "${language}"][0].value,
+    "checkboxLabel": checkboxLabel[_key == "${language}"][0].value,
+    "buttonLabel": buttonLabel[_key == "${language}"][0].value,
+    "fieldMissingError": fieldMissingError[_key == "${language}"][0].value,
+    "fieldFormatError": fieldFormatError[_key == "${language}"][0].value
+  }`);
 }
 
 export function fetchTrainingsSection(
@@ -82,10 +113,7 @@ export const fetchContactUs = async (lang: string): Promise<ContactUs> => {
   });
 };
 
-
-export function fetchHomeSection(
-  language: string,
-): Promise<HomeSection> {
+export function fetchHomeSection(language: string): Promise<HomeSection> {
   return client.fetch(`
     *[_type == 'homeSection'][0] {
       _id,
@@ -96,20 +124,6 @@ export function fetchHomeSection(
     }
   `);
 }
-
-export function fetchAboutSection(language: string): Promise<AboutUsSection> {
-  return client.fetch(`*[_type == 'aboutSection'][0] {
-    _id,
-    "title": title[_key == "${language}"][0].value,
-    subsections[] -> {
-      _id,
-      "subtitle": subtitle[_key == "${language}"][0].value,
-      "info": description[_key == "${language}"][0].value
-    },
-    "img": image.asset->url
-  }`);
-}
-
 export const fetchFAQSection = async (lang: string): Promise<FAQSection> => {
   return client.fetch(`*[_type == "FAQSection"][0] {
     _id,
@@ -133,5 +147,17 @@ export const fetchNavLinks = async (lang: string): Promise<Links> => {
   }`);
 }
 
+export function fetchAboutSection(language: string): Promise<AboutUsSection> {
+  return client.fetch(`*[_type == 'aboutSection'][0] {
+    _id,
+    "title": title[_key == "${language}"][0].value,
+    subsections[] -> {
+      _id,
+      "subtitle": subtitle[_key == "${language}"][0].value,
+      "info": description[_key == "${language}"][0].value
+    },
+    "img": image.asset->url
+  }`);
+}
 
 
