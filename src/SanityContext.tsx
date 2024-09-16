@@ -1,4 +1,5 @@
 import {
+  AboutUsSection,
   ContactUs,
   FormSection,
   GallerySection,
@@ -8,9 +9,12 @@ import {
   StoriesSection,
   TrainingsSection,
   WhyAQESection,
+  HomeSection,
+  FAQSection,
 } from './SanityDataTypes';
 import React, { createContext, useEffect, useState } from 'react';
 import {
+  fetchAboutSection,
   fetchContactUs,
   fetchFormSection,
   fetchGallerySection,
@@ -20,9 +24,11 @@ import {
   fetchStoriesSection,
   fetchTrainingsSection,
   fetchWhyAQESection,
+  fetchFAQSection,
 } from './utils/sanityFetch';
 
 export interface SanityContextType {
+  aboutUsSection: AboutUsSection | null;
   contactUs: ContactUs | null;
   partnersSection: PartnersSection | null;
   whyAQESection: WhyAQESection | null;
@@ -36,6 +42,7 @@ export interface SanityContextType {
   error: Error | null;
   selectedLanguage: string;
   changeLanguage: (newLang: string) => void;
+  faqSection: FAQSection | null;
 }
 
 export const SanityContext = createContext<SanityContextType | undefined>(
@@ -66,8 +73,13 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
     null,
   );
   const [homePage, setHomePage] = useState<HomeSection | null>(null);
+  const [homePage, setHomePage] = useState<HomeSection | null>(null);
+  const [aboutUsSection, setAboutUsSection] = useState<AboutUsSection | null>(
+    null,
+  );
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
+  const [faqSection, setFaqSection] = useState<FAQSection | null>(null);
 
   const changeLanguage = (newLangCode: string) => {
     if (!loading && languages) {
@@ -115,6 +127,10 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
       fetchStoriesSection(selectedLanguage).then(data =>
         setStoriesSection(data),
       ),
+      fetchAboutSection(selectedLanguage).then(data =>
+        setAboutUsSection(data),
+      ),
+      fetchFAQSection(selectedLanguage).then(data => setFaqSection(data)),
     ])
       .catch(err => {
         console.error('Error fetching data:', err);
@@ -126,6 +142,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <SanityContext.Provider
       value={{
+        aboutUsSection,
         selectedLanguage,
         changeLanguage,
         partnersSection,
@@ -139,6 +156,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         languages,
         loading,
         error,
+        faqSection,
       }}
     >
       {children}
