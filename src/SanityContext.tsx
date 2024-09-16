@@ -1,27 +1,29 @@
 import {
   AboutUsSection,
   ContactUs,
+  FAQSection,
   FormSection,
   GallerySection,
+  HomeSection,
   Language,
   PartnersSection,
+  StoriesSection,
   TrainingsSection,
   WhyAQESection,
-  HomeSection,
-  FAQSection,
 } from './SanityDataTypes';
 import React, { createContext, useEffect, useState } from 'react';
 import {
   fetchAboutSection,
   fetchContactUs,
+  fetchFAQSection,
   fetchFormSection,
   fetchGallerySection,
   fetchHomeSection,
   fetchLanguages,
   fetchPartnersSection,
+  fetchStoriesSection,
   fetchTrainingsSection,
   fetchWhyAQESection,
-  fetchFAQSection,
 } from './utils/sanityFetch';
 
 export interface SanityContextType {
@@ -32,7 +34,8 @@ export interface SanityContextType {
   gallerySection: GallerySection | null;
   formSection: FormSection | null;
   trainingsSection: TrainingsSection | null;
-  homePage: HomeSection | null,
+  storiesSection: StoriesSection | null;
+  homePage: HomeSection | null;
   languages: Language[] | null;
   loading: boolean;
   error: Error | null;
@@ -65,6 +68,9 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [formSection, setFormSection] = useState<FormSection | null>(null);
   const [trainingsSection, setTrainingsSection] =
     useState<TrainingsSection | null>(null);
+  const [storiesSection, setStoriesSection] = useState<StoriesSection | null>(
+    null,
+  );
   const [homePage, setHomePage] = useState<HomeSection | null>(null);
   const [aboutUsSection, setAboutUsSection] = useState<AboutUsSection | null>(
     null,
@@ -116,9 +122,10 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         setTrainingsSection(data),
       ),
       fetchHomeSection(selectedLanguage).then(data => setHomePage(data)),
-      fetchAboutSection(selectedLanguage).then(data =>
-        setAboutUsSection(data),
+      fetchStoriesSection(selectedLanguage).then(data =>
+        setStoriesSection(data),
       ),
+      fetchAboutSection(selectedLanguage).then(data => setAboutUsSection(data)),
       fetchFAQSection(selectedLanguage).then(data => setFaqSection(data)),
     ])
       .catch(err => {
@@ -136,6 +143,7 @@ const SanityProvider: React.FC<{ children: React.ReactNode }> = ({
         changeLanguage,
         partnersSection,
         contactUs,
+        storiesSection,
         whyAQESection,
         gallerySection,
         formSection,

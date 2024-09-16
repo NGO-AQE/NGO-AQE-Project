@@ -1,7 +1,6 @@
 import './App.scss';
 
 import AboutUs from './components/AboutUs/AboutUs';
-import { BasicCard } from './components/Slider/SliderExample';
 import ContactUs from './components/ContactUs/ContactUs';
 import { FaqSection } from './components/FaqSection/FaqSection.tsx';
 import Footer from './components/Footer/Footer.tsx';
@@ -11,7 +10,7 @@ import Header from './components/Header/Header';
 import { HomePage } from './components/HomePage/HomePage';
 import PartnersSection from './components/PartnersSection/PartnersSection';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { Slider } from './components/Slider';
+import StoriesSection from './components/StoriesSection/StoriesSection.tsx';
 import TrainingsSection from './components/TrainingsSection/TrainingsSection';
 import WhyAQE from './components/WhyAQE/WhyAQE';
 import { gsap } from 'gsap';
@@ -79,19 +78,8 @@ function App() {
       <WhyAQE />
       <TrainingsSection />
       <Gallery />
-      {sanity.formSection?._id && <Form />}
-      <Slider
-        id="stories"
-        title="Succes stories"
-        buttonsPlacment="title"
-        slidesOtside
-      >
-        {[...Array(10)].map((_, i) => (
-          <Slider.Slide key={i}>
-            <BasicCard width={262} index={i} withText />
-          </Slider.Slide>
-        ))}
-      </Slider>
+      <Form />
+      <StoriesSection />
       <PartnersSection />
       <FaqSection />
       <ContactUs language={''} />

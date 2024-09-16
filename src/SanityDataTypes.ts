@@ -115,6 +115,19 @@ export interface HomeSection {
   linkNames: string[];
 }
 
+export interface StoriesSection {
+  _id: string;
+  title: string;
+  cards: StoriesCard[];
+}
+
+export interface StoriesCard {
+  _id: string;
+  image: string;
+  description: string;
+  label: string;
+}
+
 export interface FAQSection {
   _id: string;
   title: string;
@@ -140,6 +153,7 @@ interface AboutUsCard {
   _id: string;
   subtitle: string;
   info: string;
+
 }
 
 export type LanguageDependent = Omit<SanityData, 'language'>;

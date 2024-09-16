@@ -1,0 +1,30 @@
+@use '../../styles/colors.scss' as color;
+@use '../../styles/fonts.scss' as font;
+
+.card {
+  display: block;
+
+  width: 262px;
+  height: 100%;
+
+  .image {
+    height: 173px;
+  }
+  .container {
+    border: 1px solid #c6c6c6;
+    border-top-width: 0;
+  }
+
+  .description {
+    @include font.description-text;
+    padding: 16px;
+    height: 100%;
+  }
+  .label {
+    display: block;
+    padding: 0 16px 16px 16px;
+    width: 100%;
+    text-align: right;
+    @include font.body-text;
+  }
+}
