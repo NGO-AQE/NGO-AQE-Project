@@ -47,7 +47,9 @@ const Header = () => {
         <img className={styles.header__img} src={Logo} alt="logo" />
         <NavLinks closeMenu={closeMenu} />{' '}
         <div className={styles.header__buttons}>
-          <Button className={styles.header__button}>Get info</Button>
+          <Button className={styles.header__button}>
+            <a href="#form">Get info</a>
+          </Button>
           <button onClick={toggleMenu}>
             <img
               src={isMenuOpen ? BurgerClosed : Burger}
