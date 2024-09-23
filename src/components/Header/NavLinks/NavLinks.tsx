@@ -1,7 +1,8 @@
+import { FunctionComponent, useContext } from 'react';
 import Select, { SingleValue, StylesConfig } from 'react-select';
-import { FunctionComponent, useContext, useEffect } from 'react';
-import styles from './NavLinks.module.scss';
+
 import { SanityContext } from '../../../SanityContext';
+import styles from './NavLinks.module.scss';
 import { useSanity } from '../../../hooks/useSanity';
 
 interface OptionType {
@@ -95,10 +96,6 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({
     }
   };
 
-  useEffect(() => {
-    console.log(navLinks);
-  }, [navLinks]);
-
   if (!navLinks) return null;
 
   return (
@@ -109,6 +106,7 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({
         {navLinks.links.map((link, i) => (
           <li key={i}>
             <a
+              data-id="headerNavItem"
               className={styles.navlink}
               href={link.to}
               onClick={handleLinkClick}

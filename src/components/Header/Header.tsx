@@ -8,9 +8,7 @@ import NavLinks from './NavLinks/NavLinks';
 import sectionStyles from '../../styles/sectionAndContainer.module.scss';
 import styles from './Header.module.scss';
 import useDetectScroll from '@smakss/react-scroll-direction';
-
 import { useSanity } from '../../hooks/useSanity';
-
 
 const Header = () => {
   const scrollDirection = useDetectScroll();
@@ -51,10 +49,16 @@ const Header = () => {
 
   return (
     <header
+      data-id="header"
       className={`${styles.header} ${isMenuOpen ? styles.active : ''} ${scrollDirection.scrollDir === 'up' || scrollDirection.scrollPosition.top < 400 ? '' : styles.hideMenu}`}
     >
       <div className={`${styles.header__container} ${sectionStyles.container}`}>
-        <img className={styles.header__img} src={Logo} alt="logo" />
+        <img
+          data-id="headerLogo"
+          className={styles.header__img}
+          src={Logo}
+          alt="logo"
+        />
         <NavLinks closeMenu={closeMenu} />{' '}
         <div className={styles.header__buttons}>
           <Button className={styles.header__button}>
