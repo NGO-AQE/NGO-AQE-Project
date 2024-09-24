@@ -115,7 +115,7 @@ const NavLinks: FunctionComponent<NavLinksProps> = ({
             </a>
           </li>
         ))}
-        <li>
+        <li data-id="headerSelect">
           <Select
             options={languageOptions}
             styles={customStyles}
