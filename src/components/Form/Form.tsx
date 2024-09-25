@@ -54,7 +54,7 @@ const Form: React.FC = () => {
         isOpen={modalType !== 'closed'}
       />
 
-      <section id="form" className={`section--form section`}>
+      <section data-id="form" id="form" className={`section--form section`}>
         <div className={styles.form__title}>
           <p className={`section__title--form`}>{formSection?.title}</p>
         </div>

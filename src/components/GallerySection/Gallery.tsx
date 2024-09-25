@@ -48,7 +48,11 @@ const Gallery = () => {
   }, [emblaApi, updateButtons]);
 
   return (
-    <section id="gallery" className={styles.container + ' gallery'}>
+    <section
+      data-id="gallery"
+      id="gallery"
+      className={styles.container + ' gallery'}
+    >
       <div className={styles.gallerySection + ' section'}>
         <h2 className={styles.gallerySection__title}>
           {gallerySection?.title}
