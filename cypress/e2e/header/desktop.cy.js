@@ -16,93 +16,49 @@ describe('Desktop header', () => {
     cy.intercept({ resourceType: /xhr|fetch/ }, { log: false });
     cy.viewport(1920, 1080);
     cy.visit('/');
-    cy.wait(1000);
+    cy.wait(500);
   });
 
-  describe('should have a logo', () => {
-    it('that exists', () => {
-      cy.get('[data-id="headerLogo"]').should('exist');
-    });
+  it('has logo', () => {
+    cy.get('[data-id="headerLogo"]').should('exist');
   });
 
-  describe('should have multiple nav items', () => {
-    it('that exist', () => {
-      cy.get('[data-id="headerNavItem"]').should('have.length.greaterThan', 1);
-    });
-
-    describe('that redirect on click', () => {
-      it('and change url', () => {
-        cy.get('[data-id="headerNavItem"]').eq(3).contains('Gallery').click();
-        cy.url().should('include', '#gallery');
-      });
-
-      it('and scroll', () => {
-        cy.get('[data-id="headerNavItem"]').eq(3).contains('Gallery').click();
-        cy.get('[data-id="gallery"]').should('be.visible');
-      });
-    });
+  it('has nav items', () => {
+    cy.get('[data-id="headerNavItem"]').should('have.length.greaterThan', 1);
   });
 
-  describe('should have button', () => {
-    it('that exists', () => {
-      cy.get('[data-id="header"] button').first().should('exist');
-    });
-
-    describe('that redirects on click', () => {
-      it('and changes url', () => {
-        cy.get('[data-id="header"] button').first().click();
-        cy.url().should('include', '#form');
-      });
-
-      it('and scrolls', () => {
-        cy.get('[data-id="header"] button').first().should('exist');
-        cy.get('[data-id="header"] button').first().click();
-        cy.get('[data-id="form"]').should('be.visible');
-      });
-    });
+  it('has nav items that redirect', () => {
+    cy.get('[data-id="headerNavItem"]').eq(3).contains('Gallery').click();
+    cy.url().should('include', '#gallery');
+    cy.get('[data-id="gallery"]').should('be.visible');
   });
 
-  describe('should have button', () => {
-    it('that exists', () => {
-      cy.get('[data-id="header"] button').first().should('exist');
-    });
-
-    describe('that redirects on click', () => {
-      it('and changes url', () => {
-        cy.get('[data-id="header"] button').first().click();
-        cy.url().should('include', '#form');
-      });
-
-      it('and scrolls', () => {
-        cy.get('[data-id="header"] button').first().should('exist');
-        cy.get('[data-id="header"] button').first().click();
-        cy.get('[data-id="form"]').should('be.visible');
-      });
-    });
+  it('has button', () => {
+    cy.get('[data-id="header"] button').first().should('exist');
   });
 
-  describe('should have options', () => {
-    it('that exist', () => {
-      cy.get('[data-id="headerSelect"]').first().should('exist');
-    });
+  it('has button that redirects', () => {
+    cy.get('[data-id="header"] button').first().click();
+    cy.url().should('include', '#form');
+    cy.get('[data-id="form"]').should('be.visible');
+  });
 
-    it('that change the content text', () => {
-      cy.get('[data-id="header"] button a')
-        .invoke('text')
-        .then(initialText => {
-          cy.get('[data-id="headerSelect"]').first().click();
-          cy.get('[data-id="headerSelect"]')
-            .contains('Polish')
-            .should('exist')
-            .click();
-          cy.wait(1000);
+  it('has language selector', () => {
+    cy.get('[data-id="headerSelect"]').first().should('exist');
+  });
 
-          cy.get('[data-id="header"] button a')
-            .invoke('text')
-            .then(newText => {
-              expect(newText).not.to.equal(initialText);
-            });
-        });
-    });
+  it('has language selector that changes content on click', () => {
+    cy.get('[data-id="header"] button a')
+      .invoke('text')
+      .then(initialText => {
+        cy.get('[data-id="headerSelect"]').first().click();
+        cy.get('[data-id="headerSelect"]').contains('Polish').click();
+        cy.wait(500);
+        cy.get('[data-id="header"] button a')
+          .invoke('text')
+          .then(newText => {
+            expect(newText).not.to.equal(initialText);
+          });
+      });
   });
 });
