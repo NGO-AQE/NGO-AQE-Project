@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
+import React, { useEffect, useRef } from 'react';
 
+import { gsap } from 'gsap';
 import modalButton from '../../assets/icons/modalButton.png';
 import modalError from '../../assets/icons/modalError.png';
 import modalSuccess from '../../assets/icons/modalSuccess.png';
@@ -23,7 +23,9 @@ interface FunctionalProps {
   closer: () => void;
 }
 
-const Modal: React.FC<(CustomProps | PreparedProps) & FunctionalProps> = props => {
+const Modal: React.FC<
+  (CustomProps | PreparedProps) & FunctionalProps
+> = props => {
   const modalRef = useRef<HTMLDivElement>(null);
   const backRef = useRef<HTMLDivElement>(null);
 
@@ -32,12 +34,12 @@ const Modal: React.FC<(CustomProps | PreparedProps) & FunctionalProps> = props =
       gsap.fromTo(
         modalRef.current,
         { y: '-100%', rotate: 60, opacity: 0 },
-        { y: 0, rotate: 0, opacity: 1, duration: 0.7, ease: 'power4.out' }
+        { y: 0, rotate: 0, opacity: 1, duration: 0.7, ease: 'power4.out' },
       );
       gsap.fromTo(
         backRef.current,
-        { opacity: 0},
-        { opacity: 0.95, duration: 0.3 }
+        { opacity: 0 },
+        { opacity: 0.95, duration: 0.3 },
       );
     }
   }, [props.isOpen]);
@@ -46,9 +48,9 @@ const Modal: React.FC<(CustomProps | PreparedProps) & FunctionalProps> = props =
     gsap.to(modalRef.current, {
       scaleX: 0,
       duration: 0.3,
-      onComplete: props.closer
+      onComplete: props.closer,
     });
-    gsap.to(backRef.current, { opacity: 0, duration: 0.3});
+    gsap.to(backRef.current, { opacity: 0, duration: 0.3 });
   };
 
   if (!props.isOpen) {
@@ -91,6 +93,7 @@ const Modal: React.FC<(CustomProps | PreparedProps) & FunctionalProps> = props =
 
   return (
     <div
+      data-id="modal"
       onClick={e => {
         if (e.target === e.currentTarget) {
           willClose();
