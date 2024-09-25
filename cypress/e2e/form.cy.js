@@ -41,6 +41,16 @@ describe('Form', () => {
     });
   });
 
+  it('response should be successful', () => {
+    const formValues = ['name', 'mail@mail.com', 'pl', true];
+
+    submitForm(formValues);
+
+    cy.wait('@formSubmit').then(interception => {
+      expect(interception.response.statusCode).to.equal(200);
+    });
+  });
+
   it('should show warnings only for required inputs', () => {
     const formValues = ['', '', '', true];
 
