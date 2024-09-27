@@ -108,6 +108,7 @@ const Modal: React.FC<
           src={modalButton}
           className={s.button}
           alt="Close"
+          data-id="modal-button"
         />
         <img src={data.icon} className={s.icon} alt="Icon" />
         <div className={s.title + ' ' + s.bold}>{data.title}</div>

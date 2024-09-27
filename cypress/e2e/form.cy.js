@@ -5,7 +5,6 @@ describe('Form', () => {
     cy.intercept({ resourceType: /xhr|fetch/ }, { log: false });
     cy.viewport(1920, 1080);
     cy.visit('/en');
-    cy.wait(1000);
   });
 
   it('input values should be sent in request', () => {
@@ -78,7 +77,7 @@ describe('Form', () => {
     cy.submitForm(formValues);
 
     cy.get('[data-id="modal"]').should('be.visible');
-    cy.get('[data-id="modal"] img').first().click();
+    cy.get('[data-id="modal-button"]').first().click();
     cy.get('[data-id="modal"]').should('not.exist');
   });
 });
