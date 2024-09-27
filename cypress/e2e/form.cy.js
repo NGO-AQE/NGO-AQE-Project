@@ -1,10 +1,13 @@
 /// <reference types="cypress" />
 
+import { FORMERRORMSGS } from '../support/constants';
+
 describe('Form', () => {
   beforeEach(() => {
     cy.intercept({ resourceType: /xhr|fetch/ }, { log: false });
     cy.viewport(1920, 1080);
     cy.visit('/en');
+    cy.wait(500);
   });
 
   it('input values should be sent in request', () => {
@@ -38,7 +41,7 @@ describe('Form', () => {
     cy.submitForm(formValues);
 
     cy.get('[data-id="form"] form > div > div')
-      .filter((_, el) => el.innerText.includes('This field is required'))
+      .filter((_, el) => el.innerText.includes(FORMERRORMSGS.requiredField))
       .should('have.length', 2);
   });
 
@@ -48,9 +51,7 @@ describe('Form', () => {
     cy.submitForm(formValues);
 
     cy.get('[data-id="form"] form > div > div')
-      .filter((_, el) =>
-        el.innerText.includes('Entered value does not match email format'),
-      )
+      .filter((_, el) => el.innerText.includes(FORMERRORMSGS.mailFormat))
       .should('have.length', 1);
   });
 
@@ -61,13 +62,13 @@ describe('Form', () => {
     cy.submitForm(formValues);
 
     cy.get('[data-id="form"] form > div > div')
-      .filter((_, el) => el.innerText.includes('This field is required'))
+      .filter((_, el) => el.innerText.includes(FORMERRORMSGS.requiredField))
       .should('have.length', 2);
 
     cy.submitForm(correctFormValues);
 
     cy.get('[data-id="form"] form > div > div')
-      .filter((_, el) => el.innerText.includes('This field is required'))
+      .filter((_, el) => el.innerText.includes(FORMERRORMSGS.requiredField))
       .should('have.length', 0);
   });
 
