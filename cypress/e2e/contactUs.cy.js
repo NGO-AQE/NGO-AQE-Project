@@ -19,12 +19,6 @@ describe ('', () => {
     cy.get('[data-id="contactUsNumber"]').should('be.visible');
   });
 
-  //Czy możliwe
-  // it('should open mail box', () => {
-  //   cy.get('[data-id="contactUsSection"]').scrollIntoView;
-  //   cy.get('[data-id="contactUsEmail"]').click();
-  // });
-
   it('should move user to google maps', () => {
     cy.get('[data-id="contactUsSection"]').scrollIntoView;
     cy
@@ -32,10 +26,4 @@ describe ('', () => {
       .invoke("removeAttr", "target")
       .click();
   });
-
-  //Czy możliwe
-  // it('should open mobile apps', () => {
-  //   cy.get('[data-id="contactUsSection"]').scrollIntoView;
-  //   cy.get('[data-id="contactUsNumber"]').click();
-  // });
 })
