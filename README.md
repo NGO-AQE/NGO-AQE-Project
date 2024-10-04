@@ -18,6 +18,9 @@ npm i
 
 ## Usage
 
+To properly run the app locally, we need to create an '.env' file in the project's main directory.
+Look, pinned message on discord.
+
 Start local web server for development
 ```bash
 npm run dev

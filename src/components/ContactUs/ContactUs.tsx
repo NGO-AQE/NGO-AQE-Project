@@ -26,7 +26,9 @@ export const ContactUs: React.FC<ContactUsProps> = () => {
   return (
     <section className={`section ${s.container}`}>
       <div className={s.contact}>
-        <h1 className={s.contact__title}>{title}</h1>
+        <h1 className={s.contact__title} data-id="contactUsSection">
+          {title}
+        </h1>
         <address className={s.contact__address}>
           <div>
             <h4 className={s.contact__label}>{translations.emailLabel}</h4>
@@ -34,6 +36,7 @@ export const ContactUs: React.FC<ContactUsProps> = () => {
               href={`mailto:${email}`}
               type="email"
               className={s.contact__description}
+              data-id="contactUsEmail"
             >
               {email}
             </a>
@@ -50,6 +53,7 @@ export const ContactUs: React.FC<ContactUsProps> = () => {
               href={mapLink}
               type="address"
               className={s.contact__description}
+              data-id="contactUsAddress"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -70,6 +74,7 @@ export const ContactUs: React.FC<ContactUsProps> = () => {
               href={`tel:${phoneNumber}`}
               type="tel"
               className={s.contact__description}
+              data-id="contactUsNumber"
             >
               {phoneNumber}
             </a>
