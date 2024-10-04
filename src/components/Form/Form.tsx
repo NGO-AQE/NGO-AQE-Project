@@ -73,6 +73,7 @@ const Form: React.FC = () => {
               {formSection?.nameLabel}
             </label>
             <input
+              data-id="fullNameInput"
               id="fullName"
               style={{
                 borderColor: watchFullName
@@ -101,6 +102,7 @@ const Form: React.FC = () => {
               {formSection?.emailLabel}
             </label>
             <input
+              data-id="emailInput"
               id="email"
               className={classNames(styles.form__input, {
                 [styles['form__input__active']]: watchEmail,
@@ -133,6 +135,7 @@ const Form: React.FC = () => {
               {formSection?.countryLabel}
             </label>
             <input
+              data-id="countryInput"
               className={styles.form__input}
               {...register('country')}
               placeholder={formSection?.countryPlaceholder}
@@ -149,7 +152,11 @@ const Form: React.FC = () => {
               className={`section__subtitle--form ${styles.form__agreement}`}
               htmlFor="agree"
             >
-              <input {...register('agree')} type="checkbox" />
+              <input
+                data-id="checkInput"
+                {...register('agree')}
+                type="checkbox"
+              />
               {formSection?.checkboxLabel}
             </label>
           </div>
